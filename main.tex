@@ -1,44 +1,5 @@
 \documentclass[twoside,openright,12pt,letterpaper]{scrbook}
-\usepackage{graphicx}
-
-
-\usepackage[twoside,outer=1.5in,inner=1.75in,bottom=1.5in,top=1.5in,marginpar=1in]{geometry} 
-
-\usepackage{lipsum}
-\usepackage{amsmath,amsthm}
- 
-\usepackage{amsmath}
-\usepackage{array, diagbox}
-\usepackage{palatino}
-%\usepackage{fdsymbol}
-\usepackage{tikz}
-\usetikzlibrary{shapes,backgrounds}
-
-\newtheorem{theorem}{Theorem}[chapter]
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{corollary}[theorem]{Corollary}
-
-\renewenvironment{proof}[1][Proof]{\begin{trivlist}
-		\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
-\newenvironment{definition}[1][Definition]{\begin{trivlist}
-		\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
-%\newenvironment{example}[1][Example]{\begin{trivlist}
-%		\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
-\newenvironment{remark}[1][Remark]{\begin{trivlist}
-		\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
-
-\newcounter{example}[chapter]
-\newenvironment{example}[1][]{\refstepcounter{example}\par\medskip
-	\noindent\textbf{Example~\theexample. #1} \rmfamily}{\medskip}
-\newenvironment{solution}[1][Solution]{\begin{trivlist}
-		\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
-
-
-\renewcommand{\qed}{\nobreak \ifvmode \relax \else
-	\ifdim\lastskip<1.5em \hskip-\lastskip
-	\hskip1.5em plus0em minus0.5em \fi \nobreak
-	\vrule height0.75em width0.5em depth0.25em\fi}
+\usepackage{mystyle}
 
 \begin{document}
 \title{Probability Theory \\ Lecture Notes}
@@ -49,9 +10,9 @@
 \frontmatter
 \tableofcontents
 
-\include{preface}
+\subfile{chapters/preface}
 
-\mainmatter
+\mainmatter 
 
-\include{chapter_01}
+\subfile{chapters/chapter_01}
 \end{document}
