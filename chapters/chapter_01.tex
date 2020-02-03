@@ -247,8 +247,10 @@ The proofs of these properties are left as an exercise.
 		\begin{scope}[shift={(3cm,-5cm)}, fill opacity=0.333]
 		\fill[magenta] \firstcircle;
 		\fill[cyan] \secondcircle;
-		\draw \firstcircle node[below] {$A$};
-		\draw \secondcircle node [below] {$B$};
+		\end{scope}
+		\begin{scope}[shift={(3cm,-5cm)}]
+		\draw \firstcircle node {$A$};
+		\draw \secondcircle node {$B$};
 		\end{scope}
 		\end{tikzpicture}
 	\end{center}
@@ -256,6 +258,7 @@ The proofs of these properties are left as an exercise.
 	\label{fig:pie}
 \end{figure}
 
+{\fontsize{10}{10}\selectfont
 \subsection{Exercises}
 \begin{enumerate}
 	\item Verify the following relations
@@ -308,6 +311,8 @@ The proofs of these properties are left as an exercise.
 			\fill[magenta] \firstcircle;
 			\fill[cyan] \secondcircle;
 			\fill[yellow] \thirdcircle;
+			\end{scope}
+			\begin{scope}[shift={(3cm,-5cm)}]
 			\draw \firstcircle node[below] {$A$};
 			\draw \secondcircle node [above] {$B$};
 			\draw \thirdcircle node [below] {$C$};
@@ -319,6 +324,7 @@ The proofs of these properties are left as an exercise.
 	\end{figure}
 	
 \end{enumerate}
+}
 
 \section{Examples of Probability Spaces}
 Before developing more theory, let's get our hands dirty with some simple examples of discrete and continuous probability spaces.
@@ -531,6 +537,8 @@ where the 4 dots will go, and there are $\displaystyle {16 \choose 4}$ ways to d
 By analogy this argument can be extended easily to show the number of unordered samples with replacement from $n$ elements is given by $${n-1+r \choose n-1} = {n-1+r \choose r}$$
 where the equality follows from the symmetry of the binomial coefficient.
 
+{\fontsize{10}{10}\selectfont
+
 \subsection{Exercises} %% taken from Ash, p.24, sec 1.4
 \begin{enumerate}
 	\item If a 3-digit number (000 to 999) is chosen at random, find the probability that
@@ -569,8 +577,7 @@ where the equality follows from the symmetry of the binomial coefficient.
 	
 	\item  A ``language" consists of three ``words," 
 	$W_1 =a, W_2 = ba, W_3 = bb$. Let
-	$N(k)$ be the number of ``sentences" using exactly $k$ letters (e.g., $N(1) = 1$ ($a$)
-	, $N(2) = 3,$ ($aa, ba, bb$), $N(3) =5,$ ($aaa, aba, abb, baa, bba$); no space is
+	$N(k)$ be the number of ``sentences" using exactly $k$ letters (e.g., $N(1) = 1$ ($a$), $N(2) = 3,$ ($aa, ba, bb$), $N(3) =5,$ ($aaa, aba, abb, baa, bba$); no space is
 	allowed between words).
 	\begin{enumerate}
 	\item Show that $N(k) = N(k - 1) + 2N(k - 2), k =2,3,...$ (define $N(O) =1$).
@@ -580,13 +587,145 @@ where the equality follows from the symmetry of the binomial coefficient.
 	B(-1)^k$, where $A$ and $B$ are determined by $N(O)$ and $N(1)$. Evaluate $A$
 	and $B$ in the present case.
 	\end{enumerate}	
-
-	
 \end{enumerate}
-\section{Conditional Probability and Independence}
-Sometimes we are interested in the outcomes from a subset of the
-sample space.
+}
 
+\section{Conditional Probability and Independence}
+Sometimes we are interested in the outcomes from a subset of the full sample space. 
+For example maybe in a room of 100 persons, 25 of them are wearing a green shirt, while there are 65 males, of whom 15 are wearing a green shirt. Then the probability of a
+randomly selected person wearing a green shirt depends on if the person is a male or not (or, if we don't know). If we don't know, then the probability is 25/100. But if
+we know the person to be male, the probability becomes 15/65, which is just a bit lower.
+This is the essence of \textbf{conditional probability}, in which an explicit sample (sub-)space is defined.
+
+\begin{definition}
+	Given a sample space $\Omega$ and events  $A,B \subseteq \Omega$ then
+	the  \textit{conditional probability of $A$ given $B$} is defined as
+	$$P(A | B) = \dfrac{P(A \cap B)}{P(B)}$$
+	\label{def:condprob}
+\end{definition}
+
+\begin{example}
+	The probability of an applicant to be admitted to a certain college is 0.8.
+	The probability for a student in the college to live on campus is 0.6. What
+	is the probability that an applicant will be admitted to the college and will
+	be assigned a dormitory housing?
+\end{example}
+\begin{solution}
+	The probability of the applicant being admitted and receiving dormitory
+	housing is defined by
+	P(Accepted and Housing) = P(Housing$|$Accepted)P(Accepted)
+	= (0.6)(0.8) = 0.48
+\end{solution}
+
+From the definition of conditional probability comes one of the most important
+identities for intersections, namely
+\begin{theorem}
+	$$P(A \cap B) = P(A|B)P(B)$$
+\end{theorem}
+\noindent
+and its generalization:
+\begin{theorem}
+
+	$$P(A_1 \cap A_2  \cap \cdots \cap A_n) =	P(A_1)P(A_2 | A_1)P(A_3 | A_2 \cap A_1) \cdots P(A_n | A_{n-1} \cap A_{n-2} \cap 
+	\cdots \cap A_1)$$
+\end{theorem}
+
+\begin{proof}
+	TBD. By induction
+\end{proof}
+
+A very useful form of the definition of conditional probability employs the \textbf{Law
+of Total Probability}
+
+\begin{theorem}[Law of Total Probability]
+	If $B_1, \ldots, B_n$ form a partition of the sample space $\Omega$, (that is,
+	the sets are mutually disjoint and their union equals $\Omega$), and $A$ is
+	an event in $\Omega$ then
+	$$P(A) = \sum_{i=1}^n P(A|B_i)P(B_i)$$
+\end{theorem}
+\noindent
+Now  Definition~\ref{def:condprob} becomes
+\begin{equation}
+P(B | A) = \dfrac{P(B | A)}{\sum_{i=1}^n P(A|B_i)P(B_i)}
+\end{equation}
+
+{\fontsize{10}{10}\selectfont
+\subsection{Exercises}
+\begin{enumerate}
+	
+	\item An urn contains 22 marbles: 10 red, 5 green, and 7 orange. You pick two at
+	random without replacement. What is the probability that the first is red
+	and the second is orange?
+	
+	\item You roll two fair dice. Find the (conditional) probability that the sum of the
+	two faces is 6 given that the two dice are showing different faces.
+	
+	\item A machine produces small cans that are used for baked beans. The probability
+	 that the can is in perfect shape is 0.9. The probability of the can having
+	an unnoticeable dent is 0.02. The probability that the can is obviously dented
+	is 0.08. Produced cans get passed through an automatic inspection machine,
+	which is able to detect obviously dented cans and discard them. What is the
+	probability that a can that gets shipped for use will be of perfect shape?
+	
+	\item A box of television tubes contains 20 tubes, of which ve are defective. If
+	three of the tubes are selected at random and removed from the box in
+	succession without replacement, what is the probability that all three tubes
+	are defective?
+	
+	\item A box of television tubes contains 20 tubes, of which five are defective. If
+	three of the tubes are selected at random and removed from the box in
+	succession without replacement, what is the probability that all three tubes
+	are defective?
+	
+	\item Bowl I contains eight red balls and six blue balls. Bowl II is empty. Four
+	balls are selected at random, without replacement, and transferred from bowl
+	I to bowl II. One ball is then selected at random from bowl II.
+	Calculate the conditional probability that two red balls and two blue balls
+	were transferred from bowl I to bowl II, given that the ball selected from
+	bowl II is blue.
+	
+	\item A machine has two parts labeled A and B: The probability that part A works
+	for one year is 0.8 and the probability that part B works for one year is 0.6.
+	The probability that at least one part works for one year is 0.9.
+	Calculate the probability that part B works for one year, given that part A
+	works for one year.
+	
+	\item A public health researcher examines the medical records of a group of 937
+	men who died in 1999 and discovers that 210 of the men died from causes
+	related to heart disease. Moreover, 312 of the 937 men had at least one
+	parent who suffered from heart disease, and, of these 312 men, 102 died from
+	causes related to heart disease.
+	Determine the probability that a man randomly selected from this group died
+	of causes related to heart disease, given that neither of his parents suffered
+	from heart disease.
+	
+	\item An insurance company examines its pool of auto insurance customers and
+	gathers the following information:
+	\begin{enumerate}
+		\item All customers insure at least one car.
+		\item  70\% of the customers insure more than one car.
+		\item  20\% of the customers insure a sports car.
+		\item Of those customers who insure more than one car, 15% insure a sports car.
+	\end{enumerate}
+	Calculate the probability that a randomly selected customer insures exactly
+	one car and that car is not a sports car.
+
+
+	\item An actuary is studying the prevalence of three health risk factors, denoted
+	by $A$, $B$, and $C$ within a population of women. For each of the three factors,
+	the probability is 0.1 that a woman in the population has only this risk factor
+	(and no others). For any two of the three factors, the probability is 0.12 that
+	she has exactly these two risk factors (but not the other). The probability
+	that a woman has all three risk factors, given that she has $A$ and $B$, is 
+	$\frac13$.
+	What is the probability that a woman has none of the three risk factors,
+	given that she does not have risk factor $A$?
+	
+	\item Prove that if $A$ and $B$ are independent, then so are $A$ and $B^C$.
+	
+	\item Prove that if $A$ and $B$ are independent, then so are $A^C$ and $B^C$.
+\end{enumerate}
+}
 
 \section{Bayes Theorem}
 

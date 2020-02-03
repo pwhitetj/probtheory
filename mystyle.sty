@@ -3,7 +3,7 @@
 \usepackage{graphicx}
 
 
-\usepackage[twoside,outer=1.5in,inner=1.75in,bottom=1.5in,top=1.5in,marginpar=1in]{geometry} 
+\usepackage[twoside,outer=1.25in,inner=1.55in,bottom=1.5in,top=1.5in,marginpar=1in]{geometry} 
 
 \usepackage{lipsum}
 \usepackage{amsmath,amsthm}
@@ -19,11 +19,12 @@
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[chapter]{Definition}
 
 \renewenvironment{proof}[1][Proof]{\begin{trivlist}
 		\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
-\newenvironment{definition}[1][Definition]{\begin{trivlist}
-		\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+%\newenvironment{definition}[1][Definition]{\begin{trivlist}
+%		\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
 %\newenvironment{example}[1][Example]{\begin{trivlist}
 %		\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
 \newenvironment{remark}[1][Remark]{\begin{trivlist}
@@ -33,7 +34,7 @@
 \newenvironment{example}[1][]{\refstepcounter{example}\par\medskip
 	\noindent\textbf{Example~\theexample. #1} \rmfamily}{\medskip}
 \newenvironment{solution}[1][Solution]{\begin{trivlist}
-		\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+		\item[ {\bfseries #1}]}{\end{trivlist}}
 
 
 \renewcommand{\qed}{\nobreak \ifvmode \relax \else

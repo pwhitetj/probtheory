@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.14)  3 FEB 2020 09:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.14)  3 FEB 2020 12:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -39,17 +39,17 @@ Class scrbook Info: You've used standard option `openright'.
 (scrbook)           If you'd like to set the option with \KOMAoptions,
 (scrbook)           you'd have to use `open=right' there
 (scrbook)           instead of `openright', too.
-Package scrbook Info: You've used standard option `12pt'.
+Package scrbook Info: You've used standard option `11pt'.
 (scrbook)             This is correct!
-(scrbook)             Internally I'm using `fontsize=12pt'.
+(scrbook)             Internally I'm using `fontsize=11pt'.
 (scrbook)             If you'd like to set the option with \KOMAoptions,
-(scrbook)             you'd have to use `fontsize=12pt' there
-(scrbook)             instead of `12pt', too.
-Class scrbook Info: File `scrsize12pt.clo' used to setup font sizes on input li
+(scrbook)             you'd have to use `fontsize=11pt' there
+(scrbook)             instead of `11pt', too.
+Class scrbook Info: File `scrsize11pt.clo' used to setup font sizes on input li
 ne 2376.
 
-(/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrsize12pt.clo
-File: scrsize12pt.clo 2019/02/01 v3.26b KOMA-Script font size class option (12p
+(/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrsize11pt.clo
+File: scrsize11pt.clo 2019/02/01 v3.26b KOMA-Script font size class option (11p
 t)
 )
 (/usr/share/texlive/texmf-dist/tex/latex/koma-script/typearea.sty
@@ -61,21 +61,21 @@ Package: typearea 2019/02/01 v3.26b KOMA-Script package (type area)
 \ta@temp=\skip45
 \footheight=\skip46
 Package typearea Info: These are the values describing the layout:
-(typearea)             DIV  = 12
+(typearea)             DIV  = 10
 (typearea)             BCOR = 0.0pt
 (typearea)             \paperwidth      = 597.50793pt
-(typearea)              \textwidth      = 448.13095pt
+(typearea)              \textwidth      = 418.25555pt
 (typearea)              DIV departure   = -6%
-(typearea)              \evensidemargin = 27.31467pt
-(typearea)              \oddsidemargin  = -22.47766pt
+(typearea)              \evensidemargin = 47.2316pt
+(typearea)              \oddsidemargin  = -12.5192pt
 (typearea)             \paperheight     = 845.04694pt
-(typearea)              \textheight     = 635.5pt
-(typearea)              \topmargin      = -41.72441pt
-(typearea)              \headheight     = 18.125pt
-(typearea)              \headsep        = 21.75pt
-(typearea)              \topskip        = 12.0pt
-(typearea)              \footskip       = 50.75pt
-(typearea)              \baselineskip   = 14.5pt
+(typearea)              \textheight     = 595.80026pt
+(typearea)              \topmargin      = -25.16531pt
+(typearea)              \headheight     = 17.0pt
+(typearea)              \headsep        = 20.40001pt
+(typearea)              \topskip        = 11.0pt
+(typearea)              \footskip       = 47.6pt
+(typearea)              \baselineskip   = 13.6pt
 (typearea)              on input line 1715.
 )
 \c@part=\count81
@@ -993,23 +993,23 @@ e
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: twoside 
-* h-part:(L,W,R)=(126.47249pt, 362.63045pt, 108.405pt)
+* h-part:(L,W,R)=(112.0187pt, 395.15173pt, 90.3375pt)
 * v-part:(T,H,B)=(108.405pt, 628.23694pt, 108.405pt)
 * \paperwidth=597.50793pt
 * \paperheight=845.04694pt
-* \textwidth=362.63045pt
+* \textwidth=395.15173pt
 * \textheight=628.23694pt
-* \oddsidemargin=54.2025pt
-* \evensidemargin=36.13501pt
-* \topmargin=-3.73999pt
-* \headheight=18.125pt
-* \headsep=21.75pt
-* \topskip=12.0pt
-* \footskip=50.75pt
+* \oddsidemargin=39.74872pt
+* \evensidemargin=18.0675pt
+* \topmargin=-1.265pt
+* \headheight=17.0pt
+* \headsep=20.40001pt
+* \topskip=11.0pt
+* \footskip=47.6pt
 * \marginparwidth=72.26999pt
 * \marginparsep=12.8401pt
 * \columnsep=10.0pt
-* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
@@ -1025,121 +1025,105 @@ LaTeX Font Info:    Try loading font information for OT1+phv on input line 11.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1phv.fd
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 )
-LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <12> not available
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <10.95> not available
 (Font)              Font shape `OT1/phv/b/n' tried instead on input line 11.
-LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <24.88> not available
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <20.74> not available
 (Font)              Font shape `OT1/phv/b/n' tried instead on input line 11.
 <"../images/01/"alfori100yrs.png, id=4, 903.375pt x 534.99875pt>
 File: "../images/01/"alfori100yrs.png Graphic file (type png)
 <use "../images/01/"alfori100yrs.png>
 Package pdftex.def Info: "../images/01/"alfori100yrs.png  used on input line 33
 .
-(pdftex.def)             Requested size: 253.8402pt x 150.32924pt.
+(pdftex.def)             Requested size: 276.605pt x 163.8152pt.
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <14.4> not available
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 43.
  [1
 
 
 
-{/usr/share/texlive/texmf-dist/fonts/map/pdftex/updmap/pdftex.map} <../images/0
-1/alfori100yrs.png>]
-LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <17.28> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 43.
-LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <14.4> not available
+{/usr/share/texlive/texmf-dist/fonts/map/pdftex/updmap/pdftex.map}]
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <12> not available
 (Font)              Font shape `OT1/phv/b/n' tried instead on input line 77.
-
-Overfull \hbox (0.47429pt too wide) in paragraph at lines 78--82
-\OT1/ppl/m/n/12 To be-gin we take as un-de-fined the terms ``pro-ce-dure" and `
-`out-come."
- []
-
-
-Overfull \hbox (15.91714pt too wide) in paragraph at lines 78--82
-\OT1/ppl/m/n/12 At-tempts to de-fine them end up cir-cu-lar or math-e-mat-i-cal
-ly non-rigorous
- []
-
-
-Underfull \vbox (badness 2351) has occurred while \output is active []
-
- [2]
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <12> not available
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <10.95> not available
 (Font)              Font shape `OT1/ppl/b/n' tried instead on input line 83.
-
-Overfull \hbox (3.22417pt too wide) in paragraph at lines 91--93
-[]\OT1/ppl/m/n/12 Finally, a \OT1/ppl/b/n/12 prob-a-bil-ity func-tion \OT1/ppl/
-m/n/12 as-signs a num-ber $\OML/cmm/m/it/12 P\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 
-E\OT1/cmr/m/n/12 )$ \OT1/ppl/m/n/12 to each event
- []
-
-
-Overfull \hbox (1.08531pt too wide) in paragraph at lines 114--123
-\OT1/ppl/m/n/12 same oc-curs in many ap-plca-tions: ac-tu-ar-ies prepar-ing lif
-e-expectancy
- []
-
-[3]
+ [2 <../images/01/alfori100yrs.png>] [3]
 
 Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on input line 154.
 
-[4] [5]
+LaTeX Font Info:    Font shape `OT1/ppl/bx/it' in size <10.95> not available
+(Font)              Font shape `OT1/ppl/b/it' tried instead on input line 175.
+[4]
 LaTeX Font Info:    Try loading font information for OMS+ppl on input line 232.
 
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsppl.fd
 File: omsppl.fd 
 )
-LaTeX Font Info:    Font shape `OMS/ppl/m/it' in size <12> not available
+LaTeX Font Info:    Font shape `OMS/ppl/m/it' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 232.
- [6] [7]
-LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 353.
-
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <10> not available
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 262.
+ [5] [6]
+LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 359.
+ [7]
 [8] [9] [10] [11]
-Overfull \hbox (4.19281pt too wide) in paragraph at lines 517--520
-\OT1/ppl/m/n/12 Let's de-velop this idea with a spe-cific ex-am-ple. Given the 
-set $[]$
+Overfull \hbox (8.19493pt too wide) in paragraph at lines 614--618
+\OT1/ppl/m/n/10.95 hous-ing is de-fined by P(Accepted and Hous-ing) = P(Housing
+$\OMS/cmsy/m/n/10.95 j$\OT1/ppl/m/n/10.95 Accepted)P(Accepted)
  []
 
-[12] [13]
-Overfull \hbox (46.85367pt too wide) in paragraph at lines 570--575
-\OT1/ppl/m/n/12 (e.g., $\OML/cmm/m/it/12 N\OT1/cmr/m/n/12 (1) = 1$ \OT1/ppl/m/n
-/12 ($\OML/cmm/m/it/12 a$\OT1/ppl/m/n/12 ) , $\OML/cmm/m/it/12 N\OT1/cmr/m/n/12
- (2) = 3\OML/cmm/m/it/12 ;$ \OT1/ppl/m/n/12 ($\OML/cmm/m/it/12 aa; ba; bb$\OT1/
-ppl/m/n/12 ), $\OML/cmm/m/it/12 N\OT1/cmr/m/n/12 (3) = 5\OML/cmm/m/it/12 ;$ \OT
-1/ppl/m/n/12 ($\OML/cmm/m/it/12 aaa; aba; abb; baa; bba$\OT1/ppl/m/n/12 );
+[12]
+Overfull \hbox (0.8516pt too wide) detected at line 630
+\OML/cmm/m/it/10.95 P\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 A[] \OMS/cmsy/m/n/
+10.95 \ \OML/cmm/m/it/10.95 A[] \OMS/cmsy/m/n/10.95 \ [] \ \OML/cmm/m/it/10.95 
+A[]\OT1/cmr/m/n/10.95 ) = \OML/cmm/m/it/10.95 P\OT1/cmr/m/n/10.95 (\OML/cmm/m/i
+t/10.95 A[]\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 P\OT1/cmr/m/n/10.95 (\OML/cm
+m/m/it/10.95 A[]\OMS/cmsy/m/n/10.95 j\OML/cmm/m/it/10.95 A[]\OT1/cmr/m/n/10.95 
+)\OML/cmm/m/it/10.95 P\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 A[]\OMS/cmsy/m/n/
+10.95 j\OML/cmm/m/it/10.95 A[] \OMS/cmsy/m/n/10.95 \ \OML/cmm/m/it/10.95 A[]\OT
+1/cmr/m/n/10.95 ) [] \OML/cmm/m/it/10.95 P\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.
+95 A[]\OMS/cmsy/m/n/10.95 j\OML/cmm/m/it/10.95 A[] \OMS/cmsy/m/n/10.95 \ \OML/c
+mm/m/it/10.95 A[] \OMS/cmsy/m/n/10.95 \ [] \ \OML/cmm/m/it/10.95 A[]\OT1/cmr/m/
+n/10.95 )
  []
 
-[14] (./chapter_01.aux) ) 
+[13] [14] (./chapter_01.aux) ) 
 Here is how much of TeX's memory you used:
- 28452 strings out of 492641
- 577686 string characters out of 6132991
- 846494 words of memory out of 5000000
- 31946 multiletter control sequences out of 15000+600000
- 549867 words of font info for 60 fonts, out of 8000000 for 9000
+ 28470 strings out of 492641
+ 577936 string characters out of 6132991
+ 846472 words of memory out of 5000000
+ 31958 multiletter control sequences out of 15000+600000
+ 555419 words of font info for 72 fonts, out of 8000000 for 9000
  1137 hyphenation exceptions out of 8191
- 83i,9n,81p,9147b,853s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r
-.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/t
-exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
-10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino
-/uplri8a.pfb>
-Output written on chapter_01.pdf (14 pages, 362052 bytes).
+ 83i,9n,81p,9147b,932s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/ba
+se/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+r9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/urw/palatino/uplb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/pala
+tino/uplbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
+Output written on chapter_01.pdf (14 pages, 410544 bytes).
 PDF statistics:
- 129 PDF objects out of 1000 (max. 8388607)
- 92 compressed objects within 1 object stream
+ 150 PDF objects out of 1000 (max. 8388607)
+ 107 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  18 words of extra memory for PDF output out of 10000 (max. 10000000)
 
