@@ -5,3 +5,5 @@ These files contain the in-progress lecture notes for Dr. White's probability th
 where CC is the chapter number.
 
 Style guide: use section and subsection as appropriate. Also use theorem, proof and example environments. Then submit a pull request to github for me to merge in your work. Thanks!!
+
+If you want to \usepackage, please add it to "mystyle.sty" 
