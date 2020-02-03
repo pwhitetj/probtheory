@@ -483,8 +483,8 @@ It begins with the following theorem about selecting items from sets
 	How many positive divisors does 720 have?
 \end{example}
 \begin{solution}
-	720 can be factored into $720 = 2^4 3^2 5$. Any positive divisor $d$ must
-	be of the form $2^{e_2} 3^{e_3} 5^{e_5}$ where $e_2 \in \{0,\ldots,4\}$,
+	720 can be factored into $720 = 2^4 \cdot 3^2 \cdot 5$. Any positive divisor $d$ must
+	be of the form $2^{e_2}\cdot 3^{e_3}\cdot 5^{e_5}$ where $e_2 \in \{0,\ldots,4\}$,
 	$e_3 \in \{0,1,2\}$, $e_5 \in {0,1}$. There are 30 such divisors.
 \end{solution}
 
@@ -510,8 +510,9 @@ Unordered sampling corresponds to putting the selected elements into a
 bag, or set, instead of a list. With ordered sampling, $[6,4,1]$ is distinct from $[4,6,1]$ but now
 the two are the same as they both form the set $\{1,4,6\}.$ Since any set of $r$ distinct
 elements can be arranged into $r!$ different lists, the number of ordered samples with replacement of size $r$ must be a factor of $r!$ larger than the number of unordered samples
-with replacement. Therefore the number we seek is $n^{\underline{r}}/r! = \dfrac{n!}{r!(n-r)!}
- = {n \choose r}$, the familiar binomial coefficient.
+with replacement. Therefore the number we seek is $
+\dfrac{n^{\underline{r}}}{r!} = \dfrac{n!}{r!(n-r)!}
+ = \displaystyle {n \choose r}$, the familiar binomial coefficient.
 \subsection{Unordered samples with replacement}
 Let's develop this idea with a specific example. Given the set ${a,b,c,d,e}$ we want
 to select an unordered sample of size 12, with replacement. Since the
@@ -529,6 +530,59 @@ where the 4 dots will go, and there are $\displaystyle {16 \choose 4}$ ways to d
 
 By analogy this argument can be extended easily to show the number of unordered samples with replacement from $n$ elements is given by $${n-1+r \choose n-1} = {n-1+r \choose r}$$
 where the equality follows from the symmetry of the binomial coefficient.
+
+\subsection{Exercises} %% taken from Ash, p.24, sec 1.4
+\begin{enumerate}
+	\item If a 3-digit number (000 to 999) is chosen at random, find the probability that
+	exactly 1 digit will be $>5$.
+	\item  Find the probability that a five-card poker hand will be:
+	(a) A straight (five cards in sequence regardless of suit; ace may be high but
+	not low).
+	(b) Three of a kind (three cards of the same face value x, plus two cards with
+	face values y and 2, with x, y, z distinct).
+	(c) Two pairs (two cards of face value x, two of face value y, and one of face
+	value z, with x, y, z distinct).
+	\item  An urn contains 3 red, 8 yellow, and 13 green balls; another urn contains 5
+	red, 7 yellow, and 6 green balls. One ball is selected from each urn. Find the
+	probability that both balls will be of the same color.
+	\item  An experiment consists of drawing 10 cards from an ordinary 52-card pack.
+	(a) If the drawing is done with replacement, find the probability that no two
+	cards will have the same face value.
+	(b) If the drawing is done without replacement, find the probability that at
+	least 9 cards will be of the same suit.
+	\item  An urn contains 10 balls numbered from 1 to 10. Five balls are drawn without
+	replacement. Find the probability that the second largest of the five numbers
+	drawn will be 8.
+	\item  $m$ men and $w$ women seat themselves at random in $m + w$ seats arranged in a
+	row. Find the probability that all the women will be adjacent.
+	\item  If a box contains 75 good light bulbs and 25 defective bulbs and 15 bulbs are
+	removed, find the probability that at least one will be defective.
+	\item  Eight cards are drawn without replacement from an ordinary deck. Find the
+	probability of obtaining exactly three aces or exactly three kings (or both).
+	\item (The game of \textit{recontre} ). An urn contains $n$ tickets numbered $1,2,...,n$.
+	The tickets are shuffled thoroughly and then drawn one by one without replacement.
+	If the ticket numbered $r$ appears in the $r$th drawing, this is denoted
+	as a match (French: \textit{rencontre}). Show that the probability of at least one match
+	is
+	$$ 1 - \frac{1}{2!} + \frac{1}{3!} - \cdots + \frac{(-1)^{n-1}}{n!}
+	\rightarrow 1 - e^{-1} \qquad \mbox{as } n \rightarrow \infty$$
+	
+	\item  A ``language" consists of three ``words," 
+	$W_1 =a, W_2 = ba, W_3 = bb$. Let
+	$N(k)$ be the number of ``sentences" using exactly $k$ letters (e.g., $N(1) = 1$ ($a$)
+	, $N(2) = 3,$ ($aa, ba, bb$), $N(3) =5,$ ($aaa, aba, abb, baa, bba$); no space is
+	allowed between words).
+	\begin{enumerate}
+	\item Show that $N(k) = N(k - 1) + 2N(k - 2), k =2,3,...$ (define $N(O) =1$).
+	\item Show that the general solution to the second-order homogeneous linear
+	difference equation 
+	[with $N(O)$ and $N(1)$ specified], is $N(k) = A2^k +
+	B(-1)^k$, where $A$ and $B$ are determined by $N(O)$ and $N(1)$. Evaluate $A$
+	and $B$ in the present case.
+	\end{enumerate}	
+
+	
+\end{enumerate}
 \section{Conditional Probability and Independence}
 Sometimes we are interested in the outcomes from a subset of the
 sample space.
