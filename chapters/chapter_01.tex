@@ -591,6 +591,7 @@ where the equality follows from the symmetry of the binomial coefficient.
 }
 
 \section{Conditional Probability and Independence}
+\subsection{Conditional Probability}
 Sometimes we are interested in the outcomes from a subset of the full sample space. 
 For example maybe in a room of 100 persons, 25 of them are wearing a green shirt, while there are 65 males, of whom 15 are wearing a green shirt. Then the probability of a
 randomly selected person wearing a green shirt depends on if the person is a male or not (or, if we don't know). If we don't know, then the probability is 25/100. But if
@@ -600,7 +601,9 @@ This is the essence of \textbf{conditional probability}, in which an explicit sa
 \begin{definition}
 	Given a sample space $\Omega$ and events  $A,B \subseteq \Omega$ then
 	the  \textit{conditional probability of $A$ given $B$} is defined as
-	$$P(A | B) = \dfrac{P(A \cap B)}{P(B)}$$
+	\begin{equation}
+	P(A | B) = \dfrac{P(A \cap B)}{P(B)}
+	\end{equation}
 	\label{def:condprob}
 \end{definition}
 
@@ -620,20 +623,24 @@ This is the essence of \textbf{conditional probability}, in which an explicit sa
 From the definition of conditional probability comes one of the most important
 identities for intersections, namely
 \begin{theorem}
-	$$P(A \cap B) = P(A|B)P(B)$$
+	$$P(A \cap B) = P(A|B)P(B) = P(B|A)P(A)$$
 \end{theorem}
 \noindent
 and its generalization:
 \begin{theorem}
-
-	$$P(A_1 \cap A_2  \cap \cdots \cap A_n) =	P(A_1)P(A_2 | A_1)P(A_3 | A_2 \cap A_1) \cdots P(A_n | A_{n-1} \cap A_{n-2} \cap 
-	\cdots \cap A_1)$$
+	\begin{eqnarray*}
+	P(A_1 \cap A_2  \cap \cdots \cap A_n) &=&	P(A_1)P(A_2 | A_1)P(A_3 | A_2 \cap A_1) \cdots \\
+	&& \qquad P(A_n | A_{n-1} \cap A_{n-2} \cap 
+	\cdots \cap A_1) \\
+	&=& P(A_1|A_2\cap\cdots \cap A_n)P(A_2|A_3\cap\cdots \cap A_n)\cdots \\
+	&& \qquad P(A_n)
+	\end{eqnarray*}
 \end{theorem}
 
 \begin{proof}
 	TBD. By induction
 \end{proof}
-
+\noindent
 A very useful form of the definition of conditional probability employs the \textbf{Law
 of Total Probability}
 
@@ -641,7 +648,9 @@ of Total Probability}
 	If $B_1, \ldots, B_n$ form a partition of the sample space $\Omega$, (that is,
 	the sets are mutually disjoint and their union equals $\Omega$), and $A$ is
 	an event in $\Omega$ then
-	$$P(A) = \sum_{i=1}^n P(A|B_i)P(B_i)$$
+	\begin{equation}
+	P(A) = \sum_{i=1}^n P(A|B_i)P(B_i)
+	\end{equation}
 \end{theorem}
 \noindent
 Now  Definition~\ref{def:condprob} becomes
@@ -649,6 +658,62 @@ Now  Definition~\ref{def:condprob} becomes
 P(B | A) = \dfrac{P(B | A)}{\sum_{i=1}^n P(A|B_i)P(B_i)}
 \end{equation}
 
+\subsection{Independence}
+Given any two random processes, sometimes it is the case that the first process may affect the second; other times there is no relationship whatsoever. For example, if an individual person
+rolls a die and flips a coin, there is no reason to presuppose
+any effect of the first process on the second. On the other
+hand if a random college student is selected and the student
+is asked to state their SAT score and their family income, studies
+have shown these two variables to be correlated.
+
+Two random experiments that have no effect on each other are said to be \textit{independent}. Mathematically the definition we impose is that if two events $A,B$ are from the same sample space $\Omega$, then the outcome of one does not affect the probability of the other
+\begin{definition}
+	If $A,B \subseteq \Omega$ and $$P(A|B) = P(A)$$ then $A$ and $B$ are \textit{independent}
+\end{definition}
+\begin{corollary}
+	If $A,B \subseteq \Omega$ are independent then
+		\begin{equation}
+		P(A \cap B) = P(A)P(B)
+		\end{equation}
+\end{corollary}
+\begin{proof}
+	$$P(A \cap B) = P(A | B)P(B) = P(A)P(B)$$ when
+		$A$ and $B$ are independent. \hfill\qed
+\end{proof}
+
+\begin{example}
+	Let A and B be two independent events such that $P(B| A\cup B) = \frac23$
+	$
+	P(A | B) = \frac12$ What is $P(B)$?
+\end{example}
+\begin{solution}
+	$\dfrac{1}{2}$
+\end{solution}
+
+\noindent
+When more than two events are considered, independence takes on some added complexity. If each pair of events are independent then we call the set of events pairwise
+independent.
+\begin{definition}
+	Given $A_1, A_2, \ldots A_n \subseteq \Omega$, if each pair $i<j$ in $[1,\ldots,n]$
+	satisfies $$P[A_1 \cap A_j] = P[A_i]P[A_j]$$ then the set of events $\{A_i\}$
+	are \textbf{pairwise-independent}.
+\end{definition}
+\noindent
+Furthermore a set of events is mutually independent if \textit{every} such intersection
+can be written as a product, for all subsets of events.
+\begin{definition}
+	Let $\{A_{i_1}, \ldots, A_{i_k}\}$ be any subset of events in $\{A_1, \ldots A_n\}$. If every such set of size $k \geq 2$ obeys the product principle, then the
+	set of events $\{A_1, \ldots A_n\}$ is said to be \textbf{mutually-independent}.
+\end{definition}
+\noindent
+To keep things interesting, these two types of independence do not always imply each other.
+\begin{example}
+Consider the experiment of 
+flipping two fair coins. Consider the three events:
+$A$ = the first coin shows heads; $B$ = the second coin shows heads, and $C$ =
+the two coins show the same result. Show that these events are pairwise
+independent, but not independent.
+\end{example}
 {\fontsize{10}{10}\selectfont
 \subsection{Exercises}
 \begin{enumerate}
@@ -724,6 +789,31 @@ P(B | A) = \dfrac{P(B | A)}{\sum_{i=1}^n P(A|B_i)P(B_i)}
 	\item Prove that if $A$ and $B$ are independent, then so are $A$ and $B^C$.
 	
 	\item Prove that if $A$ and $B$ are independent, then so are $A^C$ and $B^C$.
+	
+	\item One urn contains 4 red balls and 6 blue balls. A second urn contains 16 red
+	balls and $x$ blue balls. A single ball is drawn from each urn. The probability
+	that both balls are the same color is 0.44 .
+	Calculate $x$
+	
+	\item Assume A and B are independent events with $P(A) = 0.2$ and $P(B) = 0.3$
+	Let $C$ be the event that neither $A$ nor $B$ occurs, let $D$ be the event that
+	exactly one of $A$ or $B$ occurs. Find $P(C)$ and $P(D)$
+	
+	\item Throw a dice twice. Let A be the event the first throw came up 1, 2, or 3. Let
+	B be the event that the first throw came up 3,4, or 5. Let C be the event that
+	the sum of the two throws is 9. Show that $P(A \cap B \cap C) = P(A)P(B)P(C)$
+	but A,B, and C are not pairwise independent.
+	
+	\item In a certain game of chance, a square board with area 1 is colored with sectors
+	of either red or blue. A player, who cannot see the board, must specify a
+	point on the board by giving an $x$-coordinate and a $y$-coordinate. The
+	player wins the game if the specified point is in a blue sector. The game can
+	be arranged with any number of red sectors, and the red sectors are designed
+	so that
+	$$R_i = \left( \dfrac{9}{20} \right) ^ i$$
+	where $R_i$ is the area of the $i$th red sector.
+	Calculate the minimum number of red sectors that makes the chance of a
+	player winning less than 20\%.
 \end{enumerate}
 }
 
