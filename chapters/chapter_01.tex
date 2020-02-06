@@ -459,9 +459,18 @@ Similarly if an event $E$ contains $r$ events, then $P(E) = \frac{r}{n}$.
 	that the three stick pieces can be formed into a triangle?
 \end{example}
 
-\begin{solution}
-	TBD
+\begin{solution}[Answer]
+	$\dfrac{1}{4}$. 
 \end{solution}
+
+\begin{solution}
+First, consider the probability that $a < b$. By symmetry, this happens with probability $\frac{1}{2}$. 
+
+Using the triangle inequality under this assumption gives the three relations $a < \frac{1}{2}$, $b > \frac{1}{2}$, $\frac{1}{2} > b-a$. The probability that $a$ is randomly chosen to be less than $\frac{1}{2}$ is $\frac{1}{2}$, and the probability that $b$ satisfies these constraints is $a$, so the overall probability is simply $\frac{a}{2}$. 
+
+This next step can be made more rigorous with random variables and an expected value argument, but on average, given that $a < \frac 12$, $a$ is expected to take on the value $\frac 14$. Hence, the probability the three pieces form a triangle with $a, b$, $a < b$ is $\frac 18$. Undoing the condition gives the probability as $\frac 14$. 
+\end{solution}
+
 \section{Combinatorics Excursion}
 \subsection{The Fundamental Principle of Counting}
 Combinatorics is the study of counting arrangements or structures. We'll 
@@ -590,6 +599,47 @@ where the equality follows from the symmetry of the binomial coefficient.
 \end{enumerate}
 }
 
+
+Continuing on, adding back and subtracting off, we indeed get the series
+\[
+1 - \frac{1}{2!} + \frac{1}{3!} - \ldots + \frac{(-1)^{n-1}}{n!},
+\]
+which, if we let $n \to \infty$, becomes the recognizable tail of the Taylor series of $e^x$, for $x=-1$: 
+\[
+	\rightarrow 1 - e^{-1}.
+\]
+
+\textbf{Remark.} This gives us an insight into the \textit{Generalized Principle of Inclusion/Exclusion:}
+
+\end{solution}
+
+\begin{solution}[Solution to 1.3.6, Ex. 10]
+
+\end{solution}
+
+\textbf{Remark.} This is a problem that is better suited for the Concrete Mathematics course -- in particular, one learns how to solve this latter recurrence explicitly, which we will briefly show how to do. 
+
+\begin{solution}
+We will do this with recursion. Note, of course, that any sentence of length $n$ either begins with $a$, $ba$, or $bb$. If we lop off an $a$ from the front of a word, we must be left with a sentence that has a valid length of $n-1$, and if we remove a $ba$ or $bb$ from the front of a sentence, the remaining words form a sentence of length $n-2$. In particular, \textit{any} sentence of length $n$ can be formed in this way by appending an $a$ to the front of a sentence of length $n-1$, or appending a $ba$ or $bb$ to the front of a sentence of length $n-2$. Hence, we arrive at the recurrence relation
+\[
+	N(k) = N(k-1) + 2N(k-2).
+\]
+One rigorous way to arrive at the correct explicit form of $N(k)$ is to use \textit{generating functions}, which will appear with a vengeance later in this course. We will instead appeal to a tactic more suited to a differential equations course -- i.e. using an \textit{ansatz}, or a judicious guess. 
+
+Suppose $N(k) = r^k$ for some $r \neq 0$. If we plug $r$ into our recurrence, we get 
+\[
+	r^k = r^{k-1} + 2r^{k-2} \implies r^2 - r - 2 = 0.
+\]
+This is a very nice quadratic! In particular, this gives $r = 2, -1$. Note that any linear combination of $2^k$ and $(-1)^k$ will give a valid solution to this recurrence, so we arrive at the most general solution 
+\[
+	N(k) = A2^k + B(-1)^k 
+\]
+To solve for the coefficients $A, B$, we plug in the initial conditions $N(0) = 1, N(1) = 1$, yielding
+\[
+	N(k) = \frac{2}{3} \cdot 2^k + \frac{1}{3} (-1)^k.
+\]
+\end{solution}
+
 \section{Conditional Probability and Independence}
 \subsection{Conditional Probability}
 Sometimes we are interested in the outcomes from a subset of the full sample space. 
@@ -638,24 +688,30 @@ and its generalization:
 \end{theorem}
 
 \begin{proof}
-	TBD. By induction
+	We prove the second statement by induction. The base case is clear for $n = 2$. Suppose the statement is true for any $n$ events, and we wish the same is true for any $n+1$ events, $A_1, \ldots A_n, A_{n+1}$. Let $B = A_2 \cap \ldots \cap A_n \cap A_{n+1}$. Then, 
+	\[
+		P(A_1 \cap A_2 \dots \cap A_n \cap A_{n+1}) = P(A_1 \cap B) = P(A_1 | B) P(B)
+	\]
+	Clearly, $P(B)$ can be expanded out in the desired form via the inductive hypothesis, so we are done. 
+	
+	Similarly, an inductive analysis on $A_1 \cap \ldots \cap A_n$ will be sufficient for the first statement. 
 \end{proof}
 \noindent
 A very useful form of the definition of conditional probability employs the \textbf{Law
 of Total Probability}
 
 \begin{theorem}[Law of Total Probability]
-	If $B_1, \ldots, B_n$ form a partition of the sample space $\Omega$, (that is,
+	If $C_1, \ldots, C_n$ form a partition of the sample space $\Omega$, (that is,
 	the sets are mutually disjoint and their union equals $\Omega$), and $A$ is
 	an event in $\Omega$ then
 	\begin{equation}
-	P(A) = \sum_{i=1}^n P(A|B_i)P(B_i)
+	P(A) = \sum_{i=1}^n P(A|C_i)P(C_i)
 	\end{equation}
 \end{theorem}
 \noindent
 Now  Definition~\ref{def:condprob} becomes
 \begin{equation}
-P(B | A) = \dfrac{P(B | A)}{\sum_{i=1}^n P(A|B_i)P(B_i)}
+P(B | A) = \dfrac{P(B | A)}{\sum_{i=1}^n P(A|C_i)P(C_i)}
 \end{equation}
 
 \subsection{Independence}
@@ -715,6 +771,8 @@ the two coins show the same result. Show that these events are pairwise
 independent, but not independent.
 \end{example}
 {\fontsize{10}{10}\selectfont
+
+%% Note on mutual exclusivity vs. independence -- these are NOT the same -- in particular, if events are mutually exclusive they are NOT independent
 \subsection{Exercises}
 \begin{enumerate}
 	
@@ -770,7 +828,7 @@ independent, but not independent.
 		\item All customers insure at least one car.
 		\item  70\% of the customers insure more than one car.
 		\item  20\% of the customers insure a sports car.
-		\item Of those customers who insure more than one car, 15% insure a sports car.
+		\item Of those customers who insure more than one car, 15\% insure a sports car.
 	\end{enumerate}
 	Calculate the probability that a randomly selected customer insures exactly
 	one car and that car is not a sports car.
@@ -792,8 +850,8 @@ independent, but not independent.
 	
 	\item One urn contains 4 red balls and 6 blue balls. A second urn contains 16 red
 	balls and $x$ blue balls. A single ball is drawn from each urn. The probability
-	that both balls are the same color is 0.44 .
-	Calculate $x$
+	that both balls are the same color is 0.44.
+	Calculate $x$.
 	
 	\item Assume A and B are independent events with $P(A) = 0.2$ and $P(B) = 0.3$
 	Let $C$ be the event that neither $A$ nor $B$ occurs, let $D$ be the event that
@@ -817,6 +875,119 @@ independent, but not independent.
 \end{enumerate}
 }
 
-\section{Bayes Theorem}
+\section{Bayes' Theorem}
+Bayes' Theorem can be thought of a direct corollary of the definitions and theorems we already have. Recall our definition for conditional probability on two events $A$ and $B$, written both ways:
+\[
+	P(B|A) = \frac{P(A\cap B)}{P(A)} \quad P(A|B) = \frac{P(A\cap B)}{P(B)}
+\]
+We can thus find equivalent expressions for $P(A \cap B)$ --
+\[
+	P(B|A) P(A) = P(A|B) P(B),
+\]
+and thus we have
+\begin{theorem}[Bayes' Theorem]
+\[P(A|B) = \frac{P(B|A) P(A)}{P(B)} \]
+\end{theorem}
+This is often used to ``flip'' the direction of the conditionality. If we know something about $P(B|A)$, we are able to infer something about $P(A|B)$ given that we know information about $P(A)$ and $P(B)$. 
+
+In deep learning, Bayes' Theorem can also be interpreted in another way. If we know $P(A)$, and we can find out $P(B)$, we can recompute and thus ``learn'' $P(A|B)$. For example, if we believe something about an underlying probability distribution, such as believing a die is fair,  and we learn new data about that distribution, we can update what our beliefs are about that probability distribution based on our empirical results. 
+
+If $P(B)$ is not directly computable, we can use the Law of Total Probability: 
+\begin{corollary}
+If $A_1, \ldots A_n$ is a partition of the sample space $\Omega$, then 
+\[
+	P(A_k|B) = \frac{P(B|A_k) P(A_k)}{\sum_{i=1}^n P(B|A_i) P(A_i)}
+\]
+\end{corollary}
+
+We can use this to do an exercise from the previous section: 
+\begin{solution}[Alt. solution to Sec. 1.4.3, Ex. 6] %% fix this
+Let event $A_i$ be the probability $i$ blue marbles are drawn and put into the second bucket, and $B$ the probability a blue marble is then drawn from the second bucket. By Bayes' Theorem,
+\[
+	P(A_2|B) = \frac{P(B|A_2) P(A_2)}{\sum_{i=1}^4 (B|A_i) P(A_i)}
+\]
+How is this easier to compute? Note that $P(A_i)$ can be easily computed: 
+\[
+	P(A_i) = \frac{\dbinom{8}{4-i} \dbinom{6}{i}}{\dbinom{14}{4}}
+\]
+In general, $P(B|A_i)$ is also easily computed -- if $i$ blue marbles are put into the second bucket, then clearly the probability is $\frac{i}{4}$. 
+
+We can now easily compute the numerator: 
+\[
+	P(B|A_2) P(A_2) = \frac{2}{4} \cdot \frac{\dbinom{8}{2} \dbinom{6}{2}}{\dbinom{14}{4}}
+\]
+We now condition the numerator over all the terms in the denominator. Note that every factor in the denominator has this $\binom{14}{4}$  term, so we neglect it. This gives us the answer we had before for this problem: 
+\[
+	P(A_2|B) = \frac{\frac{2}{4}\tbinom{8}{2} \tbinom{6}{2}}{\frac{0}{4}\tbinom{8}{4} \tbinom{6}{0} + \frac{1}{4}\tbinom{8}{3} \tbinom{6}{1} + \frac{2}{4}\tbinom{8}{2} \tbinom{6}{2} + \frac{3}{4}\tbinom{8}{1} \tbinom{6}{3} + \frac{4}{4}\tbinom{8}{0} \tbinom{6}{4}} = \frac{70}{173} = 0.4895
+\]
+\end{solution}
+Let's look at another example:
+\begin{example}[Car Insurance, 10.2]
+%% insert problem
+\end{example}
+\begin{solution}[Answer.]
+$\dfrac{16}{101} = 0.158$
+\end{solution}
+
+\begin{example}[Hospital, 10.4]
+%% insert problem
+\end{example}
+\begin{solution}[Answer.]
+$\dfrac{45}{154} = 0.292$
+\end{solution}
+
+Bayes' theorem also gives us a more cautious analysis on medical tests. Generally, if we believe a test has a $95\%$ chance of correctly identifying whether a given person has the disease, we'd think that's a pretty decent test! Not necessarily, says Bayes' Theorem\ldots
+
+Let's define a few terms to describe how ``good'' a test is. For a test, its \textbf{specificity} is the ratio of its true positives to the total number of positives it gives -- i.e. it measures how good a test is at finding positives. A test's \textbf{sensitivity} is the the ratio of the test's true negatives to the total number of negatives -- i.e. it measures how good a test is at finding negatives.
+
+With this in mind, consider the following: 
+\begin{example}[Disease, 10.7]
+
+\end{example}
+\begin{solution}[Answer.]
+$\dfrac{190}{289} = 0.657$
+\end{solution}
+
+%If Dr. White has a miracle test for a disease and has 100\% specificity, this test \textit{looks} great, the 
+\begin{example}
+A variant: for the above test, is it possible that we can improve probability one has the disease given that they get a positive test result to be greater than 90\%? 
+\end{example}
+
+\begin{solution}[Answer]
+No! Even if the test is able to perfectly identify true positives (i.e. its specificity is 100\%), we still won't achieve the desired 90\% cutoff line. 
+\end{solution}
+% ans: NO! 
+
+Here is a final example on posterior/prior probabilities, and updating our beliefs on a probability distribution based on new data: 
+\begin{example} % posterior/prior distribution. 
+Consider a six-sided die, but the side labeled ``1'' might have been changed to any number from 1-6. Assume the die is still fair, and assume that the probability of changing the 1 to any of $1-6$ is also even. Find the probability distribution of the unknown side given that the die comes up as 6 on its first roll. 
+
+More mathematically, find $P(\text{1 changed to k}|\text{roll a 6})$ for all $k = 1, 2, \ldots 6$. 
+\end{example}
+
+\begin{solution}[Answer.]
+$\dfrac{1}{7}$ for $k = 1, 2, 3, 4, 5$, $\dfrac{2}{7}$ for $k = 6$. 
+\end{solution}
+
+\begin{solution} 
+%% show computation
+\end{solution}
+
+Notice that having been provided with this additional information, we have to update our initial assumption based this result.  
+
+
+
+\section{Chapter 3}
+\begin{definition}
+A \textbf{random variable} is a function $X : \Omega \rightarrow R$. It assigns a real number to each outcome. 
+\end{definition}
+(In other words, a random variable is like a vending machine- it dispenses numbers according to a possibly unknown function.)
+
+A random variable $X$ might output some concrete number $x$, with some probability. If this probability is $\frac 12$, then we write this
+\[
+	P[X = x] = \frac 12
+\]
+For the sake of continuing the ``vending machine'' analogy, we will temporarily say \[P[X \hookrightarrow x] = \frac 12,\] where $\hookrightarrow$ is pronounced ``dispenses,'' i.e. $X$ dispenses $\frac 12$. 
+
 
 \end{document}
