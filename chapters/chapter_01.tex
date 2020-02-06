@@ -599,7 +599,27 @@ where the equality follows from the symmetry of the binomial coefficient.
 \end{enumerate}
 }
 
+\subsection{Solutions to Selected Exercises} 
+\begin{solution}[Solution to 1.3.6, Ex. 9]
 (The game of \textit{recontre}). An urn contains $n$ tickets numbered $1,2,...,n$.
+	The tickets are shuffled thoroughly and then drawn one by one without replacement.
+	If the ticket numbered $r$ appears in the $r$th drawing, this is denoted
+	as a match (French: \textit{rencontre}). Show that the probability of at least one match
+	is
+	$$ 1 - \frac{1}{2!} + \frac{1}{3!} - \cdots + \frac{(-1)^{n-1}}{n!}
+	\rightarrow 1 - e^{-1} \qquad \mbox{as } n \rightarrow \infty$$
+	
+\end{solution}
+
+\textbf{Remark.} This problem is known by many other names -- it is sometimes called the \textit{hat problem}, or it is the \textit{derangements} problem. 
+
+\begin{solution}
+We proceed with the Principle of Inclusion-Exclusion. 
+First, consider the probability that a ticket matches. Each ticket has a probability $\frac{1}{n}$ of matching its number, and so across all $n$ tickets, we get a probability $\frac{1}{n} \cdot n = 1$. 
+
+But wait! We've overcounted the cases where two tickets match. The probability that two given tickets will match is $\frac{1}{n(n-1)}$, which we sum over all $\binom{n}{2}$ pairs. This gives a total of $\frac{1}{2!}$ to subtract off. 
+
+But wait once again! We've subtracted off too many times where three tickets match. This time, the probability this triplet of tickets will match is $\frac{1}{n(n-1)(n-2)}$, summed over all $\binom{n}{3}$ pairs, so we add back $\frac{1}{3!}$\ldots
 
 Continuing on, adding back and subtracting off, we indeed get the series
 \[
