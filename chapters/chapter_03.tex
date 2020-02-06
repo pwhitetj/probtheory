@@ -1,0 +1,25 @@
+\makeatletter
+\def\input@path{{../}}
+\makeatother
+\documentclass[../main.tex]{subfiles}
+\graphicspath{
+  {"../images/03/"}
+  {"./images/03/"}
+}
+
+\begin{document}
+\chapter{Probability Distributions}
+\section{Random Variables}
+\begin{definition}
+A \textbf{random variable} is a function $X : \Omega \rightarrow R$. It assigns a real number to each outcome. 
+\end{definition}
+(In other words, a random variable is like a vending machine- it dispenses numbers according to a possibly unknown function.)
+
+A random variable $X$ might output some concrete number $x$, with some probability. If this probability is $\frac 12$, then we write this
+\[
+	P[X = x] = \frac 12
+\]
+For the sake of continuing the ``vending machine'' analogy, we will temporarily say \[P[X \hookrightarrow x] = \frac 12,\] where $\hookrightarrow$ is pronounced ``dispenses,'' i.e. $X$ dispenses $x$ with probability $\frac 12$. 
+
+
+\end{document}
