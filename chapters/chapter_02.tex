@@ -811,11 +811,6 @@ independent, but not independent.
 	which is able to detect obviously dented cans and discard them. What is the
 	probability that a can that gets shipped for use will be of perfect shape?
 	
-	\item A box of television tubes contains 20 tubes, of which ve are defective. If
-	three of the tubes are selected at random and removed from the box in
-	succession without replacement, what is the probability that all three tubes
-	are defective?
-	
 	\item A box of television tubes contains 20 tubes, of which five are defective. If
 	three of the tubes are selected at random and removed from the box in
 	succession without replacement, what is the probability that all three tubes
@@ -944,14 +939,52 @@ We now condition the numerator over all the terms in the denominator. Note that 
 \end{solution}
 Let's look at another example:
 \begin{example}[Car Insurance, 10.2]
-%% insert problem
+
+
+An auto insurance company insures drivers of all ages. An actuary compiled
+the following statistics on the company’s insured drivers:
+
+\begin{center}
+	
+\begin{tabular}{|p{0.5in}|p{0.8in}|p{1.5in}|}
+
+	\hline
+	Age of
+Driver
+& Probability
+of Accident & 	Portion of Company’s
+Insured Drivers
+\\
+	\hline
+	16-20 & 0.06 & 0.08 \\
+	21-30 & 0.03 & 0.15 \\
+	31-65 & 0.02 & 0.49 \\
+	66-99 & 0.04 & 0.28 \\
+	\hline
+\end{tabular}
+
+\end{center}
+A randomly selected driver that the company insures has an accident. Calculate the probability that the driver was age 16-20.
 \end{example}
 \begin{solution}[Answer.]
 $\dfrac{16}{101} = 0.158$
 \end{solution}
 
 \begin{example}[Hospital, 10.4]
-%% insert problem
+	\noindent
+	Upon arrival at a hospital’s emergency room, patients are categorized ac-
+	cording to their condition as critical, serious, or stable. In the past year:
+	\begin{enumerate}[label=(\alph*)]
+	\setlength{\itemsep}{-0.5em}
+	\item 10\% of the emergency room patients were critical;
+	 \item 30\% of the emergency room patients were serious;
+	\item the rest of the emergency room patients were stable;
+	\item 40\% of the critical patients died;
+	\item 10\% of the serious patients died; and
+	\item 1\% of the stable patients died.
+	\end{enumerate}
+	Given that a patient survived, what is the probability that the patient was
+	categorized as serious upon arrival?
 \end{example}
 \begin{solution}[Answer.]
 $\dfrac{45}{154} = 0.292$
@@ -963,7 +996,12 @@ Let's define a few terms to describe how ``good'' a test is. For a test, its \te
 
 With this in mind, consider the following: 
 \begin{example}[Disease, 10.7]
-
+A blood test indicates the presence of a particular disease 95\% of the time
+when the disease is actually present. The same test indicates the presence of
+the disease 0.5\% of the time when the disease is not present. One percent of
+the population actually has the disease.
+Calculate the probability that a person has the disease given that the test
+indicates the presence of the disease.
 \end{example}
 \begin{solution}[Answer.]
 $\dfrac{190}{289} = 0.657$
