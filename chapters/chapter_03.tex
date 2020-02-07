@@ -21,5 +21,117 @@ A random variable $X$ might output some concrete number $x$, with some probabili
 \]
 For the sake of continuing the ``vending machine'' analogy, we will temporarily say \[P[X \hookrightarrow x] = \frac 12,\] where $\hookrightarrow$ is pronounced ``dispenses,'' i.e. $X$ dispenses $x$ with probability $\frac 12$. 
 
+\subsection{Probability Mass Function}
 
+These random variables have probabilities associated with them, just as
+outcomes and events in the sample space. The probability function
+associated with a discrete random variable is called a \textbf{probability
+mass function}
+\begin{definition}
+    A \textbf{probability mass function} (pmf) is a function  $f:\RR \rightarrow [0,1]$ from the reals to the unit interval such that $f(x) = \Pr[X \dsp x]$, that is the probability that
+    a random variable dispenses a given value. It must satisfy the following criteria
+    \begin{enumerate}
+        \item $\displaystyle \sum_{x_i} f(x_i) = 1$ over
+        every $x_i$ in the range of $X$.
+        \item $f(x_i) = 0$ for every $x_i$ not in the range of $X$.
+    \end{enumerate}
+\end{definition}
+We will elucidate these ideas with a number of examples
+\begin{example}
+    Let a 6-sided die be constructed such that the probability of rolling
+    a 4 is twice that of rolling any other value. Describe this in terms
+    of a random variable  $X$ and a pmf. Next, let $Y$ be the number of
+    prime factors of $X$. Give the pmf of $Y$.
+\end{example}
+\begin{solution}
+...
+\end{solution}
+
+\begin{example}
+Let $X$ be the sum of the pips showing on 2 rolled, fair, 10-sided die.
+Find the pmf for $X$.
+\end{example}
+
+\begin{solution}
+...
+\end{solution}
+
+\begin{example}
+5 Juniors and 5 seniors take a test and are ranked 1-10 according to their
+test score (1 = highest score). Assume all scores are distinct and that all $10!$ student
+rankings are equally likely. Let $X$ be the highest rank (smallest
+integer value) of a junior in the class. Find the pmf $f(X)$.
+\end{example}
+\begin{solution}
+...
+\end{solution}
+\begin{example}
+Let $f(0) = f(1)$ and $f(k+1) = \frac{1}{k}f(k)$. If you know
+that $f$ is a pmf over the non-negative integers, then find $f(0)$.
+\end{example}
+\begin{solution}
+...
+\end{solution}
+\begin{example}
+\label{ex:squarepdf}
+Find $k$ if $f(x) = \dfrac{k}{x^2}$ is a pmf over positive integers.
+\end{example}
+\begin{solution}
+...
+\end{solution}
+\begin{example}
+In Example~\ref{ex:squarepdf}, let $X$ be a random variable over positive
+integers with pmf $f$. Let $Y$ be a random variable that equals 1 if $X$ is
+even and 2 if $X$ is odd. Find the pmf of $Y$.
+\end{example}
+\begin{solution}
+...
+\end{solution}
+\begin{example}
+Find $k$ if $f(x) = \dfrac{k}{x}$ is a pmf over positive integers.
+\end{example}
+\begin{solution}
+...
+\end{solution}
+\subsection{Cumulative Mass Functions}
+A probability mass function over a random variable $X$ gives the probability 
+that $x$ equals a certain value. In many instances it will prove quite helpful 
+to work with instead the probability that $X$ is less than or equal to a 
+certain value. This is called the \textit{cumulative mass function}.
+\begin{definition}
+The \textbf{cumulative mass function (cmf)} of a random variable $X$ with 
+pmf $f$ is defined as a function $F: \RR\rightarrow[0,1]$ such that
+$$F(x) = \Pr[X \leq x] = \sum_{-\infty}^x f(t)$$
+\end{definition}
+\begin{example}Let $X$ be the sum of the pips on the roll of 2 fair six-sided
+die. Find the cmf of $X$.
+\end{example}
+\begin{solution}
+...
+\end{solution}
+\begin{example}
+Let $f(x) = c\left(\dfrac{1}{4}\right)$ be the pmf of the random variable $X$. 
+\begin{enumerate}
+\item Find
+the appropriate constant $c$
+\item Determine the cmf $F(x)$
+\item Use the cmf to compute $\Pr[2 < X \leq 8]$
+\item Write formulas involving $F$ and $f$ for the following
+    \begin{enumerate}
+        \item $\Pr[X > a]$
+        \item $\Pr[X \geq a]$
+        \item $\Pr[a < X < b]$
+        \item $\Pr[a \leq X \leq b]$
+    \end{enumerate}
+\end{enumerate}
+\begin{solution}
+...
+\end{solution}
+\begin{remark}
+Please note that what we are calling the cmf is very often called a \textbb{distribution
+function} in other texts and even by us, later on. The reasons will become more
+apparent when we extend pmf and cmf to continuous functions and partly-continuous
+functions.
+\end{remark}
+\end{example}
 \end{document}

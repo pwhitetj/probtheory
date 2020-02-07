@@ -6,7 +6,7 @@
 \usepackage[twoside,outer=1.25in,inner=1.55in,bottom=1.5in,top=1.5in,marginpar=1in]{geometry} 
 
 \usepackage{lipsum}
-\usepackage{amsmath,amsthm}
+\usepackage{amsmath,amsthm,amssymb}
 \usepackage{enumitem}
 \usepackage{scrpage2}
 
@@ -35,7 +35,8 @@
 \newcounter{example}[chapter]
 \newenvironment{example}[1][]{\refstepcounter{example}\par\medskip
 	\noindent\textbf{Example~\theexample. #1} \rmfamily}{\medskip}
-\newenvironment{solution}[1][Solution]{\begin{trivlist}
+\newenvironment{solution}[1][Solution]{{\addtolength{\leftskip}{2.5em}}
+        \begin{trivlist}
 		\item[ {\bfseries #1}]}{\end{trivlist}}
 
 
@@ -46,3 +47,5 @@
 
 %%% make abbreviations!
 \newcommand{\RR}{\mathbb{R}}
+\newcommand{\dsp}{\hookrightarrow}
+\renewcommand{\Pr}{\mathrm{Pr}}
