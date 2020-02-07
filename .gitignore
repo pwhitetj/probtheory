@@ -4,4 +4,4 @@
 **/*.aux
 **/*.gz
 **/*.tex~
-
+!main.pdf
