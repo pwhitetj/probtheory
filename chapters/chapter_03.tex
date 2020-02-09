@@ -17,9 +17,9 @@ A \textbf{random variable} is a function $X : \Omega \rightarrow R$. It assigns 
 
 A random variable $X$ might output some concrete number $x$, with some probability. If this probability is $\frac 12$, then we write this
 \[
-	P[X = x] = \frac 12
+	\Pr[X = x] = \frac 12
 \]
-For the sake of continuing the ``vending machine'' analogy, we will temporarily say \[P[X \hookrightarrow x] = \frac 12,\] where $\hookrightarrow$ is pronounced ``dispenses,'' i.e. $X$ dispenses $x$ with probability $\frac 12$. 
+For the sake of continuing the ``vending machine'' analogy, we will temporarily say \[\Pr[X \hookrightarrow x] = \frac 12,\] where $\hookrightarrow$ is pronounced ``dispenses,'' i.e. $X$ dispenses $x$ with probability $\frac 12$. 
 
 \subsection{Probability Mass Function}
 
@@ -31,7 +31,7 @@ mass function}
     A \textbf{probability mass function} (pmf) is a function  $f:\RR \rightarrow [0,1]$ from the reals to the unit interval such that $f(x) = \Pr[X \dsp x]$, that is the probability that
     a random variable dispenses a given value. It must satisfy the following criteria
     \begin{enumerate}
-        \item $\displaystyle \sum_{x_i} f(x_i) = 1$ over
+        \item $\displaystyle \sum_{x_i} f(x_i) = 1$, where the sum is over
         every $x_i$ in the range of $X$.
         \item $f(x_i) = 0$ for every $x_i$ not in the range of $X$.
     \end{enumerate}
@@ -40,11 +40,24 @@ We will elucidate these ideas with a number of examples
 \begin{example}
     Let a 6-sided die be constructed such that the probability of rolling
     a 4 is twice that of rolling any other value. Describe this in terms
-    of a random variable  $X$ and a pmf. Next, let $Y$ be the number of
+    of a random variable $X$ and a pmf $f(x)$. Next, let $Y$ be the number of
     prime factors of $X$. Give the pmf of $Y$.
 \end{example}
 \begin{solution}
-...
+Let $X$ be a random variable that dispenses the value the die shows (in $1, 2, \ldots 6$). $f(x)$ is a function such that $f(1) = f(2) = f(3) = f(5) = f(6) = \frac{1}{7}$, $f(4) = \frac 27$, and $f(x)$ is 0 otherwise. 
+
+Suppose $Y$ is the number of prime divisors of $X$. We can calculate what $Y$ outputs for given values that $X$ outputs: 
+\begin{center}\begin{tabular}{c|c}
+     X & Y \\ \hline 
+     1 & 0\\
+     2 & 1 \\
+     3 & 1 \\
+     4 & 1 \\
+     5 & 1 \\
+     6 & 2 
+\end{tabular}
+\end{center}
+This means that for the pmf of $Y$, $g(y)$, $g(0) = \Pr[Y=0] = \frac 17$, $g(1) = \Pr[Y=1] = \frac 57$, $g(2) = \Pr[Y=2] = \frac 17$, and $g(y) = 0$ otherwise. 
 \end{solution}
 
 \begin{example}
@@ -53,31 +66,73 @@ Find the pmf for $X$.
 \end{example}
 
 \begin{solution}
-...
+The \textbf{support set} of $X$, or the set of possible values of $X$, is $\{ 2, 3, \ldots 20 \}$, so we can write out a few values of $f$: 
+\[
+    f(2) = \frac{1}{100}, \quad f(3) = \frac{2}{100}, \quad \ldots \quad f(20) = \frac{1}{100}
+\]
+We can write out a nice closed form for $f$: 
+\begin{center} $f(x) = 
+    \begin{cases}
+        \frac{10 - |11-x|}{100} & x \in \{2, 3, \ldots 20 \} \\
+        0 & \text{otherwise}
+    \end{cases}$
+\end{center}
 \end{solution}
 
 \begin{example}
 5 Juniors and 5 seniors take a test and are ranked 1-10 according to their
-test score (1 = highest score). Assume all scores are distinct and that all $10!$ student
-rankings are equally likely. Let $X$ be the highest rank (smallest
-integer value) of a junior in the class. Find the pmf $f(X)$.
+test score (1 = highest score). Assume all scores are distinct and that all $10!$ student rankings are equally likely. Let $X$ be the highest rank (smallest
+integer value) of a junior in the class. Find the pmf $f(x)$ for $X$.
 \end{example}
 \begin{solution}
-...
+There are $\binom{10}{5}$ ways to arrange the seniors and juniors into distinct ranking orders. To calculate the individual values of $f$, we proceed with casework. 
+
+\textbf{If $X$ = 1}, a junior must have taken the highest rank, and then the remaining juniors and seniors can fill in the ranks in any order. This can be accomplished in $\binom{9}{4}$ ways, so $f(1) = \frac{\binom{9}{4}}{\binom{10}{5}} = \frac 12$. 
+
+\textbf{If $X$ = 2}, a senior takes rank 1, a junior takes rank 2, and the remaining juniors and seniors can fill in the rest of the ranks. This can be accomplished in $\binom{8}{4}$ ways, so $f(2) = \frac{\binom{8}{4}}{\binom{10}{5}} = \frac{5}{18}$. 
+
+A similar analysis can be done for the cases where $X = 3, 4, 5, 6$. The highest rank of a junior can't be lower than 6, as that would require more than 5 seniors to fill in rankings. In general, a closed form could be 
+\[
+    f(x) = \begin{cases} \frac{\binom{10-x}{4}}{\binom{10}{5}} & x \in \{1, 2, \ldots 6\} \\ 0 & \text{otherwise}. \end{cases}
+\]
 \end{solution}
+\begin{remark}
+Note that if we try ensure that the sum of all of the outputs of $f(x)$ is 1, we get a version of the famed \textit{hockey stick identity}: 
+\[
+    \binom{4}{4} + \binom{5}{4} + \binom{6}{4} + \binom{7}{4} + \binom{8}{4} + \binom{9}{4} = \binom{10}{5}
+\]
+This can be generalized to arbitrary $r=4, n=9$: 
+\[
+    \sum_{k=r}^n \binom{k}{r} = \binom{n+1}{r+1}
+\]
+\end{remark}
 \begin{example}
 Let $f(0) = f(1)$ and $f(k+1) = \frac{1}{k}f(k)$. If you know
 that $f$ is a pmf over the non-negative integers, then find $f(0)$.
 \end{example}
 \begin{solution}
-...
+We write out a few of the first few values of $f(k)$ in terms of $f(0)$: 
+\begin{align*}
+    f(2) &= f(1) = f(0) \\
+    f(3) &= \frac{1}{2} f(2) = \frac 12 f(0)\\
+    f(4) &= \frac 13 f(3) = \frac 16 f(0) \ldots 
+\end{align*}
+In order for the pmf to satisfy $\sum_{x_i} f(x_i) = 1$, we get that 
+\begin{align*}
+    f(0) + f(1) + f(2) + f(3) + f(4) + \ldots &= f(0) + f(0) + f(0) + \frac{1}{2} f(0) + \frac 16 f(0) + \ldots \\ &= f(0) \left(1 + \sum_{n=0}^\infty \frac{x^n}{n!}\right) \\ &= f(0) (1 + e) = 1
+\end{align*}
+
+Therefore, $f(0) = \frac{1}{1+e}$.
 \end{solution}
 \begin{example}
 \label{ex:squarepdf}
 Find $k$ if $f(x) = \dfrac{k}{x^2}$ is a pmf over positive integers.
 \end{example}
 \begin{solution}
-...
+In order for the pmf to be valid, we require the pmf to be \textit{normalized}, i.e. $\sum_{x_i} f(x_i) = 1$, so 
+\[
+    k \sum_{n=1}^\infty \frac{1}{n^2} = 1 = \frac{\pi^2 k}{6} \implies k = \frac{6}{\pi^2}.
+\]
 \end{solution}
 \begin{example}
 In Example~\ref{ex:squarepdf}, let $X$ be a random variable over positive
@@ -85,13 +140,25 @@ integers with pmf $f$. Let $Y$ be a random variable that equals 1 if $X$ is
 even and 2 if $X$ is odd. Find the pmf of $Y$.
 \end{example}
 \begin{solution}
-...
+We can evaluate $g(1)$ and $g(2)$ independently. $g(1)$ is the sum of the probabilities that $X$ dispenses an odd number: 
+\[
+    g(1) = \sum_{n=0}^\infty \Pr[X = 2n+1] = \frac{6}{\pi^2}\sum_{n=0}^\infty \frac{1}{(2n+1)^2} 
+\]
+and $g(2)$ is the sum of the probabilities that $X$ dispenses an even number: 
+\[
+    g(2) = \sum_{n=1}^\infty \Pr[X = 2n] = \frac{6}{\pi^2}\sum_{n=1}^\infty \frac{1}{4n^2} 
+\]
+This latter sum is easier to evaluate -- it becomes $\frac 14 \cdot \frac{\pi^2}{6} = \frac{\pi^2}{24}$, so $g(2) = \frac{6}{\pi^2} \cdot \frac{\pi^2}{24} = \frac 14$. The sum of squares of odd reciprocals is $\frac{\pi^2}{8}$, so $g(1) = \frac 34$, which is perfectly consistent. 
 \end{solution}
 \begin{example}
 Find $k$ if $f(x) = \dfrac{k}{x}$ is a pmf over positive integers.
 \end{example}
 \begin{solution}
-...
+This is not a valid pmf -- in trying to normalize the pmf, we require
+\[
+    \sum_{n = 1}^\infty \frac{k}{n} = 1,
+\]
+but the left hand side of the equation diverges. Such a pmf does not exist. 
 \end{solution}
 \subsection{Cumulative Mass Functions}
 A probability mass function over a random variable $X$ gives the probability 
@@ -110,10 +177,9 @@ die. Find the cmf of $X$.
 ...
 \end{solution}
 \begin{example}
-Let $f(x) = c\left(\dfrac{1}{4}\right)$ be the pmf of the random variable $X$. 
+Let $f(x) = c\left(\dfrac{1}{4}\right)^x$ be the pmf of the random variable $X$, where the support set is $\ZZ_{\geq 0}$ 
 \begin{enumerate}
-\item Find
-the appropriate constant $c$
+\item Find the appropriate constant $c$
 \item Determine the cmf $F(x)$
 \item Use the cmf to compute $\Pr[2 < X \leq 8]$
 \item Write formulas involving $F$ and $f$ for the following
@@ -125,13 +191,18 @@ the appropriate constant $c$
     \end{enumerate}
 \end{enumerate}
 \begin{solution}
-...
+Most of the following analysis follows from definition: 
+\begin{enumerate}
+    \item Using the sum of an infinite geometric series formula, we arrive at $c = \frac 34$. 
+    \item 
+    \item 
+    \item This is a more general question than just 
+    % add same question, but we're not allowed to use f 
+    % remark: the cmf is like the ``integral'' of f, if a ``derivative'' of F gives f?
+\end{enumerate}
 \end{solution}
 \begin{remark}
-Please note that what we are calling the cmf is very often called a \textbb{distribution
-function} in other texts and even by us, later on. The reasons will become more
-apparent when we extend pmf and cmf to continuous functions and partly-continuous
-functions.
+Please note that what we are calling the cmf is very often called a \textbb{distribution function} in other texts and even by us, later on. The reasons will become more apparent when we extend pmf and cmf to continuous functions and partly-continuous functions.
 \end{remark}
 \end{example}
 \end{document}
