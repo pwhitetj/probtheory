@@ -174,7 +174,14 @@ $$F(x) = \Pr[X \leq x] = \sum_{-\infty}^x f(t)$$
 die. Find the cmf of $X$.
 \end{example}
 \begin{solution}
-...
+It is impossible to have a sum of 1 or less on two dice rolls, so $F(1) = 0$. We calculate $F(2)$ by noting the only non-zero contribution is if two 1's show up on both of the dice, so $F(2) = \Pr[X \leq 2] = f(2) = \frac{1}{36}$. Similarly, $F(3) = \Pr[X \leq 3] = f(2) + f(3) = \frac{1}{36} + \frac{2}{36} = \frac{3}{36}$, and $F(4) = \Pr[X \leq 4] =  f(2) + f(3) + f(4)= \frac{1}{36} + \frac{2}{36} + \frac{3}{36} = \frac{6}{36}$. We can continue computing in this way until we eventually reach $F(11) = \displaystyle\sum_{k=1}^{11} f(k) = 1-f(12) = \frac{35}{36}$. See Figure~\ref{fig:cmf_dice} for a graph of the cmf -- note how it monotonically increases until it reaches a final maximum value at 1. 
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{cmf_dice.png}
+	\caption{Cumulative distribution function for the sum obtained by rolling two dice}
+	\label{fig:cmf_dice}
+\end{figure}
+
 \end{solution}
 \begin{example}
 Let $f(x) = c\left(\dfrac{1}{4}\right)^x$ be the pmf of the random variable $X$, where the support set is $\ZZ_{\geq 0}$ 
@@ -194,10 +201,16 @@ Let $f(x) = c\left(\dfrac{1}{4}\right)^x$ be the pmf of the random variable $X$,
 Most of the following analysis follows from definition: 
 \begin{enumerate}
     \item Using the sum of an infinite geometric series formula, we arrive at $c = \frac 34$. 
-    \item 
-    \item 
-    \item This is a more general question than just 
-    % add same question, but we're not allowed to use f 
+    \item Using the sum of a finite geometric series formula, we arrive at $F(x) = \frac{3}{4}\left(\frac{1-(1/4)^{x+1}}{1-1/4}\right) = 1-(1/4)^{x+1}$
+    \item $\Pr[2 < X \leq 8] = F(8)-F(2) = \frac{4095}{262144}$, from the cmf in b
+    \item This is a more general question that applies to other cmfs other than this one: 
+    \begin{enumerate}
+        \item $\Pr[X > a] = 1-F(a)$
+        \item $\Pr[X \geq a] = 1-F(a)+f(a) = 1-F(a)+\displaystyle\lim_{\Delta t \to 0} (F(a)-F(a-\Delta t))$
+        \item $\Pr[a < X < b] = F(b)-F(a)-f(b) = F(b)-F(a)-\displaystyle\lim_{\Delta t \to 0} (F(b)-F(b-\Delta t))$
+        \item $\Pr[a \leq X \leq b] = F(b)-F(a)+f(a)=F(b)-F(a)+\displaystyle\lim_{\Delta t \to 0} (F(a)-F(a-\Delta t))$
+    \end{enumerate}
+
     % remark: the cmf is like the ``integral'' of f, if a ``derivative'' of F gives f?
 \end{enumerate}
 \end{solution}
@@ -205,4 +218,63 @@ Most of the following analysis follows from definition:
 Please note that what we are calling the cmf is very often called a \textbf{distribution function} in other texts and even by us, later on. The reasons will become more apparent when we extend pmf and cmf to continuous functions and partly-continuous functions.
 \end{remark}
 \end{example}
+
+\section{Discrete Joint Probability Functions}
+
+When two or more random experiments occur simultaneously, the 
+outcomes can be analyzed with the use of a \textit{joint probability
+function}. A common example is the height, $X$,  and weight, $Y$, of randomly selected subjects. If the subjects are humans, the sample space of $X$ (in feet) could 
+be $\Omega_X = [0,10]$ and weight $\Omega_Y = [0,1000]$ in pounds.\footnote{These
+sample spaces are discrete technically because of the finite limitation
+of measurement, but for all practical purposes would best be treated as
+continuous. The type doesn't concern us here; it's still a nice example.}
+
+If enough sample data were collected, one could approximate $\Pr[X \dsp x \cap Y \dsp y]$ for $(x,y)$ in the joint sample space $\Omega_X \times
+\Omega_Y$. This probability defines the joint probability function, or joint pmf:
+$$f(x,y) = \Pr[X \dsp x, Y \dsp Y]$$
+where the "comma" in the probability implies intersection and is usually read as "and." Be careful to \textbf{not} equate this with $\Pr[X \dsp x]\cdot\Pr[Y \dsp y]$, which would equal $\Pr[X \dsp x, Y \dsp Y]$
+only when $X$ and $Y$ are independent. In fact, we should all be able to agree that height and weight of humans (or any type of object) are
+almost always correlated and, therefore, \textit{not} independent.
+
+The joint pmf of a set of discrete random variables $\{X_1, \ldots, X_n\}$
+satisfies the following properties:
+\begin{theorem} If $f$ is a function then $f$ can be the pmf of a set of random variables if and only if
+\begin{eqnarray}
+     f(x_1,\ldots,x_n) &\geq& 0 \\
+    \sum_{x_1}\cdots\sum_{x_n}f(x_1,\ldots,x_n) &=& 1
+\end{eqnarray}
+Where in both items the sum is taken over all values in the domain of $f$.
+\end{theorem}
+
+\begin{example}
+Let $f(x,y) = kxy$ be a pmf for $x=1,2,3$ and $y=1,2,3$. Determine the value of $k$
+\end{example}
+
+\begin{example}
+A jar contains 3 red, 2 green and 4 blue marbles. Two marbles are drawn simultaneously at random. Let $R$ be the number of red and $G$ the number
+of green marbles drawn. Determine the joint pmf $f(r,g)$
+\label{ex:jar}
+\end{example}
+
+\begin{example}
+Given the pmf $f(x,y,z)$ of random variables $X,Y,Z$
+$$f(x,y,z) = \frac{(x+y)z}{63}\qquad x=1,2; y=1,2,3; z=1,2$$
+calculate $\Pr[X \dsp 2, Y+Z \leq 3]$.
+\end{example}
+
+The last example hints at a definition for the cumulative
+distribution function for a pmf $f$. In the bivariate case the definition is
+\begin{definition}
+Let $f(x,y)$ be the pmf of two random variables $X$ and $Y$. Then the distribution function $F(x,y)$ is defined by
+$$F(x,y) = \Pr[X \leq x, Y \leq y] = \sum_{u=-\infty}^x \sum_{v=-\infty}^y f(u,v)$$
+\end{definition}
+\begin{example}
+Determine the distribution function $F$ for the pmf defined in Example~\ref{ex:jar}
+\end{example}
+\begin{example}
+Write an expression for $\Pr[a<X\leq b, c< Y \leq d$] in terms of $F$. Be 
+careful to consider all the cases!
+\end{example}
+
+\subsection{Marginal and Conditional Distributions}
 \end{document}
