@@ -48,7 +48,32 @@
 
 %%% make abbreviations!
 % Sets
-\newcommand{\RR}{\mathbb{R}}
+\newcommand{\NN}{\mathbb N} %% we should agree on what this means before we use it
 \newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb Q}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb C} % maybe not needed
+
+
+% Probability Theory
 \newcommand{\dsp}{\hookrightarrow}
 \renewcommand{\Pr}{\mathrm{Pr}}
+%% \newcommand{\EE}{\mathrm E} % intended for expected value, but not going to uncomment until then
+
+% Concrete Remnants
+\newcommand{\fallingfact}[2]{#1^{\underline{#2}}} %% falling factorial
+\newcommand{\ffact}[2]{\fallingfact{#1}{#2}}
+\newcommand{\risingfact}[2]{#1^{\overline{#2}}} % rising factorial
+\newcommand{\rfact}[2]{\risingfact{#1}{#2}}
+\newcommand{\permutation}[2]{P^{#1}_{#2}} % P-notation for permutations
+\newcommand{\perm}[2]{\permuation{#1}{#2}}
+\newcommand{\combination}[2]{C^{#1}_{#2}} % C-notation for combination, use \binom or \dbinom otherwise
+\newcommand{\comb}[2]{\combination{#1}{#2}}
+\newcommand{\stirlingone}[2]{\genfrac[]{0pt}{1}{#1}{#2}} % stirling numbers of the first kind, one for display and one for in-text
+\newcommand{\stiri}[2]{\stirlingone{#1}{#2}}
+\newcommand{\dstirlingone}[2]{\genfrac[]{0pt}{0}{#1}{#2}}
+\newcommand{\dstiri}[2]{\dstirlingone{#1}{#2}}
+\newcommand{\stirlingtwo}[2]{\genfrac\{\}{0pt}{1}{#1}{#2}} % stirling numbers of the second kind, one for display and one for in-text
+\newcommand{\stirii}[2]{\stirlingtwo{#1}{#2}}
+\newcommand{\dstirlingtwo}[2]{\genfrac\{\}{0pt}{0}{#1}{#2}}
+\newcommand{\dstirii}[2]{\dstirlingtwo{#1}{#2}}
