@@ -247,21 +247,42 @@ Where in both items the sum is taken over all values in the domain of $f$.
 \end{theorem}
 
 \begin{example}
-Let $f(x,y) = kxy$ be a pmf for $x=1,2,3$ and $y=1,2,3$. Determine the value of $k$
+Let $f(x,y) = kxy$ be a pmf for $x=1,2,3$ and $y=1,2,3$. Determine the value of $k$.
 \end{example}
-
+\begin{solution}
+In order to normalize this joint pmf, we force $\displaystyle\sum_x \displaystyle\sum_y kxy = 1$. We can ``pull apart'' the sum: 
+\[
+    k \left( \sum_x x\right) \left( \sum_y y \right) = 1 \implies k \cdot 6 \cdot 6 = 1 \implies k = \frac{1}{36}.
+\]
+\end{solution}
 \begin{example}
 A jar contains 3 red, 2 green and 4 blue marbles. Two marbles are drawn simultaneously at random. Let $R$ be the number of red and $G$ the number
 of green marbles drawn. Determine the joint pmf $f(r,g)$
 \label{ex:jar}
 \end{example}
+\begin{solution}
+In this case, $R$ can be $0, 1, 2$, and $G$ can be $0, 1, 2$ as well, but these can't be satisfied simultaneously -- in particular, $R$ and $G$ cannot both dispense 2 at the same time. 
 
+To calculate this, we could consider this case-by-case, starting with $\Pr[R=0, G=0]$, say. The probability in this case is 
+\[
+    f(0,0) = \frac{\binom{3}{0} \binom{2}{0} \binom{4}{2}}{\binom{9}{2}}
+\]
+and in general, $f(r, g)$ has a closed form: 
+\[
+    f(r,g) = \frac{\binom{3}{r} \binom{2}{g} \binom{4}{2-r-g}}{\binom{9}{2}}
+\]
+\end{solution}
 \begin{example}
 Given the pmf $f(x,y,z)$ of random variables $X,Y,Z$
 $$f(x,y,z) = \frac{(x+y)z}{63}\qquad x=1,2; y=1,2,3; z=1,2$$
 calculate $\Pr[X \dsp 2, Y+Z \leq 3]$.
 \end{example}
-
+\begin{solution}
+We can compute this probability by casework. The only possible triples $(x,y,z)$ that work are $(2,1,2)$, $(2,2,1)$, and (2,1,1). If we plug in directly, we get
+\[
+    
+\]
+\end{solution}
 The last example hints at a definition for the cumulative
 distribution function for a pmf $f$. In the bivariate case the definition is
 \begin{definition}
@@ -269,8 +290,11 @@ Let $f(x,y)$ be the pmf of two random variables $X$ and $Y$. Then the distributi
 $$F(x,y) = \Pr[X \leq x, Y \leq y] = \sum_{u=-\infty}^x \sum_{v=-\infty}^y f(u,v)$$
 \end{definition}
 \begin{example}
-Determine the distribution function $F$ for the pmf defined in Example~\ref{ex:jar}
+Determine the distribution function $F$ for the pmf defined in Example~\ref{ex:jar}. 
 \end{example}
+\begin{solution}
+
+\end{solution}
 \begin{example}
 Write an expression for $\Pr[a<X\leq b, c< Y \leq d$] in terms of $F$. Be 
 careful to consider all the cases!
