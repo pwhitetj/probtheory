@@ -278,9 +278,9 @@ $$f(x,y,z) = \frac{(x+y)z}{63}\qquad x=1,2; y=1,2,3; z=1,2$$
 calculate $\Pr[X \dsp 2, Y+Z \leq 3]$.
 \end{example}
 \begin{solution}
-We can compute this probability by casework. The only possible triples $(x,y,z)$ that work are $(2,1,2)$, $(2,2,1)$, and (2,1,1). If we plug in directly, we get
+We can compute this probability by casework. The only possible triples $(x,y,z)$ that work are $(2,1,2)$, $(2,2,1)$, and (2,1,1). If we plug in directly, we get the total probability as 
 \[
-    
+    \frac{(2+1)2}{63} + \frac{(2+2)1}{63} + \frac{(2+1)1}{63}  = \frac{13}{63}
 \]
 \end{solution}
 The last example hints at a definition for the cumulative
@@ -293,12 +293,75 @@ $$F(x,y) = \Pr[X \leq x, Y \leq y] = \sum_{u=-\infty}^x \sum_{v=-\infty}^y f(u,v
 Determine the distribution function $F$ for the pmf defined in Example~\ref{ex:jar}. 
 \end{example}
 \begin{solution}
-
+%% insert the solution here
 \end{solution}
 \begin{example}
-Write an expression for $\Pr[a<X\leq b, c< Y \leq d$] in terms of $F$. Be 
+Write an expression for $\Pr[a<X\leq b, c< Y \leq d$] in terms of $F$. %Be 
 careful to consider all the cases!
 \end{example}
+\begin{solution}
+It's best to think of this geometrically: 
+\end{solution}
 
 \subsection{Marginal and Conditional Distributions}
+Marginal distributions and conditional distributions reduce the number of variables in joint distribution functions and d
+
+\begin{definition}
+Given $X, Y$, and joint pmf $f(x,y)$, then $f_X(x)$ is the $X$-marginal distribution of $f$, where $f_X(x) = \Pr[X \dsp x]$. 
+\end{definition}
+We can write out what this means explicitly, in terms of a sum:
+\begin{theorem}
+\[
+    f_X(x) = \sum_y f(x,y)
+\]
+and 
+\[
+    f_Y(y) = \sum_x f(x,y)
+\]
+\end{theorem}
+It follows clearly that 
+\begin{example}
+Consider the following joint distribution function
+% X/Y 1 2
+% 1 0.4 0.3
+% 2 0.2 0.1
+Compute the marginal distributions for 
+\end{example}
+
+\begin{definition}
+Given random variables $X,Y$, and joint pmf $f(x,y)$, the conditional distribution function $f_{X|y}(x|y)$ is equal to 
+\[
+    f_{X|y}(x|y) = \frac{\Pr[X=x \cap Y=y]}{\Pr[Y=y]} = \frac{f(x,y)}{f_Y(y)}
+\]
+\end{definition}
+This is rather reminiscent of the Law of Total Probability 
+
+\begin{example}
+For the joint distribution function above, compute $f_{X|y}(1|Y=1)$.
+\end{example}
+\begin{solution}[Answer.]
+$\frac{0.4}{0.4 + 0.2} = \frac{0.4}{0.6} = \frac{2}{3}$.
+\end{solution}
+
+\begin{example}
+Suppose we flip a fair coin 4 times. Let $X$ be the number of heads in the first three tosses, and $Y$ be the number of heads in the last three tosses. Find $f(x,y)$, $f_X$, $f_Y$, $f_{X|y}$, and $f_{Y|x}$. 
+\end{example}
+%% insert solution.
+
+\subsection{Independent Random Variables}
+
+\section{Continuous Random Variables}
+The concepts we have studied so far with discrete random variables and mass functions transfer
+almost immediately to continuous random variables, where sums are "replaced" with integrals. The fundamental underlying difference in interpretation is that a probability mass function becomes, in the continuous case, a probability \textit{density} function.
+
+\begin{definition}
+Let $X$ be a random variable. A function $f(x)$ from the domain of $X$ into $\RR$ is a \textit{probability density function} (pdf) if it satisfies the following
+\begin{enumerate}
+    \item $f(x) \geq 0$ for all $x$ in the domain of $f$
+    \item $\Pr[x \in A] = \Pr[A] = \int_A f(x) \dx$ gives the probability
+    that the random variable $X$ dispenses an element of the set $A$
+    \item $\int_\mathcal{A} f(x) \dx = 1$ where $\mathcal{A}$ is the entire domain
+    of the random variable $X$
+\end{enumerate}
+\end{definition}
 \end{document}
