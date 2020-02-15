@@ -20,7 +20,7 @@ A random variable $X$ might output some concrete number $x$, with some probabili
 	\Pr[X = x] = \frac 12
 \]
 For the sake of continuing the ``vending machine'' analogy, we will temporarily say \[\Pr[X \hookrightarrow x] = \frac 12,\] where $\hookrightarrow$ is pronounced ``dispenses,'' i.e. $X$ dispenses $x$ with probability $\frac 12$. 
-
+\section{Discrete Random Variables}
 \subsection{Probability Mass Function}
 
 These random variables have probabilities associated with them, just as
@@ -219,7 +219,7 @@ Please note that what we are calling the cmf is very often called a \textbf{dist
 \end{remark}
 \end{example}
 
-\section{Discrete Joint Probability Functions}
+\subsection{Discrete Joint Probability Functions}
 
 When two or more random experiments occur simultaneously, the 
 outcomes can be analyzed with the use of a \textit{joint probability
@@ -346,10 +346,56 @@ $\frac{0.4}{0.4 + 0.2} = \frac{0.4}{0.6} = \frac{2}{3}$.
 \begin{example}
 Suppose we flip a fair coin 4 times. Let $X$ be the number of heads in the first three tosses, and $Y$ be the number of heads in the last three tosses. Find $f(x,y)$, $f_X$, $f_Y$, $f_{X|y}$, and $f_{Y|x}$. 
 \end{example}
+\begin{solution}
+	TBD
+\end{solution}
 %% insert solution.
 
+\subsection{Exercises}
+\begin{enumerate}
+	\item Let $f(x,y) = k(x^2+y^2)$ be a pmf for $X,Y$ over the domain $0 \leq x + y \leq 4$
+	where $x,y \in \ZZ$.
+	\begin{enumerate}
+		\item Determine $k$
+		\item Calculate $f(1,1)$ and $f(2,3)$
+		\item Calculate $f_X(2)$ and $f_Y(1)$
+		\item Does $f_X(t) = f_Y(t)$?
+		\item Calculate $f_{X|y}(3|y=1)$ and $f_{Y|x}(2|x=2)$
+		\item Give a closed-form expression for $f_X(x)$ and $f_{X|y}(x|y)$
+	\end{enumerate}
+\end{enumerate}
 \subsection{Independent Random Variables}
 
+We have already encountered the concept of independent random events. Random variables
+are independent when their underlying random processes are independent, and this
+can be formalized with properties of the probability mass function. The definition
+we will use for independence is that, given two variables $X$ and $Y$, if the outcome
+of $Y$ has no effect on the outcome of $X$ then the two variables are independent. 
+This is another way of saying the conditional distribution of $X$, conditioned on $Y$
+is the same as the distribution of $X$. Formally
+\begin{definition}
+	Let $X$ and $Y$ be random variables with joint pmf $f(x,y)$. Then $X$ and $Y$
+	are \textit{independent} whenever
+	$$f_{X|y}(x|y) = f_X(x)$$
+	or, similarly when
+	$$f_{Y|x}(y|x) = f_Y(y)$$
+\end{definition}
+We will give one example
+\begin{example}
+	Let $f(x,y) = \dfrac{xy^2}{30}$ for integers $1 \leq x \leq 3, 1\leq y \leq 2$. The marginal distributions are
+	\begin{eqnarray*}
+		f_X(x) &=& \sum_{y=1}^2 f(x,y) = \dfrac{x}{30}(1^2+2^2) = \dfrac{x}{6} \\
+		f_Y(y) &=& \sum_{x=1}^3 f(x,y) = \dfrac{y}{30}(1+2+3) = \dfrac{y^2}{6}
+	\end{eqnarray*}
+	Therefore the conditional of $X$ given $Y$ is
+	$$f_{X|y}(X|y) = \dfrac{f(x,y)}{f_{Y}(y)} = \dfrac{xy^2/30}{y^2/6} = \dfrac{x}{5} = f_X(x).$$
+	It is instructive to note, in this case, that $f(x,y) = f_X(x)f_Y(y)$. This can be
+	shown to be equivalent to the given definition for independence.
+\end{example}
+\begin{remark}
+	Two variables $X$ and $Y$ are independent if and only if
+	$$f(x,y) = f_X(x)f_Y(y)$$ for all $x,y$ in the range of $X,Y$.
+\end{remark}
 \section{Continuous Random Variables}
 The concepts we have studied so far with discrete random variables and mass functions transfer
 almost immediately to continuous random variables, where sums are "replaced" with integrals. The fundamental underlying difference in interpretation is that a probability mass function becomes, in the continuous case, a probability \textit{density} function.
