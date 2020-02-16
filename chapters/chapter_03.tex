@@ -400,6 +400,7 @@ We will give one example
 The concepts we have studied so far with discrete random variables and mass functions transfer
 almost immediately to continuous random variables, where sums are "replaced" with integrals. The fundamental underlying difference in interpretation is that a probability mass function becomes, in the continuous case, a probability \textit{density} function.
 
+\subsection{Probability Density Functions}
 \begin{definition}
 Let $X$ be a random variable. A function $f(x)$ from the domain of $X$ into $\RR$ is a \textit{probability density function} (pdf) if it satisfies the following
 \begin{enumerate}
@@ -410,4 +411,124 @@ Let $X$ be a random variable. A function $f(x)$ from the domain of $X$ into $\RR
     of the random variable $X$
 \end{enumerate}
 \end{definition}
+%
+Notice the third property above is general enough to allow integrating over any measurable set. Indeed, in almost
+all cases we will encounter problems where we integrated over contiguous sets such as intervals. In this case we can write
+$$\Pr[a < X < b] = \int_a^b f(x) \dx.$$
+\begin{example}
+    Let $f(x)=e^{-x}$ be the pdf of $X$ defined over $\mathcal{A} = \{x | 0<x<\infty\}$. Find
+    \begin{enumerate}
+        \item $\Pr[0<X<1]$
+        \item $\Pr[X>10]$
+        \item $\Pr[X \dsp 3]$
+    \end{enumerate}
+\end{example}
+\begin{solution}
+Each of the probabilities becomes an integral computation.
+    \begin{enumerate}
+        \item $\displaystyle \int_0^1 f(x)\dx = 1-\dfrac{1}{e}$
+        \item $\displaystyle \int_{10}^\infty f(x)\dx = \dfrac{1}{e^{10}}$
+        \item $\displaystyle \int_3^3 f(x)\dx = 0 $ even though $f(3) = \dfrac{1}{e^3}$
+    \end{enumerate}
+In the last item notice a fundamental difference between probability density functions and probability mass functions.
+In the case of a pdf, the value of $f(x)$ at any point $x$ does \textit{not} give a probability but rather a density.
+The probability that $X \dsp k$ for any constant $k$ is 0 whenever $X$ is a continuous random variable. We can determine
+a non-zero probability that $X$ is within a given interval of $k$ by integrating the density function and determining a probability "mass" near the point.
+\end{solution}
+
+\begin{example}
+Let $X$ be a random variable on $mathcal{A} = \{x \, | \, 0<x<1\}$ with pdf $f(x) = cx^2$. Determine $c$.
+\end{example}
+\begin{solution}
+Since $f$ is a pdf
+\begin{eqnarray*}
+    \int_0^1 f(x) \dx &=& 1 \\
+    \int_0^1 cx^2 \dx&=& 1 \\
+    \dfrac{c}{3} &=& 1 \\
+    c &=& 3
+\end{eqnarray*}
+\end{solution}
+
+\subsection{Cumulative Distribution Function}
+\begin{definition}
+The \textit{cumulative distribution function} (cdf) of a random variable $X$ with pdf $f$ is defined as
+$$F(x) = \Pr[X < x] = \int_{-\infty}^x f(t) \dt$$
+in which it is assumed $f(x)$ is defined over all the reals, with positive density in the support of $X$ and zero density
+elsewhere.
+\end{definition}
+
+\begin{example}
+Find the CDF for each of the following PDFs.
+\begin{enumerate}
+    \item $f(x) = \dfrac{1}{\pi(1+x^2)}$ where $x \in \RR$
+    \item $f(x) = \dfrac{e^{-x}}{(1+e^{-x})^2}$ where $x \in \RR$
+    \item $f(x) = \dfrac{a-1}{(1-x)^a}$ where $0<x<\infty$
+    \item $f(x) = k\alpha x^{\alpha-1}e^{-kx^{\alpha}}$ for $ 0<x<\infty,\,k<0,\,\alpha>0$
+\end{enumerate}
+\begin{solution}
+The CDFs are found by integrating
+
+\begin{enumerate}
+    \item $F(x) = \dfrac{1}{\pi}\arctan x + \dfrac{1}{2}$
+    \item $F(x) = \dfrac{1}{1+e^{-x}}$
+    \item $F(x) = 
+        \begin{cases}
+            1 - \dfrac{1}{(1+x)^{\alpha-1}} & x>0\\
+            0 & x \leq 0
+        \end{cases}$
+    \item $F(x) =
+        \begin{cases}
+            1 - e^{-kx^\alpha} & x>0 \\
+            0 & x \leq 0
+        \end{cases}$
+\end{enumerate}
+Where in the last two we are careful to set the lower bound of integration to 0, given the definition of $f(x)$.
+\end{solution}
+\end{example}
+\subsection{Joint Density Functions: Cumulative, Marginal and Conditional}
+Given two random variables $X,Y$ over continuous spaces, the joint pdf can be defined
+analogously to a discrete joint pmf.
+\begin{definition}
+Given continuous random variables $X,Y$, the function $f(x,y)$ is a \textit{joint pdf} for $X,Y$
+if 
+\begin{enumerate}
+    \item $f(x,y) \geq 0$ for all $x,y \in \RR^2$
+    \item $\displaystyle\int\!\!\int_{\RR^2} f(x,y) \dx \dy  = 1$
+\end{enumerate}
+\end{definition}
+Similarly we can extend the definitions already given for cumulative, marginal, and conditional distributions
+\begin{definition}
+    Given two random variables $X,Y$
+    \begin{itemize}
+        \item The \textbf{cumulative distribution function} $F(x,y)$ is defined
+        $$F(x,y) = \Pr[X<x,Y<y] = \int_{-\infty}^y \!\! \int_{-\infty}^x f(u,v) \du \dv$$
+        \item The \textbf{marginal distribution function} $f_X(x)$ is computed
+        by integrating out the $y$ values
+        $$ f_X(x) = \int_{-\infty}^{\infty} f(x,y) \dy $$
+        \item The \textbf{condition distribution of $X$ given $Y$} is computed by dividing the 
+        joint pdf by the marginal of $Y$:
+        $$f_{X|y}(x|y) = \dfrac{f(x,y)}{f_Y(y)} = \dfrac{f(x,y)}{\int_{-\infty}^{\infty} f(x,y) \dx }$$
+    \end{itemize}
+\end{definition}
+\begin{example}
+Let $f(x,y) = x+y$ be the pdf for $X,Y$ over the square $0<x<1, 0<y<1$. Determine the 
+CDF $F(x,y)$.
+\end{example}
+\begin{solution}
+First note that the definition of $F$ will have 5 pieces: when $x<0$ or $y<0$, when $x>1,0<y<1$,
+when $y>1, 0<x<1$, when $0<x<1, 0<y<1$ and when $x>1,y>1$. In the first case there is no probability density so $F(x,y) = 0$. To handle the other cases we will first compute $G(x,y)
+ = \int_0^y\int_0^x f(x,y) \dx \dy$ so
+ $$G(x,y) = \dfrac{xy}{2}(x+y), \; x>0, y>0.$$
+ To solve the problem, notice that $F(x,y) = G(x,y)$ when both arguments are within the unit square. But if $x>1$, then $F(x,y) = G(1,y)$ because $\Pr[X>1] = 0$. Similarly if $y>1$,
+ $F(x,y) = G(x,1)$. And finally if $x>1,y>1$ then $F(x,y) = G(1,1) = 1$. So
+ $$F(x,y) = 
+    \begin{cases}
+        \dfrac{xy}{2}(x+y) & 0<x<1, 0<y<1 \\[4ex]
+        \dfrac{y}{2}(1+y) & 0<y<1, x>1 \\[4ex]
+        \dfrac{x}{2}(x+1) & 0<x<1, y>1 \\[4ex]
+        1 & x>1, y>1 \\
+        0 & \mbox {otherwise}
+    \end{cases}$$
+\end{solution}
+\subsection{Exercises}
 \end{document}
