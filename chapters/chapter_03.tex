@@ -396,6 +396,87 @@ We will give one example
 	Two variables $X$ and $Y$ are independent if and only if
 	$$f(x,y) = f_X(x)f_Y(y)$$ for all $x,y$ in the range of $X,Y$.
 \end{remark}
+
+\begin{exercises}
+\begin{enumerate}
+	\item %finan 43.3
+	The table gives the joint pdf of $X$ and $Y$
+	\begin{center}
+		\includegraphics[width=2in]{extab1.png}
+	\end{center}
+	Find $P(X|Y=4)$ for $X=3,4,5$
+	
+	\item %Finan 43.5
+	
+	 Two dice are rolled. Let $X$ and $Y$ denote,
+	 respectively, the largest and
+	smallest values obtained. Compute the conditional mass function of $Y$ given
+	$X = x$, for $x = 1, 2, \ldots, 6$. Are $X$ and $Y$ independent?
+	
+	\item %finan 43.6
+	Let $X$ and $Y$ be discrete random variables with joint pmf
+	$$f_{XY}(x,y) = \dfrac{n! y^x(p/e)^y(1-p)^{n-y}}{y!(n-y)x!}
+	\qquad y=0,1,\ldots,n; x=0,1,\ldots$$
+	\begin{enumerate}
+		\item Find $f_Y(y)$
+		\item Find $f_{X|Y}(x|Y=y)$
+		\item Are $X$ and $Y$ independent? Why?
+	\end{enumerate}
+
+	\item %finan 43.8
+	Let $X$ and $Y$ be discrete random variables with joint pmf
+	$$f_{XY} = c(1-2^{-x})^y\qquad 0\leq x \leq N-1, y\geq 0$$
+	\begin{enumerate}
+		\item Find $c$
+		\item Find $f_X(x)$
+		\item Find $f_{Y|X}(y|x)$
+	\end{enumerate}
+
+	\item %finan 43.12
+	Suppose that discrete random variables $X$ and $Y$ each take only the values 0
+	and 1. It is known that $P(X = 0|Y = 1) = 0.6$ and $P(X = 1|Y = 0) = 0.7$.
+	Is it possible that $X$ and $Y$ are independent? Justify your conclusion.
+	
+	\item %finan 43.15
+	Let $X$ be the annual number of hurricanes hitting Florida, and let $Y$ be
+	the annual number of hurricanes hitting Texas. $X$ and $Y$ are independent
+	random variables with pmf:
+	\begin{eqnarray*}
+		f(x) &=& \dfrac{1.7^x}{x!}e^{-1.7} \qquad x\geq 0 \\
+		g(y) &=& \dfrac{2.3^y}{y!}e^{-2.3} \qquad y\geq 0
+	\end{eqnarray*}
+	respective means 1.70 and 2.30.
+	Calculate $\Pr[X − Y=k |X + Y = 3]$ for all $k$ in the 
+	domain of $X-Y$.
+	
+	\item %finan 43.18
+	A box contain 4 reds, 3 whites and 2 blues. A random sample of 3 balls is
+	chosen. Let $R$ and $W$ be the number of red and white balls chosen. What is
+	the conditional probability of $W = 2$ given that $R = 1$?
+	
+	\item %finan 43.21
+	The probability of $x$ losses occurring in year $1$ is 
+	$(0.5)^{x+1} , \qquad x = 0, 1, 2,\ldots$
+	The probability of $y$ losses in year 2 given $x$ losses in year 1 is given by the table:
+	\begin{center}
+	\includegraphics[width=2in]{extab2.png}
+	\end{center}	
+	Calculate the probability of exactly 2 losses in 2 years.
+	
+	\item %finan 43.22
+	A flood insurance company determines that $N$, the number of claims received
+	in a month, is a random variable with $\Pr[N=n] = \dfrac{2}{3^{n+1}}$ 
+	for non-negative integers $n$.
+	The numbers of claims received in different months are mutually independent. Calculate the probability that more than three claims will be received
+	during a consecutive two-month period, given that fewer than two claims
+	were received in the first of the two months.
+	
+\end{enumerate}
+\end{exercises}
+
+%--------------------------------------------------------------
+%--------------------------------------------------------------
+%--------------------------------------------------------------
 \section{Continuous Random Variables}
 The concepts we have studied so far with discrete random variables and mass functions transfer
 almost immediately to continuous random variables, where sums are "replaced" with integrals. The fundamental underlying difference in interpretation is that a probability mass function becomes, in the continuous case, a probability \textit{density} function.
@@ -530,5 +611,128 @@ when $y>1, 0<x<1$, when $0<x<1, 0<y<1$ and when $x>1,y>1$. In the first case the
         0 & \mbox {otherwise}
     \end{cases}$$
 \end{solution}
-\subsection{Exercises}
+\subsection{Mixed Distributions}
+\subsection{Functions of Random Variables}
+
+\begin{exercises}
+\begin{enumerate}
+	\item Let $f(x) = \dfrac{c}{(x+1)^3}$ be a pdf for $x \geq 0$. Determine the value of $c$ %finan 28.1
+	
+	\item The lifetime $X$ of a battery (in hours)
+	has a density function given by
+	$$f(x) = 
+	\begin{cases}
+		2x & 0 \leq x < \frac12 \\
+		\frac34 & 2 < x < 3 
+	\end{cases}$$
+	Find the probability that a battery will last for more than 15 minutes. %finan 28.4
+	
+	\item %finan 28.5
+	Let $F(x)$ be a CDF defined below.
+	$$F(x) = 
+	\begin{cases}
+		0	& x<0\\
+		x/2 	& 0 \leq x < 1 \\
+		(x+2)/6	& 1 \leq x < 4 \\
+		1		& x \geq 4
+	\end{cases}$$
+	Find the pdf $f(x)$ corresponding to $F$.
+	
+	\item %finan 28.7
+	A mixed random variable $X$ has CDF
+	$$F(x) = 
+	\begin{cases}
+	0		& x<0\\
+	\dfrac{e^x}{e^x+1}	& x \geq 0
+	\end{cases}$$
+	\begin{enumerate}
+		\item Find the pdf
+		\item Find $\Pr[0 < X \leq 1]$
+	\end{enumerate}
+	
+	\item %finan 28.24
+	Let $X$ be a continuous random variable with probability density function
+		$$f(x) = \lambda e^{-\lambda x}$$
+		where $\lambda > 0$. Let $Y$ be the smallest integer greater than or equal to $X$.
+	Determine the probability density function of $Y$.
+	
+	\item %finan 28.14
+	Let $X$ have pdf $$f(x) = \dfrac{3x^2}{\theta^3} \;
+	0 < x < \theta.$$ If $\Pr[X>1] = \frac78$, find $\theta$
+	
+	\item %finan 28.9
+	The loss due to a fire in a commercial building is modeled by a random
+	variable $X$ with density function
+	$$f(x) = 0.005(20-x) \qquad 0<x<20$$
+	Given that a fire loss exceeds 8, what is the probability that
+	it exceeds 16?
+	
+	\item %finan 28.12
+	An insurance company insures a large number of homes. The insured value,
+	$X$, of a randomly selected home is assumed to follow a distribution with
+	density function
+	$$f(x) = 3x^{-4} \qquad x>1$$
+	Given that a randomly selected home is insured for at least
+	1.5, what is the probability that it is insured for less than 
+	2?
+	
+	\item %finan 28.15
+	Let $X$ be a continuous random variable with density function
+	$$f(x) = \dfrac{|x|}{10} \qquad -2 \leq x \leq 4$$
+	Calculate $\displaystyle \int_{-\infty}^\infty xf(x)\dx$.
+	
+	\item %finan 28.23
+	A large university will begin a 13-day period during which students may register for that semester’s courses. Of those 13 days, the number of elapsed days
+	before a randomly selected student registers has a continuous distribution
+	with density function $f(t)$ that is symmetric about $t = 6.5$ and proportional
+	to $\dfrac{1}{t+1}$
+	between days 0 and 6.5.
+	A student registers at the 60th percentile of this distribution. Calculate the
+	number of elapsed days in the registration period for this student.
+	
+\end{enumerate}
+\end{exercises}
 \end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

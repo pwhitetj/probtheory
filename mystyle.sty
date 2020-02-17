@@ -10,6 +10,7 @@
 \usepackage{enumitem}
 \usepackage{scrpage2}
 \usepackage{bbold}
+\usepackage{environ}
 
 \usepackage{amsmath}
 \usepackage{array, diagbox}
@@ -40,6 +41,10 @@
         \begin{trivlist}
 		\item[ {\bfseries #1}]}{\end{trivlist}}
 
+\NewEnviron{exercises}{
+{\fontsize{10}{10}\selectfont{
+\subsection{Exercises}
+\BODY}}}
 
 \renewcommand{\qed}{\nobreak \ifvmode \relax \else
 	\ifdim\lastskip<1.5em \hskip-\lastskip
@@ -85,3 +90,6 @@
 \newcommand{\dt}{\;dt}
 \newcommand{\du}{\;du}
 \newcommand{\dv}{\;dv}
+
+% Unicode stuff
+\DeclareUnicodeCharacter{2212}{-}
