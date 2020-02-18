@@ -219,6 +219,116 @@ Please note that what we are calling the cmf is very often called a \textbf{dist
 \end{remark}
 \end{example}
 
+\begin{exercises}
+	\begin{enumerate}
+		\item %finan 13.2
+		Two apples are selected at random and removed in succession and without
+		replacement from a bag containing five golden apples and three red apples.
+		List the elements of the sample space, the corresponding probabilities, and
+		the corresponding values of the random variable $X$, where $X$ is the number
+		of golden apples selected.
+		
+		\item %finan 13.4
+		Let $X$ be a random variable with probability distribution table given below
+			\[\def\arraystretch{1.5}
+			\begin{array}{|c|c|c|c|c|c|}
+				\hline
+				x & 0 & 10 & 20 & 50 & 100 \\
+				\hline
+				\Pr[X \dsp x] & 0.4 & 0.3 & 0.15 & 0.1 & 0.05 \\
+				\hline
+			\end{array}\]
+		Find $\Pr[X<50]$
+		
+		\item %finan 13.5
+		You toss a coin repeatedly until you get heads. Let $X$ be the random variable
+		representing the number of times the coin flips until the first head appears.
+		Find $\Pr[X \dsp n]$ where n is a positive integer.
+		
+		\item %finan 13.9
+		Shooting is one of the sports listed in the Olympic games. A contestant
+		shoots three times, independently. The probability of hiting the target in
+		the first try is 0.7, in the second try 0.5, and in the third try 0.4. Let $X$
+		be the discrete random variable representing the number of successful shots
+		among these three.
+		\begin{enumerate}
+			\item Find a formula for the piecewise defined function $X : Ω → R$, where $Ω$
+			denotes the sample space.
+			\item Find the event corresponding to $X = 0$. What is the probability that he
+			misses all three shots; i.e., $P (X = 0)$?
+			\item What is the probability that he succeeds exactly once among these three
+			shots; i.e $P (X = 1)$?
+			\item What is the probability that he succeeds exactly twice among these three
+			shots; i.e $P (X = 2)$?
+			\item What is the probability that he makes all three shots; i.e $P (X = 3)$?
+		\end{enumerate}
+	
+	\item %finan 14.4
+	A box of six apples has one rotten apple. Randomly draw one apple from the
+	box, without replacement, until the rotten apple is found. Let $X$ denote the
+	number of apples drawn until the rotten apple is found. Find the probability
+	mass function of $X$ and draw its histogram.
+	
+	\item %finan 14.5
+	In the experiment of rolling two dice, let $X$ be the random variable representing 
+	the number of even numbers that appear. Find the probability mass
+	function of X.
+	
+	\item %finan 14.6
+	Let $X$ be a random variable with pmf
+	$$f(n) = \dfrac{1}{3}\left(\dfrac{2}{3}\right)^n \qquad n=0,1,2,\ldots$$
+	and 0 otherwise. Find a formula for the distribution function $F(n)$.
+	
+	\item %finan 14.9
+	A game consists of randomly selecting two balls without replacement from
+	an urn containing 3 red balls and 4 blue balls. If the two selected balls are of
+	the same color then you win \$2. If they are of different colors then you lose
+	\$1. Let $X$ denote your gain/loss. Find the probability mass function of X.
+	
+	\item %finan 14.10
+	An unfair coin is tossed three times. The probability of tails on any particular
+	toss is known to be 23 . Let $X$ denote the number of heads.
+	\begin{enumerate}
+		\item Find the probability mass function.
+		\item Find and graph the cumulative distribution function for X.
+	\end{enumerate}
+
+	\item %finan 14.14
+	The distribution function of a discrete random variable $X$ is given by
+	$$F(x) = 
+	\begin{cases}
+		0 			& x<-2 \\
+		0.2			& -2 \leq x < 0 \\
+		0.5			& 0 \leq x < 2.2 \\
+		0.6			& 2.2 \leq x < 3 \\
+		0.6 + q		& 3 \leq x < 4 \\
+		1			& x > 4
+	\end{cases}$$
+	Suppose that $\Pr[x>3] = 0.1$
+	\begin{enumerate}
+		\def\itemsep{-0.5ex}
+		\item Determine the value of $q$.
+		\item Compute $\Pr[X^2 > 2]$.
+		\item Find $f(0), f(1), \mbox{ and } \Pr[X \leq 0]$.
+		\item Find the formula of the pmf $f(x)$.
+	\end{enumerate}
+
+	\item % finan 14.20
+	A box contains 7 marbles of which 3 are red and 4 are blue. Randomly select
+	two marbles without replacement. If the marbles are of the same color then
+	you win \$2, otherwise you lose \$1. Let $X$ be the random variable representing
+	your net winnings.
+	Find the probability mass function of X.
+	
+	\item %finan 14.21
+	
+	Four distinct integers are chosen randomly and without replacement from the
+	first twelve positive integers. Let $X$ be the random variable representing the
+	second largest of the four selected integers, and let $p(x)$ be the probability
+	mass function of X. Determine $p(x)$, for integer values of $x$, where $p(x) > 0$.
+	
+	\end{enumerate}
+\end{exercises}
 \subsection{Discrete Joint Probability Functions}
 
 When two or more random experiments occur simultaneously, the 
@@ -577,6 +687,7 @@ if
     \item $\displaystyle\int\!\!\int_{\RR^2} f(x,y) \dx \dy  = 1$
 \end{enumerate}
 \end{definition}
+\noindent
 Similarly we can extend the definitions already given for cumulative, marginal, and conditional distributions
 \begin{definition}
     Given two random variables $X,Y$

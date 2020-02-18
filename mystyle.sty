@@ -1,7 +1,7 @@
 \ProvidesPackage{mystyle}
 \usepackage{subfiles}
 \usepackage{graphicx}
-
+\usepackage[utf8]{inputenc}
 
 \usepackage[twoside,outer=1.25in,inner=1.55in,bottom=1.5in,top=1.5in,marginpar=1in]{geometry} 
 
@@ -11,6 +11,7 @@
 \usepackage{scrpage2}
 \usepackage{bbold}
 \usepackage{environ}
+\usepackage{changepage}
 
 \usepackage{amsmath}
 \usepackage{array, diagbox}
@@ -37,9 +38,12 @@
 \newcounter{example}[chapter]
 \newenvironment{example}[1][]{\refstepcounter{example}\par\medskip
 	\noindent\textbf{Example~\theexample. #1} \rmfamily}{\medskip}
-\newenvironment{solution}[1][Solution]{{\addtolength{\leftskip}{2.5em}}
-        \begin{trivlist}
-		\item[ {\bfseries #1}]}{\end{trivlist}}
+%\newenvironment{solution}[1][Solution]{{\addtolength{\leftskip}{2.5em}}
+%        \begin{trivlist}
+%		\item[ {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{solution}[1][]{\par\medskip
+	\noindent\begin{adjustwidth}{1em}{0em}\textbf{Solution~\theexample. #1} \rmfamily}
+	{\end{adjustwidth}\medskip\noindent}
 
 \NewEnviron{exercises}{
 {\fontsize{10}{10}\selectfont{
@@ -91,5 +95,8 @@
 \newcommand{\du}{\;du}
 \newcommand{\dv}{\;dv}
 
+	
 % Unicode stuff
 \DeclareUnicodeCharacter{2212}{-}
+\DeclareUnicodeCharacter{3A9}{\Omega}
+\DeclareUnicodeCharacter{2192}{\rightarrow}
