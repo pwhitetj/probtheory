@@ -20,7 +20,7 @@ A random variable $X$ might output some concrete number $x$, with some probabili
 	\Pr[X = x] = \frac 12
 \]
 For the sake of continuing the ``vending machine'' analogy, we will temporarily say \[\Pr[X \hookrightarrow x] = \frac 12,\] where $\hookrightarrow$ is pronounced ``dispenses,'' i.e. $X$ dispenses $x$ with probability $\frac 12$. 
-
+\section{Discrete Random Variables}
 \subsection{Probability Mass Function}
 
 These random variables have probabilities associated with them, just as
@@ -219,7 +219,7 @@ Please note that what we are calling the cmf is very often called a \textbf{dist
 \end{remark}
 \end{example}
 
-\section{Discrete Joint Probability Functions}
+\subsection{Discrete Joint Probability Functions}
 
 When two or more random experiments occur simultaneously, the 
 outcomes can be analyzed with the use of a \textit{joint probability
@@ -247,21 +247,42 @@ Where in both items the sum is taken over all values in the domain of $f$.
 \end{theorem}
 
 \begin{example}
-Let $f(x,y) = kxy$ be a pmf for $x=1,2,3$ and $y=1,2,3$. Determine the value of $k$
+Let $f(x,y) = kxy$ be a pmf for $x=1,2,3$ and $y=1,2,3$. Determine the value of $k$.
 \end{example}
-
+\begin{solution}
+In order to normalize this joint pmf, we force $\displaystyle\sum_x \displaystyle\sum_y kxy = 1$. We can ``pull apart'' the sum: 
+\[
+    k \left( \sum_x x\right) \left( \sum_y y \right) = 1 \implies k \cdot 6 \cdot 6 = 1 \implies k = \frac{1}{36}.
+\]
+\end{solution}
 \begin{example}
 A jar contains 3 red, 2 green and 4 blue marbles. Two marbles are drawn simultaneously at random. Let $R$ be the number of red and $G$ the number
 of green marbles drawn. Determine the joint pmf $f(r,g)$
 \label{ex:jar}
 \end{example}
+\begin{solution}
+In this case, $R$ can be $0, 1, 2$, and $G$ can be $0, 1, 2$ as well, but these can't be satisfied simultaneously -- in particular, $R$ and $G$ cannot both dispense 2 at the same time. 
 
+To calculate this, we could consider this case-by-case, starting with $\Pr[R=0, G=0]$, say. The probability in this case is 
+\[
+    f(0,0) = \frac{\binom{3}{0} \binom{2}{0} \binom{4}{2}}{\binom{9}{2}}
+\]
+and in general, $f(r, g)$ has a closed form: 
+\[
+    f(r,g) = \frac{\binom{3}{r} \binom{2}{g} \binom{4}{2-r-g}}{\binom{9}{2}}
+\]
+\end{solution}
 \begin{example}
 Given the pmf $f(x,y,z)$ of random variables $X,Y,Z$
 $$f(x,y,z) = \frac{(x+y)z}{63}\qquad x=1,2; y=1,2,3; z=1,2$$
 calculate $\Pr[X \dsp 2, Y+Z \leq 3]$.
 \end{example}
-
+\begin{solution}
+We can compute this probability by casework. The only possible triples $(x,y,z)$ that work are $(2,1,2)$, $(2,2,1)$, and (2,1,1). If we plug in directly, we get the total probability as 
+\[
+    \frac{(2+1)2}{63} + \frac{(2+2)1}{63} + \frac{(2+1)1}{63}  = \frac{13}{63}
+\]
+\end{solution}
 The last example hints at a definition for the cumulative
 distribution function for a pmf $f$. In the bivariate case the definition is
 \begin{definition}
@@ -269,12 +290,449 @@ Let $f(x,y)$ be the pmf of two random variables $X$ and $Y$. Then the distributi
 $$F(x,y) = \Pr[X \leq x, Y \leq y] = \sum_{u=-\infty}^x \sum_{v=-\infty}^y f(u,v)$$
 \end{definition}
 \begin{example}
-Determine the distribution function $F$ for the pmf defined in Example~\ref{ex:jar}
+Determine the distribution function $F$ for the pmf defined in Example~\ref{ex:jar}. 
 \end{example}
+\begin{solution}
+%% insert the solution here
+\end{solution}
 \begin{example}
-Write an expression for $\Pr[a<X\leq b, c< Y \leq d$] in terms of $F$. Be 
+Write an expression for $\Pr[a<X\leq b, c< Y \leq d$] in terms of $F$. %Be 
 careful to consider all the cases!
 \end{example}
+\begin{solution}
+It's best to think of this geometrically: 
+\end{solution}
 
 \subsection{Marginal and Conditional Distributions}
+Marginal distributions and conditional distributions reduce the number of variables in joint distribution functions and d
+
+\begin{definition}
+Given $X, Y$, and joint pmf $f(x,y)$, then $f_X(x)$ is the $X$-marginal distribution of $f$, where $f_X(x) = \Pr[X \dsp x]$. 
+\end{definition}
+We can write out what this means explicitly, in terms of a sum:
+\begin{theorem}
+\[
+    f_X(x) = \sum_y f(x,y)
+\]
+and 
+\[
+    f_Y(y) = \sum_x f(x,y)
+\]
+\end{theorem}
+It follows clearly that 
+\begin{example}
+Consider the following joint distribution function
+% X/Y 1 2
+% 1 0.4 0.3
+% 2 0.2 0.1
+Compute the marginal distributions for 
+\end{example}
+
+\begin{definition}
+Given random variables $X,Y$, and joint pmf $f(x,y)$, the conditional distribution function $f_{X|y}(x|y)$ is equal to 
+\[
+    f_{X|y}(x|y) = \frac{\Pr[X=x \cap Y=y]}{\Pr[Y=y]} = \frac{f(x,y)}{f_Y(y)}
+\]
+\end{definition}
+This is rather reminiscent of the Law of Total Probability 
+
+\begin{example}
+For the joint distribution function above, compute $f_{X|y}(1|Y=1)$.
+\end{example}
+\begin{solution}[Answer.]
+$\frac{0.4}{0.4 + 0.2} = \frac{0.4}{0.6} = \frac{2}{3}$.
+\end{solution}
+
+\begin{example}
+Suppose we flip a fair coin 4 times. Let $X$ be the number of heads in the first three tosses, and $Y$ be the number of heads in the last three tosses. Find $f(x,y)$, $f_X$, $f_Y$, $f_{X|y}$, and $f_{Y|x}$. 
+\end{example}
+\begin{solution}
+	TBD
+\end{solution}
+%% insert solution.
+
+\subsection{Exercises}
+\begin{enumerate}
+	\item Let $f(x,y) = k(x^2+y^2)$ be a pmf for $X,Y$ over the domain $0 \leq x + y \leq 4$
+	where $x,y \in \ZZ$.
+	\begin{enumerate}
+		\item Determine $k$
+		\item Calculate $f(1,1)$ and $f(2,3)$
+		\item Calculate $f_X(2)$ and $f_Y(1)$
+		\item Does $f_X(t) = f_Y(t)$?
+		\item Calculate $f_{X|y}(3|y=1)$ and $f_{Y|x}(2|x=2)$
+		\item Give a closed-form expression for $f_X(x)$ and $f_{X|y}(x|y)$
+	\end{enumerate}
+\end{enumerate}
+\subsection{Independent Random Variables}
+
+We have already encountered the concept of independent random events. Random variables
+are independent when their underlying random processes are independent, and this
+can be formalized with properties of the probability mass function. The definition
+we will use for independence is that, given two variables $X$ and $Y$, if the outcome
+of $Y$ has no effect on the outcome of $X$ then the two variables are independent. 
+This is another way of saying the conditional distribution of $X$, conditioned on $Y$
+is the same as the distribution of $X$. Formally
+\begin{definition}
+	Let $X$ and $Y$ be random variables with joint pmf $f(x,y)$. Then $X$ and $Y$
+	are \textit{independent} whenever
+	$$f_{X|y}(x|y) = f_X(x)$$
+	or, similarly when
+	$$f_{Y|x}(y|x) = f_Y(y)$$
+\end{definition}
+We will give one example
+\begin{example}
+	Let $f(x,y) = \dfrac{xy^2}{30}$ for integers $1 \leq x \leq 3, 1\leq y \leq 2$. The marginal distributions are
+	\begin{eqnarray*}
+		f_X(x) &=& \sum_{y=1}^2 f(x,y) = \dfrac{x}{30}(1^2+2^2) = \dfrac{x}{6} \\
+		f_Y(y) &=& \sum_{x=1}^3 f(x,y) = \dfrac{y}{30}(1+2+3) = \dfrac{y^2}{6}
+	\end{eqnarray*}
+	Therefore the conditional of $X$ given $Y$ is
+	$$f_{X|y}(X|y) = \dfrac{f(x,y)}{f_{Y}(y)} = \dfrac{xy^2/30}{y^2/6} = \dfrac{x}{5} = f_X(x).$$
+	It is instructive to note, in this case, that $f(x,y) = f_X(x)f_Y(y)$. This can be
+	shown to be equivalent to the given definition for independence.
+\end{example}
+\begin{remark}
+	Two variables $X$ and $Y$ are independent if and only if
+	$$f(x,y) = f_X(x)f_Y(y)$$ for all $x,y$ in the range of $X,Y$.
+\end{remark}
+
+\begin{exercises}
+\begin{enumerate}
+	\item %finan 43.3
+	The table gives the joint pdf of $X$ and $Y$
+	\begin{center}
+		\includegraphics[width=2in]{extab1.png}
+	\end{center}
+	Find $P(X|Y=4)$ for $X=3,4,5$
+	
+	\item %Finan 43.5
+	
+	 Two dice are rolled. Let $X$ and $Y$ denote,
+	 respectively, the largest and
+	smallest values obtained. Compute the conditional mass function of $Y$ given
+	$X = x$, for $x = 1, 2, \ldots, 6$. Are $X$ and $Y$ independent?
+	
+	\item %finan 43.6
+	Let $X$ and $Y$ be discrete random variables with joint pmf
+	$$f_{XY}(x,y) = \dfrac{n! y^x(p/e)^y(1-p)^{n-y}}{y!(n-y)x!}
+	\qquad y=0,1,\ldots,n; x=0,1,\ldots$$
+	\begin{enumerate}
+		\item Find $f_Y(y)$
+		\item Find $f_{X|Y}(x|Y=y)$
+		\item Are $X$ and $Y$ independent? Why?
+	\end{enumerate}
+
+	\item %finan 43.8
+	Let $X$ and $Y$ be discrete random variables with joint pmf
+	$$f_{XY} = c(1-2^{-x})^y\qquad 0\leq x \leq N-1, y\geq 0$$
+	\begin{enumerate}
+		\item Find $c$
+		\item Find $f_X(x)$
+		\item Find $f_{Y|X}(y|x)$
+	\end{enumerate}
+
+	\item %finan 43.12
+	Suppose that discrete random variables $X$ and $Y$ each take only the values 0
+	and 1. It is known that $P(X = 0|Y = 1) = 0.6$ and $P(X = 1|Y = 0) = 0.7$.
+	Is it possible that $X$ and $Y$ are independent? Justify your conclusion.
+	
+	\item %finan 43.15
+	Let $X$ be the annual number of hurricanes hitting Florida, and let $Y$ be
+	the annual number of hurricanes hitting Texas. $X$ and $Y$ are independent
+	random variables with pmf:
+	\begin{eqnarray*}
+		f(x) &=& \dfrac{1.7^x}{x!}e^{-1.7} \qquad x\geq 0 \\
+		g(y) &=& \dfrac{2.3^y}{y!}e^{-2.3} \qquad y\geq 0
+	\end{eqnarray*}
+	respective means 1.70 and 2.30.
+	Calculate $\Pr[X − Y=k |X + Y = 3]$ for all $k$ in the 
+	domain of $X-Y$.
+	
+	\item %finan 43.18
+	A box contain 4 reds, 3 whites and 2 blues. A random sample of 3 balls is
+	chosen. Let $R$ and $W$ be the number of red and white balls chosen. What is
+	the conditional probability of $W = 2$ given that $R = 1$?
+	
+	\item %finan 43.21
+	The probability of $x$ losses occurring in year $1$ is 
+	$(0.5)^{x+1} , \qquad x = 0, 1, 2,\ldots$
+	The probability of $y$ losses in year 2 given $x$ losses in year 1 is given by the table:
+	\begin{center}
+	\includegraphics[width=2in]{extab2.png}
+	\end{center}	
+	Calculate the probability of exactly 2 losses in 2 years.
+	
+	\item %finan 43.22
+	A flood insurance company determines that $N$, the number of claims received
+	in a month, is a random variable with $\Pr[N=n] = \dfrac{2}{3^{n+1}}$ 
+	for non-negative integers $n$.
+	The numbers of claims received in different months are mutually independent. Calculate the probability that more than three claims will be received
+	during a consecutive two-month period, given that fewer than two claims
+	were received in the first of the two months.
+	
+\end{enumerate}
+\end{exercises}
+
+%--------------------------------------------------------------
+%--------------------------------------------------------------
+%--------------------------------------------------------------
+\section{Continuous Random Variables}
+The concepts we have studied so far with discrete random variables and mass functions transfer
+almost immediately to continuous random variables, where sums are "replaced" with integrals. The fundamental underlying difference in interpretation is that a probability mass function becomes, in the continuous case, a probability \textit{density} function.
+
+\subsection{Probability Density Functions}
+\begin{definition}
+Let $X$ be a random variable. A function $f(x)$ from the domain of $X$ into $\RR$ is a \textit{probability density function} (pdf) if it satisfies the following
+\begin{enumerate}
+    \item $f(x) \geq 0$ for all $x$ in the domain of $f$
+    \item $\Pr[x \in A] = \Pr[A] = \int_A f(x) \dx$ gives the probability
+    that the random variable $X$ dispenses an element of the set $A$
+    \item $\int_\mathcal{A} f(x) \dx = 1$ where $\mathcal{A}$ is the entire domain
+    of the random variable $X$
+\end{enumerate}
+\end{definition}
+%
+Notice the third property above is general enough to allow integrating over any measurable set. Indeed, in almost
+all cases we will encounter problems where we integrated over contiguous sets such as intervals. In this case we can write
+$$\Pr[a < X < b] = \int_a^b f(x) \dx.$$
+\begin{example}
+    Let $f(x)=e^{-x}$ be the pdf of $X$ defined over $\mathcal{A} = \{x | 0<x<\infty\}$. Find
+    \begin{enumerate}
+        \item $\Pr[0<X<1]$
+        \item $\Pr[X>10]$
+        \item $\Pr[X \dsp 3]$
+    \end{enumerate}
+\end{example}
+\begin{solution}
+Each of the probabilities becomes an integral computation.
+    \begin{enumerate}
+        \item $\displaystyle \int_0^1 f(x)\dx = 1-\dfrac{1}{e}$
+        \item $\displaystyle \int_{10}^\infty f(x)\dx = \dfrac{1}{e^{10}}$
+        \item $\displaystyle \int_3^3 f(x)\dx = 0 $ even though $f(3) = \dfrac{1}{e^3}$
+    \end{enumerate}
+In the last item notice a fundamental difference between probability density functions and probability mass functions.
+In the case of a pdf, the value of $f(x)$ at any point $x$ does \textit{not} give a probability but rather a density.
+The probability that $X \dsp k$ for any constant $k$ is 0 whenever $X$ is a continuous random variable. We can determine
+a non-zero probability that $X$ is within a given interval of $k$ by integrating the density function and determining a probability "mass" near the point.
+\end{solution}
+
+\begin{example}
+Let $X$ be a random variable on $mathcal{A} = \{x \, | \, 0<x<1\}$ with pdf $f(x) = cx^2$. Determine $c$.
+\end{example}
+\begin{solution}
+Since $f$ is a pdf
+\begin{eqnarray*}
+    \int_0^1 f(x) \dx &=& 1 \\
+    \int_0^1 cx^2 \dx&=& 1 \\
+    \dfrac{c}{3} &=& 1 \\
+    c &=& 3
+\end{eqnarray*}
+\end{solution}
+
+\subsection{Cumulative Distribution Function}
+\begin{definition}
+The \textit{cumulative distribution function} (cdf) of a random variable $X$ with pdf $f$ is defined as
+$$F(x) = \Pr[X < x] = \int_{-\infty}^x f(t) \dt$$
+in which it is assumed $f(x)$ is defined over all the reals, with positive density in the support of $X$ and zero density
+elsewhere.
+\end{definition}
+
+\begin{example}
+Find the CDF for each of the following PDFs.
+\begin{enumerate}
+    \item $f(x) = \dfrac{1}{\pi(1+x^2)}$ where $x \in \RR$
+    \item $f(x) = \dfrac{e^{-x}}{(1+e^{-x})^2}$ where $x \in \RR$
+    \item $f(x) = \dfrac{a-1}{(1-x)^a}$ where $0<x<\infty$
+    \item $f(x) = k\alpha x^{\alpha-1}e^{-kx^{\alpha}}$ for $ 0<x<\infty,\,k<0,\,\alpha>0$
+\end{enumerate}
+\begin{solution}
+The CDFs are found by integrating
+
+\begin{enumerate}
+    \item $F(x) = \dfrac{1}{\pi}\arctan x + \dfrac{1}{2}$
+    \item $F(x) = \dfrac{1}{1+e^{-x}}$
+    \item $F(x) = 
+        \begin{cases}
+            1 - \dfrac{1}{(1+x)^{\alpha-1}} & x>0\\
+            0 & x \leq 0
+        \end{cases}$
+    \item $F(x) =
+        \begin{cases}
+            1 - e^{-kx^\alpha} & x>0 \\
+            0 & x \leq 0
+        \end{cases}$
+\end{enumerate}
+Where in the last two we are careful to set the lower bound of integration to 0, given the definition of $f(x)$.
+\end{solution}
+\end{example}
+\subsection{Joint Density Functions: Cumulative, Marginal and Conditional}
+Given two random variables $X,Y$ over continuous spaces, the joint pdf can be defined
+analogously to a discrete joint pmf.
+\begin{definition}
+Given continuous random variables $X,Y$, the function $f(x,y)$ is a \textit{joint pdf} for $X,Y$
+if 
+\begin{enumerate}
+    \item $f(x,y) \geq 0$ for all $x,y \in \RR^2$
+    \item $\displaystyle\int\!\!\int_{\RR^2} f(x,y) \dx \dy  = 1$
+\end{enumerate}
+\end{definition}
+Similarly we can extend the definitions already given for cumulative, marginal, and conditional distributions
+\begin{definition}
+    Given two random variables $X,Y$
+    \begin{itemize}
+        \item The \textbf{cumulative distribution function} $F(x,y)$ is defined
+        $$F(x,y) = \Pr[X<x,Y<y] = \int_{-\infty}^y \!\! \int_{-\infty}^x f(u,v) \du \dv$$
+        \item The \textbf{marginal distribution function} $f_X(x)$ is computed
+        by integrating out the $y$ values
+        $$ f_X(x) = \int_{-\infty}^{\infty} f(x,y) \dy $$
+        \item The \textbf{condition distribution of $X$ given $Y$} is computed by dividing the 
+        joint pdf by the marginal of $Y$:
+        $$f_{X|y}(x|y) = \dfrac{f(x,y)}{f_Y(y)} = \dfrac{f(x,y)}{\int_{-\infty}^{\infty} f(x,y) \dx }$$
+    \end{itemize}
+\end{definition}
+\begin{example}
+Let $f(x,y) = x+y$ be the pdf for $X,Y$ over the square $0<x<1, 0<y<1$. Determine the 
+CDF $F(x,y)$.
+\end{example}
+\begin{solution}
+First note that the definition of $F$ will have 5 pieces: when $x<0$ or $y<0$, when $x>1,0<y<1$,
+when $y>1, 0<x<1$, when $0<x<1, 0<y<1$ and when $x>1,y>1$. In the first case there is no probability density so $F(x,y) = 0$. To handle the other cases we will first compute $G(x,y)
+ = \int_0^y\int_0^x f(x,y) \dx \dy$ so
+ $$G(x,y) = \dfrac{xy}{2}(x+y), \; x>0, y>0.$$
+ To solve the problem, notice that $F(x,y) = G(x,y)$ when both arguments are within the unit square. But if $x>1$, then $F(x,y) = G(1,y)$ because $\Pr[X>1] = 0$. Similarly if $y>1$,
+ $F(x,y) = G(x,1)$. And finally if $x>1,y>1$ then $F(x,y) = G(1,1) = 1$. So
+ $$F(x,y) = 
+    \begin{cases}
+        \dfrac{xy}{2}(x+y) & 0<x<1, 0<y<1 \\[4ex]
+        \dfrac{y}{2}(1+y) & 0<y<1, x>1 \\[4ex]
+        \dfrac{x}{2}(x+1) & 0<x<1, y>1 \\[4ex]
+        1 & x>1, y>1 \\
+        0 & \mbox {otherwise}
+    \end{cases}$$
+\end{solution}
+\subsection{Mixed Distributions}
+\subsection{Functions of Random Variables}
+
+\begin{exercises}
+\begin{enumerate}
+	\item Let $f(x) = \dfrac{c}{(x+1)^3}$ be a pdf for $x \geq 0$. Determine the value of $c$ %finan 28.1
+	
+	\item The lifetime $X$ of a battery (in hours)
+	has a density function given by
+	$$f(x) = 
+	\begin{cases}
+		2x & 0 \leq x < \frac12 \\
+		\frac34 & 2 < x < 3 
+	\end{cases}$$
+	Find the probability that a battery will last for more than 15 minutes. %finan 28.4
+	
+	\item %finan 28.5
+	Let $F(x)$ be a CDF defined below.
+	$$F(x) = 
+	\begin{cases}
+		0	& x<0\\
+		x/2 	& 0 \leq x < 1 \\
+		(x+2)/6	& 1 \leq x < 4 \\
+		1		& x \geq 4
+	\end{cases}$$
+	Find the pdf $f(x)$ corresponding to $F$.
+	
+	\item %finan 28.7
+	A mixed random variable $X$ has CDF
+	$$F(x) = 
+	\begin{cases}
+	0		& x<0\\
+	\dfrac{e^x}{e^x+1}	& x \geq 0
+	\end{cases}$$
+	\begin{enumerate}
+		\item Find the pdf
+		\item Find $\Pr[0 < X \leq 1]$
+	\end{enumerate}
+	
+	\item %finan 28.24
+	Let $X$ be a continuous random variable with probability density function
+		$$f(x) = \lambda e^{-\lambda x}$$
+		where $\lambda > 0$. Let $Y$ be the smallest integer greater than or equal to $X$.
+	Determine the probability density function of $Y$.
+	
+	\item %finan 28.14
+	Let $X$ have pdf $$f(x) = \dfrac{3x^2}{\theta^3} \;
+	0 < x < \theta.$$ If $\Pr[X>1] = \frac78$, find $\theta$
+	
+	\item %finan 28.9
+	The loss due to a fire in a commercial building is modeled by a random
+	variable $X$ with density function
+	$$f(x) = 0.005(20-x) \qquad 0<x<20$$
+	Given that a fire loss exceeds 8, what is the probability that
+	it exceeds 16?
+	
+	\item %finan 28.12
+	An insurance company insures a large number of homes. The insured value,
+	$X$, of a randomly selected home is assumed to follow a distribution with
+	density function
+	$$f(x) = 3x^{-4} \qquad x>1$$
+	Given that a randomly selected home is insured for at least
+	1.5, what is the probability that it is insured for less than 
+	2?
+	
+	\item %finan 28.15
+	Let $X$ be a continuous random variable with density function
+	$$f(x) = \dfrac{|x|}{10} \qquad -2 \leq x \leq 4$$
+	Calculate $\displaystyle \int_{-\infty}^\infty xf(x)\dx$.
+	
+	\item %finan 28.23
+	A large university will begin a 13-day period during which students may register for that semester’s courses. Of those 13 days, the number of elapsed days
+	before a randomly selected student registers has a continuous distribution
+	with density function $f(t)$ that is symmetric about $t = 6.5$ and proportional
+	to $\dfrac{1}{t+1}$
+	between days 0 and 6.5.
+	A student registers at the 60th percentile of this distribution. Calculate the
+	number of elapsed days in the registration period for this student.
+	
+\end{enumerate}
+\end{exercises}
 \end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
