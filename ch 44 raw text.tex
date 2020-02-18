@@ -1,268 +1,129 @@
-Practice Problems
-Problem 44.1
+\begin{exercises}
+\begin{enumerate}
+\item %finan 44.1
 Let $X$ and Y be two random variables with joint density function
-
-otherwise.
-Find $f_{X|Y}(x|y)$, the conditional probability density function of $X$ given Y =
-y. Sketch the graph of f X|Y (x|0.5).
-
+$$f_{XY}=5x^2y \qquad -1 \leq x \leq 1, 0 < y < |x$$
+Find $f_{X|Y}(x|y)$, the conditional probability density function of $X$ given $Y =
+y.$ Sketch the graph of $f_{X|Y}(x|0.5).$
 
 
-Problem 44.2
+
+\item %finan 44.2
 Suppose that $X$ and $Y$ have joint density function
-
-8xy 0 ≤ $X$ < y ≤ 1
-f_{XY}(x,y) =
-0
-otherwise.
-Find $f_{X|Y}(x|y)$, the conditional probability density function of $X$ given Y =
-y.
+$$f_{XY} = 8xy \qquad 0 \leq x < y \leq 1$$
+Find $f_{X|Y}(x|y)$, the conditional probability density function of $X$ given $Y =
+y.$
 
 
 
+\item %finan 44.3
+Suppose that $X$ and $Y$ have joint density function
+$$f_{XY}=\dfrac{3y^2}{x^3} 0 \leq y <x \leq 1$$
+Find $f_{Y|X}(y|x)$, the conditional probability density function of $Y$ given $X=x$.
 
-Problem 44.3
-Suppose that $X$ and Y have joint density function
- 3y 2
-0 ≤ y<x ≤ 1
-x 3
-f_{XY}(x,y) =
-0
-otherwise.
-Find f Y |X (y|x), the conditional probability density function of $Y$ given $X$ =
-x.
-
-
-
-
-Problem 44.4
+\item %finan 44.4
 The joint density function of $X$ and $Y$ is given by
- −x(y+1)
-xe
-x ≥ 0, y ≥ 0
-f_{XY}(x,y) =
-0
-otherwise.
-Find the conditional density of $X$ given $Y = y$ and that of $Y$ given $X$ = x.
+$$f_{XY}(x,y) = xe^{-x(y+1)}\qquad x \geq 0, y \geq 0$$
+Find the conditional density of $X$ given $Y = y$ and that of $Y$ given $X = x$.
 
 
 
-Problem 44.5
+\item %finan 44.5
 Let $X$ and $Y$ be continuous random variables with conditional and marginal
 p.d.f.’s given by
+\begin{eqnarray*}
+  f_X(x) &=& \dfrac{x^3e^{-x}}{6} \qquad x>0 \\
+  f_{Y|X}(y|x) = \dfrac{3y^2}{x^3} \qquad 0<y<x
+\end{eqnarray*}
 
-where I A (x) is the indicator function of A.
-(a) Find the joint p.d.f. of $X$ and $Y$.
-(b) Find the conditional p.d.f. of $X$ given $Y = y$.
-f Y |X (y|x) =
+\begin{enumerate}
+  \setlength\itemsep{-0.5ex}
+  \item Find the joint p.d.f. of $X$ and $Y$.
+  \item Find the conditional p.d.f. of $X$ given $Y = y$.
+\end{enumerate}
 
 
-Problem 44.6
+\item %finan 44.6
 Suppose $X$, $Y$ are two continuous random variables with joint probability
 density function
-
-12xy(1 − x) 0 < x, y < 1
-f_{XY}(x,y) =
-0
-otherwise.
-(a) Find $f_{X|Y}(x|y)$. Are $X$ and $Y$ independent?
-(b) Find P(Y < 2 1 |X > 2 1 ).
+$$f_{XY}(x,y) = 12xy(1-x) \qquad 0<x,y<1$$
+\begin{enumerate}
+\item Find $f_{X|Y}(x|y)$. Are $X$ and $Y$ independent?
+\item Find $\Pr[Y \leq \frac12 | X > \frac12]
+\end{enumerate}
 
 
-
-Problem 44.7
-The joint probability density function of the random variables $X$ and $Y$ is
-given by
- 1
-x − y + 1 1 ≤ $X$ ≤ 2, 0 ≤ y ≤ 1
-3
-f_{XY}(x,y) =
-0
-otherwise.
-(a) Find the conditional probability density function of $X$ given $Y$ = y.
-(b) Find P(X < 32 |Y = 2 1 ).
-
-
-
-Problem 44.8 ‡
+\item %finan 44.8 ‡
 
 Let $X$ and $Y$ be continuous random variables with joint density function
-
-24xy 0 < $X$ < 1, 0 < y < 1 − x
-f_{XY}(x,y) =
-0
-otherwise.
-
-Calculate P Y < X|X = 13 .
+$$f_{XY}(x,y) = 24xy \qquad 0<x<1, 0<y<1-x$$
+Calculate $\Pr[ Y < X|X = \frac13]$ .
 
 
 
-Problem 44.9 ‡
-Once a fire is reported to a fire insurance company, the company makes an
-initial estimate, X, of the amount it will pay to the claimant for the fire loss.
-When the claim is finally settled, the company pays an amount, Y, to the
-claimant. The company has determined that $X$ and $Y$ have the joint density
-function
-
-2
-y −(2x−1)/(x−1) $X$ > 1, y > 1
-x 2 (x−1)
-f_{XY}(x,y) =
-0
-otherwise.432
-JOINT DISTRIBUTIONS
-Given that the initial claim estimated by the company is 2, determine the
-probability that the final settlement amount is between 1 and 3 .
 
 
-
-Problem 44.10 ‡
+\item %finan 44.10 ‡
 A company offers a basic life insurance policy to its employees, as well as a
 supplemental life insurance policy. To purchase the supplemental policy, an
 employee must first purchase the basic policy.
 Let $X$ denote the proportion of employees who purchase the basic policy, and
 Y the proportion of employees who purchase the supplemental policy. Let
-X and $Y$ have the joint density function f_{XY}(x,y) = 2(x + y) on the region
+X and $Y$ have the joint density function$ f_{XY}(x,y) = 2(x + y)$ on the region
 where the density is positive.
-Given that 10% of the employees buy the basic policy, what is the probability
-that fewer than 5% buy the supplemental policy?
+Given that 10\% of the employees buy the basic policy, what is the probability
+that fewer than 5\% buy the supplemental policy?
 
 
 
-Problem 44.11 ‡
+\item %finan 44.11 ‡
 An auto insurance policy will pay for damage to both the policyholder’s car
 and the other driver’s car in the event that the policyholder is responsible
 for an accident. The size of the payment for damage to the policyholder’s
-car, X, has a marginal density function of 1 for 0 < $X$ < 1. Given $X$ = x, the
+car, X, has a marginal density function of 1 for $0 < X < 1$. Given $X = x$, the
 size of the payment for damage to the other driver’s car, Y, has conditional
-density of 1 for $X$ < y < $X$ + 1.
+density of 1 for $X < y < X + 1$.
+
 If the policyholder is responsible for an accident, what is the probability that
 the payment for damage to the other driver’s car will be greater than 0.5?
 
 
 
-Problem 44.12 ‡
-You are given the following information about N, the annual number of
-claims for a randomly selected insured:
-1
-2
-1
-P(N = 1) =
-3
-1
-P(N > 1) =
-6
-P(N = 0) =
-Let S denote the total annual claim amount for an insured. When N = 1, S
-is exponentially distributed with mean 5 . When N > 1, S is exponentially
-distributed with mean 8 . Determine P(4 < S < 8).44 CONDITIONAL DISTRIBUTIONS: CONTINUOUS CASE
-433
-
-
-
-Problem 44.13
-Let $Y$ have a uniform distribution on the interval (0, 1), and let the con-
-√
-ditional distribution of $X$ given $Y = y$ be uniform on the interval (0, y).
-What is the marginal density function of $X$ for $0 < X < 1$?
-
-
-
-Problem 44.14 ‡
-The distribution of Y, given X, is uniform on the interval [0, X]. The marginal
-density of $X$ is
-
-2x for 0 < $X$ < 1
-f $X$ (x) =
-0
-otherwise.
-Determine the conditional density of X, given $Y = y$ > 0.
-
-
-
-Problem 44.15
-Suppose that $X$ has a continuous distribution with p.d.f. f $X$ (x) = 2x on
-(0, 1) and 0 elsewhere. Suppose that $Y$ is a continuous random variable such
-that the conditional distribution of $Y$ given $X$ = $X$ is uniform on the interval
-(0, x). Find the mean and variance of Y.
-
-
-
-Problem 44.16 ‡
-An insurance policy is written to cover a loss $X$ where $X$ has density function
- 3 2
-x 0 ≤ $X$ ≤ 2
-8
-f $X$ (x) =
-0 otherwise.
-The time T (in hours) to process a claim of size x, where 0 ≤ $X$ ≤ 2, is
-uniformly distributed on the interval from $X$ to 2x.
-Calculate the probability that a randomly chosen claim on this policy is
-processed in three hours or more.
-
-
-
-Problem 44.17 ‡
+\item %finan 44.17 ‡
 A machine has two components and fails when both components fail. The
-number of years from now until the first component fails, X, and the number
-of years from now until the machine fails, Y, are random variables with joint
+number of years from now until the first component fails, $X$, and the number
+of years from now until the machine fails, $Y$, are random variables with joint
 density function
-
-1 − (x+y)
-e 6
-for 0 < $X$ < y
-18
-f_{XY}(x,y) =
-0
-otherwise.
-Find f Y |X (y|2).434
-JOINT DISTRIBUTIONS
+$$f_{XY} = \dfrac{1}{18}e^{-(x+y)/6} \qquad 0<x<y$$
+Find $f_{Y |X}(y|x=2)$
 
 
-
-Problem 44.18 ‡
+\item %finan 44.18 ‡
 As a block of concrete is put under increasing pressure, engineers measure the
 pressure $X$ at which the first fracture appears and the pressure $Y$ at which
 the second fracture appears. $X$ and $Y$ are measured in tons per square inch
 and have joint density function
-
-24x(1 − y) for 0 < $X$ < y < 1
-f_{XY}(x,y) =
-0
-otherwise.
+
+$$f_{XY}=24x(1-y) \qquad 0<x<y<1$$
+
 Calculate the conditional density of the pressure at which the second fracture
-appears, given that the first fracture appears at 1/3 ton per square inch.
+appears, given that the first fracture appears at $1/3$ ton per square inch.
 
 
-Problem 44.19
-
-f_{XY}(x,y) =
-k for 0 < $X$ < y < 1
-0
-otherwise.
-Determine $f_{X|Y}(x|y)$ and f $Y$ |X (y|x).
-
-
-Problem 44.20
+\item %finan 44.20
 Let $X$ and $Y$ be two continuous random variables with joint density function
-f_{XY}(x,y). Show that
-$f_{X|Y}(x|y)$f Y (y)
-.
-f (x|y)f Y (y)dy
-−∞ X|Y
-f Y |X (y|x) = R ∞
+$f_{XY}(x,y)$.
 
+$$f_{Y|X}(y|x) = \dfrac{f_{X|Y}f_Y(y)}{\int_{-\infty}^{infty}f_{X|Y}(x|y)f_Y(y)\dy}.$$
 
-Problem 44.21 ‡
+\item %finan 44.21 ‡
 The elapsed time, T, between the occurrence and the reporting of an accident
 has probability density function
- 8t−t 2
-for 0 < t < 6
-72
-f T (t) =
-0
-otherwise.
-Given that T = t, the elapsed time between the reporting of the accident
-and payment by the insurer is uniformly distributed on [2 + t, 10].
+$$f_T(t) = \dfrac{8t-t^2}{72} \qquad 0<t<6$$
+
+Given that $T = t$, the elapsed time between the reporting of the accident
+and payment by the insurer is uniformly distributed on $[2 + t, 10]$.
 Calculate the probability that the elapsed time between the occurrence of
 the accident and payment by the insurer is less than 4.
+\end{enumerate}
+\end{exercises}

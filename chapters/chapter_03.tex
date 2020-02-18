@@ -628,7 +628,7 @@ a non-zero probability that $X$ is within a given interval of $k$ by integrating
 \end{solution}
 
 \begin{example}
-Let $X$ be a random variable on $mathcal{A} = \{x \, | \, 0<x<1\}$ with pdf $f(x) = cx^2$. Determine $c$.
+Let $X$ be a random variable on $\mathcal{A} = \{x \, | \, 0<x<1\}$ with pdf $f(x) = cx^2$. Determine $c$.
 \end{example}
 \begin{solution}
 Since $f$ is a pdf
@@ -676,54 +676,8 @@ The CDFs are found by integrating
 Where in the last two we are careful to set the lower bound of integration to 0, given the definition of $f(x)$.
 \end{solution}
 \end{example}
-\subsection{Joint Density Functions: Cumulative, Marginal and Conditional}
-Given two random variables $X,Y$ over continuous spaces, the joint pdf can be defined
-analogously to a discrete joint pmf.
-\begin{definition}
-Given continuous random variables $X,Y$, the function $f(x,y)$ is a \textit{joint pdf} for $X,Y$
-if 
-\begin{enumerate}
-    \item $f(x,y) \geq 0$ for all $x,y \in \RR^2$
-    \item $\displaystyle\int\!\!\int_{\RR^2} f(x,y) \dx \dy  = 1$
-\end{enumerate}
-\end{definition}
-\noindent
-Similarly we can extend the definitions already given for cumulative, marginal, and conditional distributions
-\begin{definition}
-    Given two random variables $X,Y$
-    \begin{itemize}
-        \item The \textbf{cumulative distribution function} $F(x,y)$ is defined
-        $$F(x,y) = \Pr[X<x,Y<y] = \int_{-\infty}^y \!\! \int_{-\infty}^x f(u,v) \du \dv$$
-        \item The \textbf{marginal distribution function} $f_X(x)$ is computed
-        by integrating out the $y$ values
-        $$ f_X(x) = \int_{-\infty}^{\infty} f(x,y) \dy $$
-        \item The \textbf{condition distribution of $X$ given $Y$} is computed by dividing the 
-        joint pdf by the marginal of $Y$:
-        $$f_{X|y}(x|y) = \dfrac{f(x,y)}{f_Y(y)} = \dfrac{f(x,y)}{\int_{-\infty}^{\infty} f(x,y) \dx }$$
-    \end{itemize}
-\end{definition}
-\begin{example}
-Let $f(x,y) = x+y$ be the pdf for $X,Y$ over the square $0<x<1, 0<y<1$. Determine the 
-CDF $F(x,y)$.
-\end{example}
-\begin{solution}
-First note that the definition of $F$ will have 5 pieces: when $x<0$ or $y<0$, when $x>1,0<y<1$,
-when $y>1, 0<x<1$, when $0<x<1, 0<y<1$ and when $x>1,y>1$. In the first case there is no probability density so $F(x,y) = 0$. To handle the other cases we will first compute $G(x,y)
- = \int_0^y\int_0^x f(x,y) \dx \dy$ so
- $$G(x,y) = \dfrac{xy}{2}(x+y), \; x>0, y>0.$$
- To solve the problem, notice that $F(x,y) = G(x,y)$ when both arguments are within the unit square. But if $x>1$, then $F(x,y) = G(1,y)$ because $\Pr[X>1] = 0$. Similarly if $y>1$,
- $F(x,y) = G(x,1)$. And finally if $x>1,y>1$ then $F(x,y) = G(1,1) = 1$. So
- $$F(x,y) = 
-    \begin{cases}
-        \dfrac{xy}{2}(x+y) & 0<x<1, 0<y<1 \\[4ex]
-        \dfrac{y}{2}(1+y) & 0<y<1, x>1 \\[4ex]
-        \dfrac{x}{2}(x+1) & 0<x<1, y>1 \\[4ex]
-        1 & x>1, y>1 \\
-        0 & \mbox {otherwise}
-    \end{cases}$$
-\end{solution}
-\subsection{Mixed Distributions}
-\subsection{Functions of Random Variables}
+\subsection{Conditional Distributions}
+Need an example here like $Pr[X>3 | X>0]$
 
 \begin{exercises}
 \begin{enumerate}
@@ -803,6 +757,270 @@ when $y>1, 0<x<1$, when $0<x<1, 0<y<1$ and when $x>1,y>1$. In the first case the
 	
 \end{enumerate}
 \end{exercises}
+
+\subsection{Joint Density Functions: Cumulative, Marginal and Conditional}
+Given two random variables $X,Y$ over continuous spaces, the joint pdf can be defined
+analogously to a discrete joint pmf.
+\begin{definition}
+Given continuous random variables $X,Y$, the function $f(x,y)$ is a \textit{joint pdf} for $X,Y$
+if 
+\begin{enumerate}
+    \item $f(x,y) \geq 0$ for all $x,y \in \RR^2$
+    \item $\displaystyle\int\!\!\int_{\RR^2} f(x,y) \dx \dy  = 1$
+\end{enumerate}
+\end{definition}
+\noindent
+Similarly we can extend the definitions already given for cumulative, marginal, and conditional distributions
+\begin{definition}
+    Given two random variables $X,Y$
+    \begin{itemize}
+        \item The \textbf{cumulative distribution function} $F(x,y)$ is defined
+        $$F(x,y) = \Pr[X<x,Y<y] = \int_{-\infty}^y \!\! \int_{-\infty}^x f(u,v) \du \dv$$
+        \item The \textbf{marginal distribution function} $f_X(x)$ is computed
+        by integrating out the $y$ values
+        $$ f_X(x) = \int_{-\infty}^{\infty} f(x,y) \dy $$
+        \item The \textbf{condition distribution of $X$ given $Y$} is computed by dividing the 
+        joint pdf by the marginal of $Y$:
+        $$f_{X|y}(x|y) = \dfrac{f(x,y)}{f_Y(y)} = \dfrac{f(x,y)}{\int_{-\infty}^{\infty} f(x,y) \dx }$$
+    \end{itemize}
+\end{definition}
+\begin{example}
+Let $f(x,y) = x+y$ be the pdf for $X,Y$ over the square $0<x<1, 0<y<1$. Determine the 
+CDF $F(x,y)$.
+\end{example}
+\begin{solution}
+First note that the definition of $F$ will have 5 pieces: when $x<0$ or $y<0$, when $x>1,0<y<1$,
+when $y>1, 0<x<1$, when $0<x<1, 0<y<1$ and when $x>1,y>1$. In the first case there is no probability density so $F(x,y) = 0$. To handle the other cases we will first compute $G(x,y)
+ = \int_0^y\int_0^x f(x,y) \dx \dy$ so
+ $$G(x,y) = \dfrac{xy}{2}(x+y), \; x>0, y>0.$$
+ To solve the problem, notice that $F(x,y) = G(x,y)$ when both arguments are within the unit square. But if $x>1$, then $F(x,y) = G(1,y)$ because $\Pr[X>1] = 0$. Similarly if $y>1$,
+ $F(x,y) = G(x,1)$. And finally if $x>1,y>1$ then $F(x,y) = G(1,1) = 1$. So
+ $$F(x,y) = 
+    \begin{cases}
+        \dfrac{xy}{2}(x+y) & 0<x<1, 0<y<1 \\[4ex]
+        \dfrac{y}{2}(1+y) & 0<y<1, x>1 \\[4ex]
+        \dfrac{x}{2}(x+1) & 0<x<1, y>1 \\[4ex]
+        1 & x>1, y>1 \\
+        0 & \mbox {otherwise}
+    \end{cases}$$
+\end{solution}
+
+\begin{exercises}
+\begin{enumerate}
+\item %finan 44.1
+Let $X$ and Y be two random variables with joint density function
+$$f_{XY}=5x^2y \qquad -1 \leq x \leq 1, 0 < y < |x$$
+Find $f_{X|Y}(x|y)$, the conditional probability density function of $X$ given $Y =
+y.$ Sketch the graph of $f_{X|Y}(x|0.5).$
+
+
+
+\item %finan 44.2
+Suppose that $X$ and $Y$ have joint density function
+$$f_{XY} = 8xy \qquad 0 \leq x < y \leq 1$$
+Find $f_{X|Y}(x|y)$, the conditional probability density function of $X$ given $Y =
+y.$
+
+
+
+\item %finan 44.3
+Suppose that $X$ and $Y$ have joint density function
+$$f_{XY}=\dfrac{3y^2}{x^3} 0 \leq y <x \leq 1$$
+Find $f_{Y|X}(y|x)$, the conditional probability density function of $Y$ given $X=x$.
+
+\item %finan 44.4
+The joint density function of $X$ and $Y$ is given by
+$$f_{XY}(x,y) = xe^{-x(y+1)}\qquad x \geq 0, y \geq 0$$
+Find the conditional density of $X$ given $Y = y$ and that of $Y$ given $X = x$.
+
+
+
+\item %finan 44.5
+Let $X$ and $Y$ be continuous random variables with conditional and marginal
+p.d.f.’s given by
+
+\begin{eqnarray*}
+  f_X(x) &=& \dfrac{x^3e^{-x}}{6} \qquad x>0 \\
+  f_{Y|X}(y|x) &=& \dfrac{3y^2}{x^3} \qquad 0<y<x
+\end{eqnarray*}
+
+\begin{enumerate}
+  \setlength\itemsep{-0.5ex}
+  \item Find the joint p.d.f. of $X$ and $Y$.
+  \item Find the conditional p.d.f. of $X$ given $Y = y$.
+\end{enumerate}
+
+
+\item %finan 44.6
+Suppose $X$, $Y$ are two continuous random variables with joint probability
+density function
+$$f_{XY}(x,y) = 12xy(1-x) \qquad 0<x,y<1$$
+\begin{enumerate}
+\item Find $f_{X|Y}(x|y)$. Are $X$ and $Y$ independent?
+\item Find $\Pr[Y \leq \frac12 | X > \frac12]$
+\end{enumerate}
+
+
+\item %finan 44.8 ‡
+
+Let $X$ and $Y$ be continuous random variables with joint density function
+$$f_{XY}(x,y) = 24xy \qquad 0<x<1, 0<y<1-x$$
+Calculate $\Pr[ Y < X|X = \frac13]$ .
+
+
+
+
+
+\item %finan 44.10 ‡
+A company offers a basic life insurance policy to its employees, as well as a
+supplemental life insurance policy. To purchase the supplemental policy, an
+employee must first purchase the basic policy.
+Let $X$ denote the proportion of employees who purchase the basic policy, and
+Y the proportion of employees who purchase the supplemental policy. Let
+X and $Y$ have the joint density function $f_{XY}(x,y) = 2(x + y)$ on the region
+where the density is positive.
+Given that 10\% of the employees buy the basic policy, what is the probability
+that fewer than 5\% buy the supplemental policy?
+
+
+
+\item %finan 44.11 ‡
+An auto insurance policy will pay for damage to both the policyholder’s car
+and the other driver’s car in the event that the policyholder is responsible
+for an accident. The size of the payment for damage to the policyholder’s
+car, X, has a marginal density function of 1 for $0 < X < 1$. Given $X = x$, the
+size of the payment for damage to the other driver’s car, Y, has conditional
+density of 1 for $X < y < X + 1$.
+
+If the policyholder is responsible for an accident, what is the probability that
+the payment for damage to the other driver’s car will be greater than 0.5?
+
+
+
+\item %finan 44.17 ‡
+A machine has two components and fails when both components fail. The
+number of years from now until the first component fails, $X$, and the number
+of years from now until the machine fails, $Y$, are random variables with joint
+density function
+$$f_{XY} = \dfrac{1}{18}e^{-(x+y)/6} \qquad 0<x<y$$
+Find $f_{Y |X}(y|x=2)$
+
+
+\item %finan 44.18 ‡
+As a block of concrete is put under increasing pressure, engineers measure the
+pressure $X$ at which the first fracture appears and the pressure $Y$ at which
+the second fracture appears. $X$ and $Y$ are measured in tons per square inch
+and have joint density function
+
+$$f_{XY}=24x(1-y) \qquad 0<x<y<1$$
+
+Calculate the conditional density of the pressure at which the second fracture
+appears, given that the first fracture appears at $1/3$ ton per square inch.
+
+
+\item %finan 44.20
+Let $X$ and $Y$ be two continuous random variables with joint density function
+$f_{XY}(x,y)$. Show that
+
+$$f_{Y|X}(y|x) = \dfrac{f_{X|Y}f_Y(y)}{\int_{-\infty}^{\infty}f_{X|Y}(x|y)f_Y(y)\dy}.$$
+
+\item %finan 44.21 ‡
+The elapsed time, T, between the occurrence and the reporting of an accident
+has probability density function
+$$f_T(t) = \dfrac{8t-t^2}{72} \qquad 0<t<6$$
+
+Given that $T = t$, the elapsed time between the reporting of the accident
+and payment by the insurer is uniformly distributed on $[2 + t, 10]$.
+Calculate the probability that the elapsed time between the occurrence of
+the accident and payment by the insurer is less than 4.
+\end{enumerate}
+\end{exercises}
+
+\subsection{Mixed Distributions}
+\subsection{Functions of Random Variables}
+\section{Worked Examples}
+In this section we present a number of problems from class that cover a range of topics in Chapter 3.
+\begin{example}
+	Let $F(x,y) = (1-e^{-x})(1-e^{-y})$ on $x>0, y>0$. Find $f(x,y)$ and find 
+	$\Pr[1<X<3, 1<Y<2]$
+\end{example}
+\begin{example}
+	Let $f(x) = \begin{cases} x & 0<x<1 \\ 2-x & 1 \leq x < 2\end{cases}$. 
+	
+	Find the CDF $F(x)$.
+\end{example}
+\begin{example}
+	Let $f(x) = \begin{cases}1/3 & 0<x<1 \\ 1/3 & 2<x<4 \end{cases}$.
+	
+	State and graph the CDF $F(x)$
+\end{example}
+
+\begin{example}
+	Let the cdf of $Z$ be given by $F(z) = \begin{cases} 0 & z<-2 \\ \dfrac{z+4}{8} & -2 \leq z < 2 \\
+	1 & z \geq 2\end{cases}$.
+	
+	 Find
+	\begin{enumerate}
+		\setlength{\itemsep}{-0.5ex}
+		\item $\Pr[Z=-2]$
+		\item $\Pr[Z=2]$
+		\item $\Pr[-2 < Z < 1]$
+		\item $\Pr[0 \leq Z \leq 2]$
+	\end{enumerate}
+\end{example}
+
+\begin{example}
+	Let $X$ be a random variable with pdf $f(x) = \dfrac{1}{x^2}$ for $x>0$. 
+	Let $L(x) = x - \floor{x}$ be the fractional part of $x$. Determine the
+	probability that $L(X) < \frac14$, given that $L(X) < \frac12$.
+\end{example}
+
+\begin{example}
+	The loss $X$ from an accident is a random variable with pdf $f(x) = \dfrac{3}{1000^3}x^2$ for $0 \leq x \leq 1000$. The loss is insured with
+	deductible 500. Let $Y$ be the amount paid by the insurance company in event
+	of a loss. Give the pdf of $Y$. Also determine $\Pr[Y=0]$ and $\Pr[Y<100]$
+\end{example}
+
+\begin{example}
+	Suppose $X$ and $Y$ have joint pdf
+	$$f_{XY}(x,y) = \dfrac{1}{2} \qquad |X| + |Y| < 1$$
+	find (a) the marginal pdf of $X$ and (b) the conditional distribution of $Y$
+	given $X = \frac12$.
+\end{example}
+
+\begin{example}
+	Let $X$ be uniformly distributed on the interval $(0,1)$ and $Y$
+	uniformly distributed on the interval $(1-x,x)$ once $X \dsp x$ is given.
+	Determine (a) the joint pdf $f_{XY}$ and (b) $\Pr[Y \geq \frac12]$.
+\end{example}
+
+\begin{example}
+	Let $X$ and $Y$ be continuous random variables with joint pdf
+	$$f_{XY}(x,y) = \dfrac{1}{2} \qquad 0\leq y <x \leq 2.$$
+	Find the marginal densities for $X$ and $Y$.
+\end{example}
+
+\begin{example}
+	The joint pdf of $X$,$Y$ is given
+	$$f_{XY}(x,y) = \dfrac{e^{-\frac{x}{y}}e^{-y}}{y}\qquad x\geq 0, y>0$$
+	Compute $\Pr[X \geq 1 | Y=y]$.
+\end{example}
+
+\begin{example}
+	Let $X$ and $Y$ be random variables with pdf $$f_{XY}(x,y) = \dfrac{1}{x^2} + 
+	\dfrac{1}{y^2} \qquad 1\leq x,y \leq 2. $$ Determine $\Pr[X+Y>3]$
+\end{example}
+
+\begin{example}[Check this one]
+	Let $X$ and $Y$ be random variables with pdf 
+	$$f_{XY}(x,y) = k \dfrac{|xy|}{x^2+y^2} \qquad x,y > 0$$ Calculate the probability
+	that $4 < X^2+Y^2 < 9$
+\end{example}
+
+\begin{example}
+	Let the pdf of $X$ be given by $f(x) = \dfrac{|x-1|}{36},\;-5<x<7$. Determine
+	$\Pr[X^2 > 4]$
+\end{example}
 \end{document}
 
 
