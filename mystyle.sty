@@ -92,13 +92,23 @@
 \newcommand{\stirii}[2]{\stirlingtwo{#1}{#2}}
 \newcommand{\dstirlingtwo}[2]{\genfrac\{\}{0pt}{0}{#1}{#2}}
 \newcommand{\dstirii}[2]{\dstirlingtwo{#1}{#2}}
+
+% Differentials
 \newcommand{\dx}{\;dx}
 \newcommand{\dy}{\;dy}
 \newcommand{\dt}{\;dt}
 \newcommand{\du}{\;du}
 \newcommand{\dv}{\;dv}
 
-	
+% Calculus
+\newcommand{\drv}[2]{\frac{d #1}{d #2}}
+\newcommand{\ddv}[2]{\frac{d^2 #1}{d #2^2}}
+\newcommand{\dnv}[3]{\frac{d^{#3} #1}{d #2^{#3}}}
+\newcommand{\pdv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pddv}[2]{\frac{\partial^2 #1}{\partial #2^2}}
+\newcommand{\pdnv}[3]{\frac{\partial^{#3} #1}{\partial #2^{#3}}}
+\newcommand{\mpddv}[3]{\frac{\partial^2 #1}{\partial #2 \, \partial #3}}
+
 % Unicode stuff
 \DeclareUnicodeCharacter{2212}{-}
 \DeclareUnicodeCharacter{3A9}{\Omega}

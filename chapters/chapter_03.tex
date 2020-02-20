@@ -940,22 +940,49 @@ the accident and payment by the insurer is less than 4.
 \subsection{Functions of Random Variables}
 \section{Worked Examples}
 In this section we present a number of problems from class that cover a range of topics in Chapter 3.
-\begin{example}
+\begin{example} % fits in sec. 3.3.5
 	Let $F(x,y) = (1-e^{-x})(1-e^{-y})$ on $x>0, y>0$. Find $f(x,y)$ and find 
 	$\Pr[1<X<3, 1<Y<2]$
 \end{example}
-\begin{example}
+\begin{solution}
+The function $f(x, y)$ is just $\mpddv{F}{x}{y} = e^{-x} \pdv{}{y}(1-e^{-y}) = e^{-x} e^{-y}$. We can compute the probability in two ways -- either by integrating: 
+\begin{align*}
+    \Pr[1<X<3, 1<Y<2] &= \int_1^2 \int_1^3 e^{-x} e^{-y} \dx \dy = \left[\int_1^2 e^{-y} \dy \right] \left[\int_1^3 e^{-x} \dx \right] \\&= (e^{-1} - e^{-2}) (e^{-1} - e^{-3}) 
+\end{align*}
+or, we can do this by subtraction and subtract off four terms: 
+\[
+    \Pr[1<X<3, 1<Y<2] = F(2,3) - F(2,1) - F(1,3) + F(1,2) 
+\]
+and we get the same answer either way. 
+\end{solution}
+\begin{example} % fits in sec. 3.3.5
 	Let $f(x) = \begin{cases} x & 0<x<1 \\ 2-x & 1 \leq x < 2\end{cases}$. 
 	
 	Find the CDF $F(x)$.
 \end{example}
-\begin{example}
+\begin{solution}
+We integrate this piecewise: 
+\begin{align*}
+    F(x) &= \begin{cases} \int_0^x t \dt & x < 1 \\ \int_0^1 t \dt + \int_1^x (2-t) \dt & 1\leq x \leq 2
+\end{cases}
+&= \begin{cases} \frac 12 x^2 & x < 1 \\ 2x - \frac 12 x^2 - 1 & 1\leq x \leq 2
+\end{cases}
+\end{align*}
+\end{solution}
+\begin{example} % fits in sec. 3.3.5
 	Let $f(x) = \begin{cases}1/3 & 0<x<1 \\ 1/3 & 2<x<4 \end{cases}$.
 	
 	State and graph the CDF $F(x)$
 \end{example}
-
-\begin{example}
+\begin{solution}
+\[
+    F(x) = \begin{cases} 
+        \ufrac 3 x & 0 < x \leq 1 \\ \ufrac 3 & 1<x\leq 2 \\ \ufrac 3 + \ufrac 3 (x-1) & 2 < x \leq 4 \\ 1 & x > 4
+    \end{cases}
+\]
+%% graph not included yet -- will be later
+\end{solution}
+\begin{example} % mixed distribution - 3.3.7
 	Let the cdf of $Z$ be given by $F(z) = \begin{cases} 0 & z<-2 \\ \dfrac{z+4}{8} & -2 \leq z < 2 \\
 	1 & z \geq 2\end{cases}$.
 	
@@ -966,9 +993,50 @@ In this section we present a number of problems from class that cover a range of
 		\item $\Pr[Z=2]$
 		\item $\Pr[-2 < Z < 1]$
 		\item $\Pr[0 \leq Z \leq 2]$
+		\item $f(z)$, the mixed pdf/pmf
 	\end{enumerate}
 \end{example}
+\begin{solution}
+Note that the cdf is discontinuous at $z=2, -2$. At $z = -2$, the cdf jumps up by $\ufrac 4$ from 0 to $\frac 14$ so there has to be a probability of $\frac 14$ associated with this point. Similarly, the cdf jumps from $\frac 34$ to 1 at $z=2$, so the point $z=2$ also has a probability of $\frac 14$ associated with it. These probabilities are \textbf{NOT} zero. 
 
+The two probabilities over intervals are easily computed by subtraction with the cdf -- 4 is a little tricky as one also has to consider the probability at the endpoint, 2. Differentiating the cdf will give us the mixed pdf/pmf, but it is better to simply enumerate the different discrete and continuous contributions to the pdf separately:
+
+To sum up the above: 
+\begin{enumerate}
+    %\setlength{\itemsep}{-0.5ex}
+    \item $\ufrac 4$
+    \item $\ufrac 4$ 
+    \item $\frac 3 8$ 
+    \item $\ufrac 2$
+    \item $f(z) = \ufrac 8, -2 < z < 2, \Pr[Z=-2] = \ufrac 4, \Pr[Z=2] = \ufrac 4$
+\end{enumerate}
+\end{solution}
+\begin{remark}
+    In some sense, we can encapsulate the jump discontinuity in the cdf with the \textit{Heaviside step function} $\Theta(x)$, which returns $1$ if $x\geq 0$ and $0$ otherwise. We can write this as: 
+    \[
+        F(z) = (\Theta(z+2) - \Theta(z-2))\left(\frac{z+4}{8}\right) + \Theta(z-2)
+    \]
+    The Heaviside step function has a ``derivative'' everywhere, the \textit{Dirac delta distribution} $\delta(x)$, which satisfies the following properties: 
+    \begin{enumerate}
+        \item $\delta(x) = 0$ iff $x \neq 0$
+        \item For a suitable test function $f(x)$ and an interval $[a,b]$ containing a real $c$, $\int_a^b f(x) \delta(x-c) \dx = f(c)$. 
+    \end{enumerate}
+    The graph of the delta distribution is thus essentially 0 everywhere, with an infinitely tall spike at 0. This is an incredibly useful function\footnote{The mathematicians would shudder at this statement -- technically, this is a \textit{distribution}, not a function. However, we'll follow the lead of the physicists here and treat $\delta(x)$ as a function without too much concern for rigor, because we will almost always end up integrating the delta away. Physicists use these functions to model impulses and for quantum mechanics, and they don't seem to have problems with it, so why should we?.} that has applications in many other fields of study. With this information, we can differentiate $F(z)$: 
+    \[
+        f(z) = \frac 18 (\Theta(z+2) - \Theta(z-2)) + (\delta(z+2) - \delta(z-2))\left(\frac{z+4}{8}\right) + \delta(z-2) 
+    \]
+    This can be simplified, knowing that $\delta(z)$ is 0 whenever the argument is not zero and evaluating the coefficient: 
+    \[
+        f(z) = \frac 18 (\Theta(z+2) - \Theta(z-2)) + \frac 14 \delta(z+2) + \frac 14  \delta(z-2)
+    \]
+    Note that this perfectly reflects our conclusions above -- a uniform $\frac 18$ probability on the interval $(-2, 2)$, and masses with weight $\frac 14$ of the points $-2, 2$. When this distribution function is integrated, we will get the desired probability, and a similar analysis helps us recover the original pdf/pmf analytically from any sort of cdf. A discontinuous cdf will yield delta functions in the pdf that reflect discrete components of the pdf, and one can just read off the coefficients on the deltas to find probabilities associated with each point. 
+\end{remark}
+
+%%% dirac delta section is awesome! --pw
+
+\begin{remark}
+    This is an example of a \textit{mixed pdf/pmf}, as it has discrete components (i.e. there is a nonzero probability of getting 2/-2 from this random variable) and continuous parts (the rest of the probability is smeared over the interval (-2, 2)). 
+\end{remark}
 \begin{example}
 	Let $X$ be a random variable with pdf $f(x) = \dfrac{1}{x^2}$ for $x>0$. 
 	Let $L(x) = x - \floor{x}$ be the fractional part of $x$. Determine the
@@ -980,14 +1048,26 @@ In this section we present a number of problems from class that cover a range of
 	deductible 500. Let $Y$ be the amount paid by the insurance company in event
 	of a loss. Give the pdf of $Y$. Also determine $\Pr[Y=0]$ and $\Pr[Y<100]$
 \end{example}
-
+\begin{remark}
+    If the loss is $L$ and the deductible is $D$, the insurance company pays $\max(0, L-D)$. 
+\end{remark}
+\begin{solution}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% DON'T scribe my explanation from class
+%%%% It was not very good
+%%%% I'll explain it a better way
+%%% Thanks!!! -PW
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{solution}
 \begin{example}
 	Suppose $X$ and $Y$ have joint pdf
 	$$f_{XY}(x,y) = \dfrac{1}{2} \qquad |X| + |Y| < 1$$
 	find (a) the marginal pdf of $X$ and (b) the conditional distribution of $Y$
 	given $X = \frac12$.
 \end{example}
-
+\begin{solution}
+$f_X(x) = 1 - |x|$
+\end{solution}
 \begin{example}
 	Let $X$ be uniformly distributed on the interval $(0,1)$ and $Y$
 	uniformly distributed on the interval $(1-x,x)$ once $X \dsp x$ is given.
@@ -1010,7 +1090,7 @@ In this section we present a number of problems from class that cover a range of
 	Let $X$ and $Y$ be random variables with pdf $$f_{XY}(x,y) = \dfrac{1}{x^2} + 
 	\dfrac{1}{y^2} \qquad 1\leq x,y \leq 2. $$ Determine $\Pr[X+Y>3]$
 \end{example}
-
+%% do this one
 \begin{example}[Check this one]
 	Let $X$ and $Y$ be random variables with pdf 
 	$$f_{XY}(x,y) = k \dfrac{|xy|}{x^2+y^2} \qquad x,y > 0$$ Calculate the probability
@@ -1021,10 +1101,10 @@ In this section we present a number of problems from class that cover a range of
 	Let the pdf of $X$ be given by $f(x) = \dfrac{|x-1|}{36},\;-5<x<7$. Determine
 	$\Pr[X^2 > 4]$
 \end{example}
+
+
+
 \end{document}
-
-
-
 
 
 
