@@ -1042,7 +1042,12 @@ To sum up the above:
 	Let $L(x) = x - \floor{x}$ be the fractional part of $x$. Determine the
 	probability that $L(X) < \frac14$, given that $L(X) < \frac12$.
 \end{example}
+\begin{solution}
+%% Solution 1: Taylor, with some approximatinos
 
+%% Solution 2: analytical
+$\frac{2(1 - \frac34 \ln 2 - \frac \pi 8)}{1-\ln 2}$
+\end{solution}
 \begin{example}
 	The loss $X$ from an accident is a random variable with pdf $f(x) = \dfrac{3}{1000^3}x^2$ for $0 \leq x \leq 1000$. The loss is insured with
 	deductible 500. Let $Y$ be the amount paid by the insurance company in event
@@ -1070,16 +1075,18 @@ $f_X(x) = 1 - |x|$
 \end{solution}
 \begin{example}
 	Let $X$ be uniformly distributed on the interval $(0,1)$ and $Y$
-	uniformly distributed on the interval $(1-x,x)$ once $X \dsp x$ is given.
+	uniformly distributed on the interval $(1-x,1)$ once $X \dsp x$ is given.
 	Determine (a) the joint pdf $f_{XY}$ and (b) $\Pr[Y \geq \frac12]$.
 \end{example}
-
+\begin{solution}
+% $f_X(x) = 1, f_{X|Y}(X|Y) = \frac 1 x$, so then the joint pdf $f_{XY}(XY) = \frac 1x$. To find $\Pr[Y\geq \frac 12]$, we integrate, either with $$\int_{\frac 12}^1 \int_{1-y}^1 \frac 1x dx dy$$, or $1 - \int_{\frac 12}^1 \int_{1-x}^{\frac 12} \frac 1x \dy \dx$. $\frac 12 (1 + \ln 2)$
+\end{solution}
 \begin{example}
 	Let $X$ and $Y$ be continuous random variables with joint pdf
 	$$f_{XY}(x,y) = \dfrac{1}{2} \qquad 0\leq y <x \leq 2.$$
 	Find the marginal densities for $X$ and $Y$.
 \end{example}
-
+$f_X(x) = \frac x 2$, $f_Y(y) = 1 - \frac y 2$. 
 \begin{example}
 	The joint pdf of $X$,$Y$ is given
 	$$f_{XY}(x,y) = \dfrac{e^{-\frac{x}{y}}e^{-y}}{y}\qquad x\geq 0, y>0$$
@@ -1096,12 +1103,17 @@ $f_X(x) = 1 - |x|$
 	$$f_{XY}(x,y) = k \dfrac{|xy|}{x^2+y^2} \qquad x,y > 0$$ Calculate the probability
 	that $4 < X^2+Y^2 < 9$
 \end{example}
-
+% change to polar, do the jacobian, leaving the k in -> 5k
+% k = 1/16, so the answer is 5/16. 
+% issue at 0?
 \begin{example}
 	Let the pdf of $X$ be given by $f(x) = \dfrac{|x-1|}{36},\;-5<x<7$. Determine
 	$\Pr[X^2 > 4]$
 \end{example}
-
+\begin{solution}
+%straightforward integration
+$\frac{31}{36}$. 
+\end{solution}
 
 
 \end{document}
