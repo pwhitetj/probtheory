@@ -1,0 +1,80 @@
+\makeatletter
+\def\input@path{{../}}
+\makeatother
+\documentclass[../main.tex]{subfiles}
+\graphicspath{
+  {"../images/04/"}
+  {"./images/04/"}
+}
+
+\begin{document}
+\chapter{Expectation and Moments}
+\section{Expectation}
+Outline: the expected value of a random variable is analogous to the center of mass of a density function. In the discrete case, the expected value is the sum of each outcome times its probability. In the continuous case, it is the integral of $x*p(x)$
+where $p(x)$ is the probability density of the outcome $x$.
+
+\begin{definition}
+Let $X$ be a r.v. with pdf $f(x)$. Then 
+\begin{eqnarray*}
+    E[X] &=& \sum_x x\cdot\Pr[X\dsp x] \qquad \mbox{discrete} \\
+    E[X] &=& \int_{-\infty}^{\infty} x f(x) \dx \qquad \mbox{continuous}
+\end{eqnarray*}
+\end{definition}
+\begin{example}
+Let $X$ be the result of rolling a 6-sided die. Then $E[X] = \sum_{i=1}^6 i/6 = 3.5$
+\end{example}
+\begin{example}
+Flip 3 fair coins. Let $X$ be the number of heads showing. Then $E(X) = \frac18(0)+
+\frac38(1) + \frac38(2) + \frac18(3) = 1.5$
+\end{example}
+\begin{example}
+Let $X$ be a r.v. with pdf $f(x) = \dfrac{4}{\pi}(1+x^2)$ over $0<x<1$. Then $E[X] = \ln 4/\pi$
+\end{example}
+\begin{example}
+Let $f(x) = \dfrac{1}{x}$ on $x>1$. This $X$ has no expected value. The tail of the distribution is too heavy.
+\end{example}
+\begin{remark}
+Consider a gambling game where you flip a coin until heads appears. If it requires $n$ flips then you win $2^n$ dollars. How much should you pay to play this game?
+\end{remark}
+\begin{definition}
+Let $X$ be a (continuous) r.v. with pdf $f(x)$. Let $g(X)$ be a function of the random variable $X$. Then
+\begin{eqnarray*}
+    E[g(X)] &=& \sum_x g(x)\cdot\Pr[X\dsp x] \qquad \mbox{discrete} \\
+    E[g(X)] &=& \int_{-\infty}^{\infty} g(x) f(x) \dx \qquad \mbox{continuous}
+\end{eqnarray*}
+\end{definition}
+\begin{example}
+Let $X$ be the roll of a six sided fair die. Let $Y = 2X+3$. Find $E[Y]$
+\end{example}
+\begin{solution}
+$$E[Y] = \sum_{i=1}^6 (2i+3)(\frac16) = 10$$
+\end{solution}
+\begin{example}
+Let $X$ have pdf $f(x) = e^{-x}, \quad x>0$. Find $E[e^{3X/4}]$
+\end{example}
+\begin{solution}
+
+\end{solution}
+\subsection{Multivariate}
+In general $$E[g(X,Y,Z)] = \int\!\int\!\int g(x,y,z) f(x,y,z) \dx \dy \dz$$
+
+\subsection{Properties of Expectation}
+Expectation of random variables conveys information about the long term behavior. For example, the expected value of a 6-sided die roll is 3.5; similarly if you roll a die 1000 times and average all the outcomes, it will be seen to be very near 3.5. This fact is made specific by the Law(s) of Large Numbers, which we will study later, and is essentially the reason that probability works.\footnote{At 
+least the frequentist school of probability. At some point I'll talk about frequentists vs. Bayesians}
+
+\begin{theorem}
+Let $X$ be a random variable with finite expectation. Then 
+$$E[aX+b] = aE[x]+b$$
+for real constants $a,b$
+\end{theorem}
+\begin{example}
+    An unfair coin has a 0.9 probability of landing on heads. Let $X_i$ be a r.v. which is 1 if the coin is heads, 0 if it is tails, on the $i$th toss. If the coin is tossed $n$ times, what is the expected value of the average of all the $X_i$'s?
+\end{example}
+
+\section{Moments}
+\begin{definition}Moment about the origin
+\end{definition}
+\begin{definition}Moment about the mean
+\end{definition}
+
+\end{document}
