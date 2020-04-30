@@ -1,0 +1,203 @@
+\makeatletter
+\def\input@path{{../}}
+\makeatother
+\documentclass[../main.tex]{subfiles}
+\graphicspath{
+  {"../images/05/"}
+  {"./images/05/"}
+}
+
+\begin{document}
+\chapter{Discrete Distributions}
+We will be discussing discrete distributions in this section, and continuous distributions in Chapter 6. These are nice because we can reason these situations out combinatorially, in contrast to continuous distributions which will require more calculus. 
+\section{Preliminaries and Combinatorial Identities}
+Over the course of this chapter, we will see a number of recurring identities that will be useful to know (how to derive) at a moment's notice. We establish them here. 
+\subsection{Geometric Series and Friends}
+Consider the \textit{infinite geometric series}: 
+\[
+    \sum_{k=0}^\infty r^k = \frac{1}{1-r}
+\]
+Notice what happens when we take a derivative with respect to $r$: 
+\[
+    \sum_{k=1}^\infty kr^{k-1} = \frac{1}{(1-r)^2}
+\]  
+and we will often see this scaled by $r$: 
+\[
+    \sum_{k=0}^\infty kr^k = \frac{r}{(1-r)^2}
+\]  
+This is rather nice! We can get higher powers by differentiating and multiplying by $r$. We can get a sum of $k^2 r^k$ this way: 
+\[
+    \sum_{k=0}^\infty kr^k = \frac{r+r^2}{(1-r)^3}
+\]
+There is a pattern present, but it's not obvious -- the coefficients here on the polynomials above $(1-r)^{-k-1}$ are called the \textit{Eulerian numbers} with a very messy recurrence relation. It's important to know more about how these are generated rather than the general result.
+
+\subsection{Binomial Series and Friends}
+Recall the Binomial Expansion: 
+\[
+    (x+y)^n = \sum_{k=0}^n x^k y^{n-k} \binom{n}{k}
+\]
+and clearly for $(1+x)^n$:
+\[
+(1+x)^n = \sum_{k=0}^n\binom{n}{k} x^k
+\]
+If $n$ is not a nonnegative integer, however, this becomes problematic! What we have to do, then, is use Taylor series to find the expansion. Consider for $\alpha$ being any real: 
+\begin{align*}
+    f(x) = (1+x)^{-\alpha}
+\end{align*}
+% ... 
+These coefficients are rather reminiscent of the multiset problem from Chapter 1! Indeed, if we extend our definition of multiset coefficients... we get % ((alpha choose k)) 
+% - alpha choose k
+
+\section{Uniform Distribution}
+For our first foray into distributions, we start with the easiest one of all -- the uniform distribution.
+
+\begin{definition}
+Let $X$ be a random variable with a discrete uniform distribution over $\{1, 2, \ldots, k\}$. Its pdf is: 
+\[
+f(x) = \begin{cases} \frac 1 k & x \in \{1, 2, \dots, k\} \\ 0 & otherwise
+\end{cases}
+\]
+\end{definition}
+
+Let's verify this is a valid pdf: 
+\[
+    \sum_{x=1}^k f(x) = \frac{k}{k} = 1 
+\]
+Let's find the cdf of this distribution: 
+\[
+    F(x) = \Pr[X\leq x] = \sum_{t=1}^x \frac 1 k = \frac x k, x \in \{1, 2, \dots, k\}
+\]
+Note that for $x$ real in general, the cdf is $F(x) = \frac{\lfloor x \rfloor}{k}, 1 \leq x \leq k$. 
+
+Let's find some of the moments of this distribution: 
+\[
+    \EE[X] = \sum_{x=1}^k x f(x) = \frac{k(k+1)}{2} \cdot \frac 1k = \frac{k+1}{2}
+\]
+This is as expected, so to speak -- the average is just in the middle. 
+\[
+    \EE[X^2] = \sum_{x=1}^k x^2 f(x) = \frac{k(k+1)(2k+1)}{6} \cdot \frac 1k = \frac{(k+1)(2k+1)}{6}
+\]
+Now we can compute the variance: 
+\[
+    \Var[X] = \EE[X^2] - \EE[X]^2 = \frac{(k+1)(2k+1)}{6} - \left(\frac{k+1}{2} \right)^2 = \frac{k^2-1}{12} 
+\]
+Finally, the moment-generating function: 
+\[
+    M_X(t) = \EE[e^{tX}] = \sum_{x=1}^k e^{tx} \cdot \frac 1k = \frac{e^t}{k} \cdot \left(\frac{1-e^{kt}}{1-e^t} \right) 
+\] 
+This is messy, but we will not verify that the coefficients of this expansion give the moments we calculated. 
+\section{Bernoulli Distribution}
+A \textit{Bernoulli} trial is a random experiment with two outcomes, 0 and 1. The pdf of a Bernoulli trial is: 
+\[
+    f(x) = \begin{cases} p & x = 1\\ 1-p & x = 0\end{cases}
+\]
+For brevity, if we let $q = 1-p$, we can write it like this: 
+\[
+    f(x) = \begin{cases} p & x = 1\\ q & x = 0\end{cases}
+\]
+or, in closed form, $f(x) = p^x (1-p)^{1-x}, x \in \{0,1\}$
+To verify this is a pdf, it's fairly clear by inspection that 
+\[
+    f(0) + f(1) = 1-p + p = 1.
+\]
+The cdf is a bit of casework: 
+\[
+    \begin{cases} 0 & x < 0 \\ 1-p & 0 \leq x < 1 \\ 1 & 1 \leq x  \end{cases}
+\]
+Let's compute some of the moments: 
+\[
+    \EE[X] = 0 \cdot f(0) + 1 \cdot f(1) = p 
+\]
+\[
+    \EE[X^2] = 0^2 \cdot f(0) + 1^2 \cdot f(1) = p
+\]
+\[
+    \Var[X] = p - p^2 = p(1-p) = pq. 
+\]
+Notice that this is maximized when $p = \frac 12$. 
+
+Finally, the moment-generating function: 
+\[
+    M_X(t) = \EE[e^{tX}] = e^t f(1) + 1 \cdot f(0) = p e^t + q 
+\]
+\section{Binomial Distribution}
+Let $X_1, X_2, \dots, X_n$ be $n$ identical, Bernoulli, independent random variables. Let $Y = \sum_{i=1}^n X_i$. Then $Y$ is a \textit{binomial} random variable over $\{0, 1, \dots, n\}$. This can be written as $Y ~ bin(n,p)$, read as ``Y is distributed as a binomial random variable.''
+
+The pdf is $f(k_ = \Pr[Y=k] = \binom{n}{k} p^k q^{n-k}$, for $0 \leq k \leq n$. 
+
+Let's show that this is a pdf (because this is not super obvious): 
+\[
+    \sum_{k=0}^n f(k) = \sum_{k=0}^n \binom{n}{k} p^k q^{n-k} = (p+q)^n = 1
+\]
+by the Binomial Theorem. 
+
+The cdf of this distribution: 
+\[
+    F(Y) = \sum_{k=0}^y \binom{n}{k} p^k q^{n-k}
+\]
+Let's find the moments of this distribution: 
+\[
+    \EE[Y] = \sum_{y=0}^n y \binom{n}{y} p^y q^{n-y}
+\]
+This is not straightforward to evaluate. Hmm$\dots$ consider for a moment
+\[
+    (p+q)^n = \sum_{k=0}^n \binom{n}{y} p^y q^{n-y}
+\]
+Then, if we take a derivative and multiply through by $p$, we get: 
+\[
+np(p+q)^{n-1} = \sum_{k=0}^n y \binom{n}{y} p^y q^{n-y}
+\]
+But since $p+q = 1$, $\EE[Y] = np$. 
+To find $\EE[Y^2]$, we consider 
+\[
+    \EE[Y^2] = \sum_{y=0}^n y^2 \binom n y p^y q^{n-y}.
+\]
+The easiest way to compute this is by considering instead $\EE[Y(Y-1)] = \EE[Y^2 - Y]$: 
+\[
+    \EE[Y(Y-1)] = \sum_{k=0}^n y(y-1) \binom n y p^y q^{n-y}.
+\]
+If we take two derivatives of the original binomial expression and scale back through by $p^2$, we get: 
+\[
+    n(n-1)p^2(p+q)^{n-2} =  \sum_{k=0}^n y(y-1) \binom n y p^y q^{n-y} = n(n-1)p^2.
+\]
+This means that
+\[
+    \EE[Y^2] = n(n-1)p^2 + np.
+\]
+The variance is therefore:
+\[
+    \Var[Y]= n^2p^2 - np^2 + np - (np)^2 = np(1-p) = npq.
+\]
+We could have done the first moment directly via linearity: 
+\[
+    \EE[Y] = \EE\left[\sum_{i=1}^n X_i \right] = \sum_{i=1}^n \EE\left[ X_i \right] = np 
+\]
+The variance can also be done directly by utilizing the independence of the $X_i$s: 
+\[
+    \Var[Y] = \Var\left[\sum_{i=1}^n X_i \right] = \sum_{i=1}^n \Var\left[ X_i \right] = npq
+\]
+Wait! But isn't $\Var[nX] = n^2 \Var[X]$? Why isn't it $n^2pq$? CAREFUL! Adding up the results of $n$ random variables is NOT the same as taking $n$ times the result of a random variable, because the $n$ different random variables are allowed to take on varying values that are not necessarily all the same! This is an invalid result. 
+
+Finally, for the moment-generating function: 
+\[
+    M_Y(t) = \EE[e^{ty}] \sum_{y=0}^n e^{ty} \binom ny p^y q^{n-y} = \sum_{y=0}^n  \binom n y (pe^t)^y q^{n-y} = (pe^t + q)^n 
+\]
+Notice that this MGF is the result of multiplying $n$ Bernoulli MGFs together! In fact, we could have again gotten this very quickly, leveraging the independence of the $X_i$s: 
+\[
+   M_Y(t) = \EE[e^{ty}] = \EE[e^{t(X_1 + X_2 + \ldots + X_n)}] = \EE[e^{tX_1}] \cdot \EE[e^{tX_2}]  \cdot \dots \cdot \EE[e^{tX_n}] = (pe^t + q)^n
+\]
+As we see here, the binomial distribution follows naturally from the Bernoulli distributions. :)
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

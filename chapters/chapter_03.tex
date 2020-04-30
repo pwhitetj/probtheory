@@ -168,7 +168,7 @@ certain value. This is called the \textit{cumulative mass function}.
 \begin{definition}
 The \textbf{cumulative mass function (cmf)} of a random variable $X$ with 
 pmf $f$ is defined as a function $F: \RR\rightarrow[0,1]$ such that
-$$F(x) = \Pr[X \leq x] = \sum_{-\infty}^x f(t)$$
+$$F(x) = \Pr[X \leq x] = \sum_{t = -\infty}^x f(t)$$
 \end{definition}
 \begin{example}Let $X$ be the sum of the pips on the roll of 2 fair six-sided
 die. Find the cmf of $X$.
@@ -402,15 +402,17 @@ $$F(x,y) = \Pr[X \leq x, Y \leq y] = \sum_{u=-\infty}^x \sum_{v=-\infty}^y f(u,v
 \begin{example}
 Determine the distribution function $F$ for the pmf defined in Example~\ref{ex:jar}. 
 \end{example}
-\begin{solution}
-%% insert the solution here
-\end{solution}
+% \begin{solution}
+% %% insert the solution here
+% \end{solution}
 \begin{example}
-Write an expression for $\Pr[a<X\leq b, c< Y \leq d$] in terms of $F$. %Be 
-careful to consider all the cases!
+Write an expression for $\Pr[a<X\leq b, c< Y \leq d$] in terms of $F$. %Be careful to consider all the cases!
 \end{example}
 \begin{solution}
-It's best to think of this geometrically: 
+It's best to think of this with a inclusion/exclusion mentality. We want stuff contained in $F(a, b)$, but we need to subtract off $F(a, d)$ and $F(c, b)$ in order to get the lower bounds we want. However, in doing so, we also subtracted off $F(c, d)$ too much, so we have to add it back: 
+\[
+    F(a, b) - F(a, d) - F(b, c) + F(c, d)
+\]
 \end{solution}
 
 \subsection{Marginal and Conditional Distributions}
@@ -432,10 +434,17 @@ and
 It follows clearly that 
 \begin{example}
 Consider the following joint distribution function
+\begin{center}
+    \begin{tabular}{c|cc}
+        $X\textbackslash Y$ & 1 & 2  \\ \hline
+        1 & 0.4 & 0.3 \\
+        2 & 0.2 & 0.1 \\
+    \end{tabular}
+\end{center}
 % X/Y 1 2
 % 1 0.4 0.3
 % 2 0.2 0.1
-Compute the marginal distributions for 
+Compute the marginal distributions for this joint distribution function. 
 \end{example}
 
 \begin{definition}
@@ -444,7 +453,7 @@ Given random variables $X,Y$, and joint pmf $f(x,y)$, the conditional distributi
     f_{X|y}(x|y) = \frac{\Pr[X=x \cap Y=y]}{\Pr[Y=y]} = \frac{f(x,y)}{f_Y(y)}
 \]
 \end{definition}
-This is rather reminiscent of the Law of Total Probability 
+%This is rather reminiscent of the Law of Total Probability 
 
 \begin{example}
 For the joint distribution function above, compute $f_{X|y}(1|Y=1)$.
@@ -1044,10 +1053,19 @@ To sum up the above:
 \end{example}
 \begin{solution}
 %% Solution 1: Taylor, with some approximatinos
+There are two solutions for this question -- the first one applies Taylor expansions to approximate the solution, while the second one analytically derives a value.
 
+
+Solution 1: 
+
+$\frac{\Pr[L(x) \textless  1/4]}{\Pr[L(x)<1/2]}=\frac{\sum_{k=1}^{\infty}\int_{k}^{k+1/4} 1/x^2 dx}{\sum_{k=1}^{\infty}\int_{k}^{k+1/2} 1/x^2 dx}=\frac{\sum_{k=1}^{\infty}(\frac{1}{k}-\frac{1}{k+1/4})}{\sum_{k=1}^{\infty}(\frac{1}{k}-\frac{1}{k+1/2})}.$ Taking the first term of the numerator and denominator as an approximation yields: $\frac{1/4}{1/2}=0.50.$
+
+
+Solution 2:
 %% Solution 2: analytical
 $\frac{2(1 - \frac34 \ln 2 - \frac \pi 8)}{1-\ln 2}$
 \end{solution}
+
 \begin{example}
 	The loss $X$ from an accident is a random variable with pdf $f(x) = \dfrac{3}{1000^3}x^2$ for $0 \leq x \leq 1000$. The loss is insured with
 	deductible 500. Let $Y$ be the amount paid by the insurance company in event
@@ -1098,11 +1116,22 @@ $f_X(x) = \frac x 2$, $f_Y(y) = 1 - \frac y 2$.
 	\dfrac{1}{y^2} \qquad 1\leq x,y \leq 2. $$ Determine $\Pr[X+Y>3]$
 \end{example}
 %% do this one
-\begin{example}[Check this one]
+\begin{example}
 	Let $X$ and $Y$ be random variables with pdf 
 	$$f_{XY}(x,y) = k \dfrac{|xy|}{x^2+y^2} \qquad x,y > 0$$ Calculate the probability
-	that $4 < X^2+Y^2 < 9$
+	that $4 < X^2+Y^2 9 9?$
 \end{example}
+
+\begin{solution}
+
+This is a double integral to find the area:
+
+$\int_{0}^{2\pi}\int_{2}^{3}\frac{k*|r^2*\cos{\theta}*\sin{\theta}|}{r^2}*rdrd\theta=\int_{0}^{2\pi}\int_{2}^{3}\frac{k}{2}*|\sin{2\theta}|rdrd\theta=k/2\int_{2}^{3}rdr\int_{0}^{2\pi}|\sin{2\theta}|d\theta=5k$
+
+\end{solution}
+
+
+
 % change to polar, do the jacobian, leaving the k in -> 5k
 % k = 1/16, so the answer is 5/16. 
 % issue at 0?
@@ -1110,7 +1139,7 @@ $f_X(x) = \frac x 2$, $f_Y(y) = 1 - \frac y 2$.
 	Let the pdf of $X$ be given by $f(x) = \dfrac{|x-1|}{36},\;-5<x<7$. Determine
 	$\Pr[X^2 > 4]$
 \end{example}
-\begin{solution}
+\begin{solution}[Answer.]
 %straightforward integration
 $\frac{31}{36}$. 
 \end{solution}

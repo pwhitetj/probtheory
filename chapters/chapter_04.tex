@@ -10,7 +10,7 @@
 \begin{document}
 \chapter{Expectation and Moments}
 \section{Expectation}
-Outline: the expected value of a random variable is analogous to the center of mass of a density function. In the discrete case, the expected value is the sum of each outcome times its probability. In the continuous case, it is the integral of $x*p(x)$
+Outline: the expected value of a random variable is analogous to the center of mass of a density function. In the discrete case, the expected value is the sum of each outcome times its probability. In the continuous case, it is the integral of $x \cdot p(x)$
 where $p(x)$ is the probability density of the outcome $x$.
 
 \begin{definition}
@@ -23,6 +23,10 @@ Let $X$ be a r.v. with pdf $f(x)$. Then
 \begin{example}
 Let $X$ be the result of rolling a 6-sided die. Then $E[X] = \sum_{i=1}^6 i/6 = 3.5$
 \end{example}
+\begin{solution}
+This is because $E[x]=1*\Pr[X=1] + 2*\Pr[X=2] + 3*\Pr[X=3] + 4*\Pr[X=4] + 5*\Pr[X=5] + 6*\Pr[X=6] = 3.5$
+
+\end{solution}
 \begin{example}
 Flip 3 fair coins. Let $X$ be the number of heads showing. Then $E(X) = \frac18(0)+
 \frac38(1) + \frac38(2) + \frac18(3) = 1.5$
@@ -47,7 +51,7 @@ Let $X$ be a (continuous) r.v. with pdf $f(x)$. Let $g(X)$ be a function of the 
 Let $X$ be the roll of a six sided fair die. Let $Y = 2X+3$. Find $E[Y]$
 \end{example}
 \begin{solution}
-$$E[Y] = \sum_{i=1}^6 (2i+3)(\frac16) = 10$$
+$$E[Y] = \sum_{k=1}^6 (2k+3)(\frac16) = 10$$
 \end{solution}
 \begin{example}
 Let $X$ have pdf $f(x) = e^{-x}, \quad x>0$. Find $E[e^{3X/4}]$
@@ -56,25 +60,330 @@ Let $X$ have pdf $f(x) = e^{-x}, \quad x>0$. Find $E[e^{3X/4}]$
 
 \end{solution}
 \subsection{Multivariate}
-In general $$E[g(X,Y,Z)] = \int\!\int\!\int g(x,y,z) f(x,y,z) \dx \dy \dz$$
+In general, $$\EE[g(X,Y,Z)] = \int\!\int\!\int g(x,y,z) f(x,y,z) \dx \dy \dz$$
+
+Of course, this same definition can be extended to any number of variables. \begin{example}
+    Let $X,Y$ have joint pdf $f(x,y) = \frac27 (x+2y)$, $0 < x < 1, 1<y<2$. Find $\EE\left[\frac{X}{Y^3}\right]$, $\EE[x]$, $\EE[y]$. 
+\end{example}
+\begin{solution}
+$\EE\left[\frac{X}{Y^3}\right] = \int_{1}^{2}\int_{0}^{1}\frac{x}{y^3}*2/7(x+2y)*dxdy = \frac{15}{84}$. The other two are found similarly with a double integral. 
+\end{solution}
 
 \subsection{Properties of Expectation}
 Expectation of random variables conveys information about the long term behavior. For example, the expected value of a 6-sided die roll is 3.5; similarly if you roll a die 1000 times and average all the outcomes, it will be seen to be very near 3.5. This fact is made specific by the Law(s) of Large Numbers, which we will study later, and is essentially the reason that probability works.\footnote{At 
-least the frequentist school of probability. At some point I'll talk about frequentists vs. Bayesians}
+least the frequentist school of probability. At some point I'll talk about frequentists vs. Bayesians.}
 
-\begin{theorem}
+\begin{theorem}[Linearity]
 Let $X$ be a random variable with finite expectation. Then 
-$$E[aX+b] = aE[x]+b$$
-for real constants $a,b$
+$$\EE[aX+b] = a\EE[x]+b$$
+for real constants $a,b$.
+\end{theorem}
+By definition, this means the expectation is a \textit{linear operator}, which loosely means ``it behaves nicely.''
+\begin{proof}
+(sketch) If $X$ has pdf $f(x)$, the linearity of the expectation of $X$ inherits linearity of the integrals/sums of $f(x)$. This yields the desired
+\end{proof}
+Similarly, the expectation is linear on two random variables: 
+\begin{theorem}
+If $X$ and $Y$ are random variables with finite expectation, then 
+\[
+    \EE[X] + \EE[Y] = \EE[X+Y]
+\]
 \end{theorem}
 \begin{example}
     An unfair coin has a 0.9 probability of landing on heads. Let $X_i$ be a r.v. which is 1 if the coin is heads, 0 if it is tails, on the $i$th toss. If the coin is tossed $n$ times, what is the expected value of the average of all the $X_i$'s?
 \end{example}
 
 \section{Moments}
-\begin{definition}Moment about the origin
+A \textit{moment} is a special 
+\begin{definition}[Moment about the origin]
+Given $X$ with pdf $f(x)$, the quantity
+\[
+    \int_{-\infty}^\infty x^k f(x) \dx 
+\]
+is the $k$th moment of $X$ (about the origin).
 \end{definition}
-\begin{definition}Moment about the mean
+\begin{definition}[Moment about the mean]
+The quantity
+\[
+    \int_{-\infty}^\infty (x-\mu)^k f(x) \dx 
+\]
+is the $k$th moment of $X$ (about the mean $\mu$).
 \end{definition}
+The mean here usually refers to $\EE[x]$, i.e. $\mu = \EE[x]$.
+
+Notice that the moment is a particular type of expectation, i.e. 
+\[
+    \EE[X^k] =  \int_{-\infty}^\infty x^k f(x) \dx 
+\]
+and the first moment is the expectation of $X$. 
+
+To draw a physical analogy, the first moment is like the center of mass of a body, and the second moment is like the moment of inertia of a body.
+\begin{definition}
+The \textit{variance} $\Var(X)$ is the second moment about the mean, i.e..  $\EE[(X-\mu)^2]$. The variance measures dispersion.
+\end{definition}
+
+The variance is a useful quantity, as it can be manipulated rather nicely: 
+\begin{theorem}
+$\Var(X) = \EE[(X-\mu)^2] = \EE[X^2] - \EE[X]^2$
+\end{theorem}
+\begin{proof}
+\begin{align*}
+    \EE[(X-\mu)^2] &= \EE[X^2 - 2X\mu + \mu^2] \\
+    &= \EE[X^2] - 2\mu E[X] + \mu^2 \\
+    &= \EE[X^2] - 2\mu^2 + \mu^2 \\
+    &= \EE[X^2] - \mu^2 = \EE[X^2] - \EE[X]^2
+\end{align*}
+\end{proof}
+
+\begin{theorem}
+\[
+    \Var(aX+b) = a^2\Var(X)
+\]
+\end{theorem}
+\begin{proof}
+\begin{align*}
+    \Var(aX+b) &= \EE[(aX+b)^2] - \EE[(aX+b)]^2 \\
+    &= \EE[a^2X^2 + 2abX + b^2] - (a\EE[X] + b)^2 \\
+    &= \EE[a^2X^2 + 2abX + b^2] - (a^2\EE[X]^2 + 2ab\EE[X] + b^2) \\
+    &= a^2(\EE[X^2] - \EE[X]^2) = a^2 \Var(X)
+\end{align*}
+\end{proof}
+
+\begin{example}
+    Let $f(x) = 2 - 4|x|$, $-\frac 12 < x < \frac 12$. Find $\Var(X)$. 
+\end{example}
+\begin{solution}
+$\ufrac{24}$. Notice that $xf(x)$ is odd, so $\EE[X] = 0$. $\EE[X^2] = \frac{1}{24}$, and we can easily arrive at this using the evenness of $x^2 f(x)$. 
+\end{solution}
+
+\begin{example}
+    Let $f(x) = 4xe^{-2x}$. Find $\EE[X], \EE[X^2], \Var(X)$. 
+\end{example}
+\begin{solution}
+$\EE[X] = 1, \EE[X^2] = \frac32, \Var(X)$. These integrals are much more easily with the \textit{Gamma function}, which we will study more extensively in Chapter 5. For now, we take the ``definition'' of the  
+\[
+    \Gamma(n) = (n-1)! = \int_0^\infty x^{n-1} e^{-x} \dx
+\]
+for positive integers $n$. 
+\end{solution}
+
+\begin{example} %% deductible
+    A car accident has cost pdf $f(x) = c(1.1)^{-x}, x>0$. Find $\EE[\text{payout}]$ by the insurance company if the deductible is 200. 
+\end{example}
+\begin{solution}
+Note that the payout is $\max(0, X-200)$, which constrains our integral -- setting this up gives 
+\[
+    \int_{200}^\infty (x-200) c (1.1)^{-x} \dx
+\]
+which can be rewritten as 
+\[
+    \int_0^\infty x f(x+200) \dx 
+\]
+\end{solution}
+
+\section{Moment Generating Functions}
+\begin{definition}
+Given a random variable $X$ and pdf $f(x)$, the \textit{moment generating function} of $X$ is 
+\[
+    M_X(t) = \EE[e^{tX}] = \int_{-\infty}^{\infty} e^{tx} f(x) \dx
+\]
+\end{definition}
+Notice that $\EE[e^{tx}]$ can be expanded in a series: 
+\[
+    \EE[e^{tx}] = \EE\left[\sum_{k=0}^\infty \frac{t^k X^k}{k!}\right] = \sum_{k=0}^\infty \frac{t^k}{k!} \EE[X^k] 
+\]
+Therefore
+\[
+M_X(t) = \sum_{k=0}^\infty \frac{t^k}{k!} \EE[X^k].
+\]
+By definition, this is said to be the \textit{exponential generating function} for the moments of $X$. Each moment is tied directly to the different powers of $t$, and can be extracted rather nicely. Consider a partial derivative with respect to $t$: 
+\[
+    \pdv{}{t} \sum_{k=0}^\infty \frac{t^k}{k!} \EE[X^k]  = \sum_{k=1}^\infty \frac{t^{k-1}}{(k-1)!} \EE[X^k] = \sum_{k=0}^\infty \frac{t^k}{k!} \EE[X^{k+1}]
+\]
+This new sum starts with $\EE[X]$, i.e. $M_X'(0) = \EE[X]$. If we continue in this way, we can see that $M_X''(0) = \EE[X^2]$, $M_X'''(0) = \EE[X^3]$, etc. so that $M_X^{(k)}(0) = \EE[X^k]$. In this way, the moment generating function behaves sort of like a Taylor series expansion!  
+
+We can arrive at this same result with something a little more sneaky: 
+\[
+    M_X'(t) = \pdv{}{t} \EE[e^{Xt}] = \EE\left[ \pdv{}{t} e^{Xt} \right] = \EE[Xe^{Xt}] \implies M_X'(0) = \EE[X].
+\]
+This manipulation is valid because we can interchange the associated limits without encountering any trouble with the convergence (most of the time), and doing this differentiation directly gives us the same result. 
+
+\section{Moments of Linear Combinations}
+We study some identities relating to expectations and moments: 
+\begin{example}
+    \[\EE[aX + bY] = a\EE[X] + b \EE[Y]\]
+\end{example}
+
+\begin{proof}
+This is the property of linearity for expectation, which is inherited from the integral/sum definition of expectation: 
+\begin{align*}
+    \EE[aX + bY] &= \iint_{\RR^2} (ax+by) f(x,y) \dx \dy \\
+    &= a \iint_{\RR^2} x f(x,y) \dx \dy + b \iint_{\RR^2} y f(x,y) \dx \dy \\
+    &= a \EE[X] + b\EE[Y]
+\end{align*}
+This identity is \textbf{always} true. 
+\end{proof}
+
+\begin{example}
+    Prove or disprove and salvage if possible: $\EE[XY] = \EE[X] \cdot \EE[Y]$
+\end{example}
+
+\begin{proof}
+\[ \EE[XY] = \iint_{\RR^2} xy f(x,y) \dx \dy\]
+We can't do anything to simplify this \textit{unless} these random variables are independent, that is, there exist $a(x)$ and $b(y)$ such that $f(x,y) = a(x) b(y)$. This allows us to ``pull apart'' the double integral: 
+\begin{align*}
+    \EE[XY] &= \int_{\RR} x a(x) \dx \int_{RR} y b(y) \dy \\
+    &= \EE[X] \EE[Y] 
+\end{align*}
+The expectation of two random variables $X$ and $Y$ is therefore multiplicative \textbf{if and only if $X$ and $Y$ are independent.}
+\end{proof}
+
+\begin{example}
+    Prove or disprove and salvage if possible: \[ \Var[X+Y] = \Var[X] + \Var[Y]\] 
+\end{example}
+\begin{proof}
+We expand: 
+\begin{align*}
+    \Var[X+Y] &= \EE[(X+Y)^2] - \EE[X+Y]^2 \\
+    &= \EE[X^2] + 2\EE[XY] + \EE[Y^2] - (\EE[X]^2 + 2\EE[X] \EE[Y] + \EE[Y]^2) \\
+    &= \Var[X] + \Var[Y] + 2(\EE[XY] - \EE[X] \EE[Y])
+\end{align*}
+\end{proof}
+This last term is $0$ if and only if $X$ and $Y$ are independent, in which case the above example kicks in. This term also has a special name: 
+\begin{definition}
+The \textbf{covariance} of two variables $X$, $Y$ is defined as
+\[
+    \Cov[X, Y] = \EE[XY] - \EE[X] \EE[Y]
+\]
+\end{definition}
+This means that most generally, 
+\[
+    \Var[aX + bY] = a^2 \Var[X] + b^2 \Var[Y] + 2ab \Cov[X, Y]
+\]
+An easy way to remember the above definition: note that $\Cov[X, X] = \EE[X^2] - \EE[X]^2 = \Var[X]$, so covariance is a generalization of variance. We also see above that $\Cov[X,Y] = 0$ if $X$, $Y$ are independent. 
+
+Alternatively, one can define the covariance like so: 
+\begin{definition}[Covariance]
+\[\Cov[X, Y] = \EE[(X - \mu_X)(Y - \mu_Y)] \]
+\end{definition}
+which we can show is equivalent to the above via the following: 
+\begin{align*}
+\EE[(X - \mu_X)(Y - \mu_Y)] &= \EE[XY] - \mu_X \EE[Y] - \EE[X] \mu_Y + \mu_X \mu_Y \\
+&= \EE[XY] - \mu_X \mu_Y - \mu_X \mu_Y  + \mu_X \mu_Y = \EE[XY] - \EE[X] \EE[Y]
+\end{align*}
+
+\begin{example}
+    For three random variables $X$, $Y$, $Z$, $\mu_X = 2, \mu_Y = -3, \mu_Z = 4$, and $\sigma_X^2 = 1, \sigma_Y^2 = 5, \sigma_Z^2 = 2$. Let $W = 3X - Y + 2Z$. Find $\EE[W]$ and $\Var[W]$.
+\end{example}
+\begin{solution}
+$\EE[W] = 17, \Var[W] = 22 - 6 \Cov[X, Y] - 4 \Cov[Y, Z] + 12 \Cov[X, Z]$
+\end{solution}
+
+\subsection{Inequalities}
+
+\begin{theorem}[Markov's Inequality]
+Let $X$ be a positive random variable and let $c$ be a positive real. Then
+\[
+    \Pr[X > c] \leq \frac{\EE[X]}{c}
+\]
+\end{theorem}
+\begin{remark}
+This is a \textit{tail inequality}, i.e. it tells one how much of the probability mass function lies beyond $X=c$. 
+\end{remark}
+
+\begin{proof}
+\[
+    \EE[X] = \int_{-\infty}^\infty x f(x) \dx = \int_{-\infty}^c x f(x) \dx + \int_c^\infty x f(x) \dx 
+\]
+This first integral is necessarily positive, as $X$ is a positive random variable. Then, 
+\[
+    \EE[X] \geq \int_c^\infty xf(x) \dx \geq c \int_c^\infty f(x) \dx = c \Pr[x > c]
+\]
+This gives Markov directly. Equality holds iff the first integral was 0 and these above two integrals are equal, which is true only iff $X$ has a probability 1 of dispensing $c$, i.e. all of the probability is concentrated at one point. 
+\end{proof}
+Note that we may also rewrite this inequality as (for $c \in \RR^+$)
+\[
+    \Pr[X > c \mu_X] \leq \frac{1}{c}
+\]
+\begin{theorem}[Chebyshev's Inequality]
+Let $X$ be a random variable. Then for $k \in \RR^+$, 
+\[
+    \Pr[|X-\mu_X| > k \sigma_X] \leq \frac{1}{k^2}
+\]
+\end{theorem}
+\begin{proof}
+Note that $\Pr[|X-\mu_X| > k \sigma_X] = \Pr[(X-\mu_X)^2 > k^2\sigma_X^2]$. By Markov's Inequality, we see that 
+\[
+    \Pr[(X-\mu_X)^2 > k^2\EE[(X-\mu_X)^2]] < \frac{1}{k^2}
+\]
+and since $\EE[(X-\mu_X)^2] = \sigma_X^2$, we are done. 
+\end{proof}
+\begin{example}
+    Suppose $f(x) = \frac 14$, $-2 < x < 2$. Estimate $\Pr[X > 1]$ using Markov and Chebyshev.
+\end{example}
+\begin{solution}
+We can't do this with Markov as $X < 0$. We can do this with Chebyshev, however: 
+\[
+    \EE[X] = \int_{-2}^2 \frac 14 x \dx = 0 
+\]
+\[
+    \EE[X^2] = \int_{-2}^2 \frac 14 x^2 \dx = \frac 43
+\]
+\[
+    \implies \sigma_X^2 = \frac 43 \implies \sigma_X = \frac{2}{\sqrt 3}
+\]
+\[
+    \Pr[X>1] = \frac 12 \Pr[X^2 > 1] = \frac 12 \Pr[(X-\mu_X)^2>1] = \frac12 \Pr\left[(X-\mu_X)^2 > \frac{\sqrt{3}}{2}\sigma_X\right] \leq \frac 12 \cdot \frac 43 = \frac 23 
+\]
+Note that the actual probability is clearly just $\frac 14$, so our bound is correct. 
+\end{solution}
+Notice that we could have used a slightly different form of Chebyshev: 
+\[
+    \Pr[|X-\mu_X| > k] \leq \frac{\sigma_X^2}{k^2}
+\]
+
+\begin{theorem}[Chernoff's Inequality]
+For a random variable $X$ and its moment generating function $M_X(t)$, for all $t$ in the radius of convergence of the generating function we have
+\[
+    \Pr[X \geq a] \leq e^{-at} M_X(t)
+\]
+\end{theorem}
+
+\section{Properties and Examples of Moment Generating Functions}
+Recall that for a random variable $X$ that the moment generating fucntion $M_X(t) = \EE[e^{Xt}]$. Moment generating functions have several properties: 
+\begin{itemize}
+    \item The moment generating function of a random variable is unique if it exists. 
+    \item The moment generating function is the two-sided Laplace transform of $f(-x)$. 
+    \item The moment generating function \textit{does not always exist} -- however, the \textit{characteristic function} $\EE[e^{tiX}]$ always exists. 
+\end{itemize}
+Let's see some examples of some moment-generating functions: 
+\begin{example}
+    Consider the pdf for a random variable $f(x) = e^{-x}, x>0$. Find its MGF. 
+\end{example}
+\begin{solution}
+\begin{align*}
+    M_X(t) = \EE[e^{tX}] &= \int_0^\infty e^{tx} e^{-x} \dx \\
+    &= \int_0^\infty e^{-x(1-t)} \dx \\
+    &= \frac{1}{1-t}, \quad t < 1. 
+\end{align*}
+Note that the condition for the integral to converge is similar to the radius of convergence of this function. Given that we have this MGF, we can compute its moments: 
+\[
+    \EE[X] = \dv{M_X(t)}{t}\Big|_{t=0} = \frac{1}{(1-t)^2}\Big|_{t=0} = 1 = \int_0^\infty xe^{-x} \dx
+\]
+\[
+    \EE[X^2] = \ddv{M_X(t)}{t}\Big|_{t=0} = \frac{2}{(1-t)^3}\Big|_{t=0} = 2 = \int_0^\infty x^2e^{-x} \dx
+\]
+\[
+    \EE[X^3] = \dnv{M_X(t)}{t}{3}\Big|_{t=0} = \frac{6}{(1-t)^4}\Big|_{t=0} = 6 = \int_0^\infty x^3e^{-x} \dx
+\]
+and more generally, 
+\[
+\EE[X^k] = k! = \int_0^\infty x^k e^{-x} \dx 
+\]
+This gives some of the values of the Gamma function directly for integer $k$. Finally, we can compute the variance: 
+\[
+\Var(X) = 2 - 1^2 = 1.
+\]
+\end{solution}
 
 \end{document}
